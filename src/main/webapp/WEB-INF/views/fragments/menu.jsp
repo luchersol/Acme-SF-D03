@@ -25,6 +25,10 @@
 		<acme:menu-option code="master.menu.student1" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://g.co/kgs/uSjcNzE/"/>
 		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.student3" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://youtu.be/NpytprpUNrw?si=1Kb0WsXVN3FZ0VPg"/>
+		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.student4" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.youtube.com/watch?v=MqTKBYf4qoQ"/>
