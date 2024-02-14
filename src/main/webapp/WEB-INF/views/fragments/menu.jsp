@@ -18,26 +18,15 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-		
-		<acme:menu-option code="master.menu.student1" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://g.co/kgs/uSjcNzE/"/>
+		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.student1" action="https://g.co/kgs/uSjcNzE/"/>
+			<acme:menu-suboption code="master.menu.student2" action="https://youtu.be/7bhKI0Mw6Yk?si=9Kc_i7S7cpkdliHp"/>
+			<acme:menu-suboption code="master.menu.student3" action="https://youtu.be/NpytprpUNrw?si=1Kb0WsXVN3FZ0VPg"/>
+			<acme:menu-suboption code="master.menu.student4" action="https://www.youtube.com/watch?v=MqTKBYf4qoQ"/>
+			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
+		
 
-		<acme:menu-option code="master.menu.student2" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://youtu.be/7bhKI0Mw6Yk?si=9Kc_i7S7cpkdliHp"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.student3" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://youtu.be/NpytprpUNrw?si=1Kb0WsXVN3FZ0VPg"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.student4" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.youtube.com/watch?v=MqTKBYf4qoQ"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.student5" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://www.youtube.com/watch?v=4x163sCo1IQ"/>
-		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
