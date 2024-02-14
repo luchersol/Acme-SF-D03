@@ -18,14 +18,15 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.student1" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://g.co/kgs/uSjcNzE/"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.student2" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://youtu.be/7bhKI0Mw6Yk?si=9Kc_i7S7cpkdliHp"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.student3" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://youtu.be/NpytprpUNrw?si=1Kb0WsXVN3FZ0VPg"/>
 		</acme:menu-option>
