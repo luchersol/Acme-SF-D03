@@ -19,10 +19,12 @@ public class Manager extends AbstractForm {
 	Double						totalNumberProjectShould;
 	Double						totalNumberProjectCould;
 	Double						totalNumberProjectWont;
+
 	Double						averageEstimatedCostUserStories;
 	Double						deviationEstimatedCostUserStories;
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
+
 	Double						averageEstimatedCostProjects;
 	Double						deviationEstimatedCostProjects;
 	Double						minimumEstimatedCostProjects;
