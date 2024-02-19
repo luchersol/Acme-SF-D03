@@ -2,15 +2,20 @@
 package acme.entities.audits;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.datatypes.AuditType;
@@ -42,8 +47,21 @@ public class CodeAudit extends AbstractEntity {
 	private String				correctiveActions;
 
 	@Transient
-	private Mark				mark;
+	private Mark mark() {
+		Mark res = this.getAuditRecords().stream()
+             .map(x-> x.getMark())
+             .collect(Collectors.groupingBy(x-> x, Collectors.counting()))
+             .entrySet().stream()
+             .max(Map.Entry.comparingByValue())
+             .map(Map.Entry::getKey)
+             .orElse(null);
+		return res;
+	};
 
+	@URL
 	private String				furtherInformation;
+
+	@OneToMany
+	private List<AuditRecord>	auditRecords;
 
 }
