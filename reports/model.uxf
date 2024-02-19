@@ -198,8 +198,8 @@ bg=yellow</panel_attributes>
       <w>36</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-x
-m1=0..*
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+m1=
 m2=1..*</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
