@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.1.0">
+<diagram program="umlet" version="15.1">
   <help_text>// Uncomment the following line to change the fontsize and font:
 fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -28,8 +28,8 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
-      <y>315</y>
+      <x>702</x>
+      <y>387</y>
       <w>252</w>
       <h>117</h>
     </coordinates>
@@ -42,14 +42,14 @@ Project
 + indication: boolean
 + cost: double {PositiveOrZero}
 + optionalLink: String {Url}
-bg=yellow</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
-      <y>459</y>
+      <x>432</x>
+      <y>369</y>
       <w>243</w>
       <h>135</h>
     </coordinates>
@@ -63,28 +63,33 @@ Claim
 + departament: String {NotBlank, Length(max=101)}
 + optionalEmail: String {Email}
 + optionalLink: String {Url}
-bg=yellow</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>36</y>
-      <w>90</w>
-      <h>45</h>
+      <x>234</x>
+      <y>108</y>
+      <w>216</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Manager
-bg=yellow</panel_attributes>
+--
++ degree: String {NotBlank, Length(max=76)}
++ overview: String {NotBlank, Length(max=101)}
++ certifications: String {NotBlank, Length(max=101)}
++ private: String {URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>351</x>
-      <y>108</y>
-      <w>225</w>
+      <x>711</x>
+      <y>180</y>
+      <w>243</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -96,27 +101,27 @@ UserStory
 + acceptanceCriteria: String {NotBlank, Length(max=101)}
 + priority: Priority
 + optionalLink: String {Url}
-bg=yellow</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>54</y>
-      <w>414</w>
+      <x>441</x>
+      <y>126</y>
+      <w>423</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
-m1=0..*
+m1=  0..*
 m2=1</panel_attributes>
     <additional_attributes>430.0;60.0;430.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>144</x>
-      <y>234</y>
+      <x>468</x>
+      <y>261</y>
       <w>198</w>
       <h>63</h>
     </coordinates>
@@ -129,30 +134,30 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>63</y>
-      <w>162</w>
-      <h>189</h>
+      <x>441</x>
+      <y>135</y>
+      <w>126</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;120.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>333</x>
-      <y>261</y>
-      <w>153</w>
-      <h>27</h>
+      <x>657</x>
+      <y>288</y>
+      <w>189</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;190.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>639</x>
-      <y>243</y>
+      <x>999</x>
+      <y>315</y>
       <w>171</w>
       <h>54</h>
     </coordinates>
@@ -164,8 +169,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>288</y>
+      <x>945</x>
+      <y>360</y>
       <w>180</w>
       <h>108</h>
     </coordinates>
@@ -175,8 +180,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>108</y>
+      <x>981</x>
+      <y>180</y>
       <w>63</w>
       <h>90</h>
     </coordinates>
@@ -187,14 +192,14 @@ MUST
 SHOULD
 COULD
 WONT
-bg=yellow</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>459</x>
-      <y>216</y>
+      <x>819</x>
+      <y>288</y>
       <w>36</w>
       <h>117</h>
     </coordinates>
@@ -202,5 +207,55 @@ bg=yellow</panel_attributes>
 m1=
 m2=1..*</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>324</y>
+      <w>198</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+Manager
+--
++ totalNumberProjectMust
++ totalNumberProjectShould
++ totalNumberProjectCould
++ totalNumberProjectWont
++ averageEstimatedCostUserStories
++ deviationEstimatedCostUserStories
++ minimumEstimatedCostUserStories
++ maximumEstimatedCostUserStories
++ averageEstimatedCostProjects
++ deviationEstimatedCostProjects
++ minimumEstimatedCostProjects
++ maximumEstimatedCostProjects
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>36</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AbstractRole
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>342</x>
+      <y>63</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
