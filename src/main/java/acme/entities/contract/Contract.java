@@ -13,6 +13,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,17 +38,17 @@ public class Contract extends AbstractEntity {
 	private Date				instantiationMoment;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				providerName;
 
 	@NotBlank
-	@Length(max = 76)
+	@Length(max = 75)
 	private String				customerName;
 
 	@NotBlank
-	@Length(max = 101)
+	@Length(max = 100)
 	private String				goal;
 
-	private Integer				budget;
+	private Money				budget;
 
 }
