@@ -29,29 +29,31 @@ public class Contract extends AbstractEntity {
 	//	@NotNull
 	//	private Proyect proyect;
 
+	private static final long	serialVersionUID	= 1L;
+
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
-	private String	code;
+	private String				code;
 
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	private String	providerName;
+	private String				providerName;
 
 	@NotBlank
 	@Length(max = 75)
-	private String	customerName;
+	private String				customerName;
 
 	@NotBlank
 	@Length(max = 100)
-	private String	goal;
+	private String				goal;
 
 	@NotNull
-	private Money	budget;
+	private Money				budget;
 
 }
