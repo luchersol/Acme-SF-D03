@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Manager extends AbstractForm {
+public class ManagerForm extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -19,10 +19,12 @@ public class Manager extends AbstractForm {
 	Double						totalNumberProjectShould;
 	Double						totalNumberProjectCould;
 	Double						totalNumberProjectWont;
+
 	Double						averageEstimatedCostUserStories;
 	Double						deviationEstimatedCostUserStories;
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
+
 	Double						averageEstimatedCostProjects;
 	Double						deviationEstimatedCostProjects;
 	Double						minimumEstimatedCostProjects;
