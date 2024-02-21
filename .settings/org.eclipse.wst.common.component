@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                                                                                                                                                                                                                                         
 =======
@@ -7,6 +8,9 @@
     
     
 >>>>>>> 98016d3f807ff400452aac29aca46a82e624830d
+=======
+                                                                                                                                                                                                                                        
+>>>>>>> Stashed changes
     
     
     
@@ -62,6 +66,7 @@
     
     
     
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     
     <wb-module deploy-name="Acme-SF-D02-24.1">
@@ -72,6 +77,11 @@
         
         
 >>>>>>> 98016d3f807ff400452aac29aca46a82e624830d
+=======
+    
+    <wb-module deploy-name="Acme-SF-D02-24.1">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+>>>>>>> Stashed changes
         
         
         
@@ -128,6 +138,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 =======
@@ -135,6 +146,9 @@
         
         
 >>>>>>> 98016d3f807ff400452aac29aca46a82e624830d
+=======
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+>>>>>>> Stashed changes
         
         
         
@@ -191,6 +205,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 =======
@@ -455,6 +470,132 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         
+=======
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+>>>>>>> Stashed changes
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+                                                                                                                                                                                                                                                                                                                                                                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                                                                        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework"/>
+                                                                        
+        
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        
         
         
         
@@ -510,6 +651,7 @@
         
         
         <property name="java-output-path" value="/Hello-World-22.0/target/classes"/>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
         <property name="context-root" value="Acme-SF-D02"/>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
@@ -525,6 +667,10 @@
     
     
 >>>>>>> 98016d3f807ff400452aac29aca46a82e624830d
+=======
+        <property name="context-root" value="Acme-SF-D02"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+>>>>>>> Stashed changes
     
     
     
@@ -582,6 +728,7 @@
     
     
     </wb-module>
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                                                                                                                                                                                                                                     
 =======
@@ -589,6 +736,9 @@
 
 
 >>>>>>> 98016d3f807ff400452aac29aca46a82e624830d
+=======
+                                                                                                                                                                                                                                    
+>>>>>>> Stashed changes
 
 
 
