@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
@@ -16,6 +17,7 @@ import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +27,9 @@ import lombok.Setter;
 
 public class Contract extends AbstractEntity {
 
-	//	@ManyToOne
-	//	@NotNull
-	//	private Proyect proyect;
+	@ManyToOne
+	@NotNull
+	private Project				project;
 
 	private static final long	serialVersionUID	= 1L;
 
