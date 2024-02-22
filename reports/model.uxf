@@ -28,99 +28,104 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
-      <y>315</y>
+      <x>666</x>
+      <y>351</y>
       <w>252</w>
-      <h>117</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Project
 --
-+ code: String {Pattern=/[A-Z]{3}-[0-9]{4}/, NotBlank, Unique}
-+ title: String {NotBlank, Length(max=101)}
-+ abstract: String {NotBlank, Length(max=101)}
++ code: String {NotBlank, Pattern=/[A-Z]{3}-[0-9]{4}/, Unique}
++ title: String {NotBlank, Length(max=100)}
++ abstract: String {NotBlank, Length(max=100)}
 + indication: boolean
-+ cost: double {PositiveOrZero}
-+ optionalLink: String {Url}
-bg=yellow</panel_attributes>
++ cost: Money
++ link: String {Url}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
-      <y>459</y>
+      <x>396</x>
+      <y>342</y>
       <w>243</w>
-      <h>135</h>
+      <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
 --
 + code: String {Pattern=/C-[0-9]{4}/, NotBlank, Unique}
 + instantionMoment: Date {Past}
-+ heading: String {NotBlank, Max=76}
-+ description: Integer {NotBlank, Max=101}
-+ departament: String {NotBlank, Length(max=101)}
-+ optionalEmail: String {Email}
-+ optionalLink: String {Url}
-bg=yellow</panel_attributes>
++ heading: String {NotBlank, Max=75}
++ description: Integer {NotBlank, Max=100}
++ departament: String {NotBlank, Length(max=100)}
++ email: String {Email}
++ link: String {Url}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>36</y>
-      <w>90</w>
-      <h>45</h>
+      <x>198</x>
+      <y>72</y>
+      <w>216</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Manager
-bg=yellow</panel_attributes>
+--
++ degree: String {NotBlank, Length(max=75)}
++ overview: String {NotBlank, Length(max=100)}
++ certifications: String {NotBlank, Length(max=100)}
++ private: String {URL}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>351</x>
-      <y>108</y>
-      <w>225</w>
+      <x>675</x>
+      <y>144</y>
+      <w>243</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 UserStory
 --
-+ title: String {NotBlank, Length(max=101)}
-+ description: String {NotBlank, Length(max=101)}
++ title: String {NotBlank, Length(max=100)}
++ description: String {NotBlank, Length(max=100)}
 + estimatedCost: int {Positive}
-+ acceptanceCriteria: String {NotBlank, Length(max=101)}
++ acceptanceCriteria: String {NotBlank, Length(max=100)}
 + priority: Priority
-+ optionalLink: String {Url}
-bg=yellow</panel_attributes>
++ link: String {Url}
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>54</y>
-      <w>414</w>
+      <x>405</x>
+      <y>90</y>
+      <w>423</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
-m1=0..*
+m1=  0..*
 m2=1</panel_attributes>
     <additional_attributes>430.0;60.0;430.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>144</x>
-      <y>234</y>
-      <w>198</w>
-      <h>63</h>
+      <x>450</x>
+      <y>216</y>
+      <w>153</w>
+      <h>54</h>
     </coordinates>
-    <panel_attributes>R1: Las historias de usuario 
+    <panel_attributes>Las historias de usuario 
 de un proyecto deben pertenecer 
 todas a un mismo manager.
 bg=gray</panel_attributes>
@@ -129,34 +134,34 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>63</y>
-      <w>162</w>
-      <h>189</h>
+      <x>405</x>
+      <y>99</y>
+      <w>144</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>333</x>
-      <y>261</y>
-      <w>153</w>
-      <h>27</h>
+      <x>594</x>
+      <y>234</y>
+      <w>216</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;220.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>639</x>
-      <y>243</y>
-      <w>171</w>
-      <h>54</h>
+      <x>972</x>
+      <y>378</y>
+      <w>180</w>
+      <h>36</h>
     </coordinates>
-    <panel_attributes>R2: El sistema debe rechazar los 
+    <panel_attributes>El sistema debe rechazar los 
 proyectos que contengan errores fatales.
 bg=gray</panel_attributes>
     <additional_attributes/>
@@ -164,19 +169,19 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>288</y>
-      <w>180</w>
-      <h>108</h>
+      <x>909</x>
+      <y>387</y>
+      <w>81</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;100.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;70.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>108</y>
+      <x>945</x>
+      <y>144</y>
       <w>63</w>
       <h>90</h>
     </coordinates>
@@ -187,20 +192,94 @@ MUST
 SHOULD
 COULD
 WONT
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>252</y>
+      <w>45</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+m1=
+m2=  1..*</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>288</y>
+      <w>198</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+Manager
+--
++ totalNumberProjectMust
++ totalNumberProjectShould
++ totalNumberProjectCould
++ totalNumberProjectWont
++ averageEstimatedCostUserStories
++ deviationEstimatedCostUserStories
++ minimumEstimatedCostUserStories
++ maximumEstimatedCostUserStories
++ averageEstimatedCostProjects
++ deviationEstimatedCostProjects
++ minimumEstimatedCostProjects
++ maximumEstimatedCostProjects
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>0</y>
+      <w>99</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AbstractRole
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>459</x>
-      <y>216</y>
-      <w>36</w>
-      <h>117</h>
+      <x>306</x>
+      <y>27</y>
+      <w>27</w>
+      <h>63</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
-m1=
-m2=1..*</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>972</x>
+      <y>432</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>El coste debe ser mayor 
+o igual a cero
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>909</x>
+      <y>432</y>
+      <w>81</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;20.0</additional_attributes>
   </element>
 </diagram>
