@@ -3,9 +3,11 @@ package acme.entities.sponsorShip;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -62,7 +64,12 @@ public class SponsorShips extends AbstractEntity {
 	@URL
 	private String				link;
 
+	// Relationships -------------------------------------------------------------
+
 	@ManyToOne(optional = false)
 	private Project				project;
+
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Invoice				invoice;
 
 }
