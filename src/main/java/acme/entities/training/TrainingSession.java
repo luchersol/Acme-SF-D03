@@ -59,7 +59,7 @@ public class TrainingSession extends AbstractEntity {
 	private String				furtherInformationLink;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 
 }
