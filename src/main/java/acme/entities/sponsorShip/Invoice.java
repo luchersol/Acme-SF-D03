@@ -47,7 +47,7 @@ public class Invoice extends AbstractEntity {
 	private int					quantity;
 
 	@PositiveOrZero
-	private int					tax;
+	private double				tax;
 
 	@URL
 	private String				link;
@@ -55,8 +55,8 @@ public class Invoice extends AbstractEntity {
 	// Derived attributes -------------------------------------------------------------
 
 
-	public int totalAmount() {
-		return this.quantity + this.tax;
+	public double totalAmount() {
+		return this.quantity + this.tax / 100 * this.quantity;
 	}
 
 }
