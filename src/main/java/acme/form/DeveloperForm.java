@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Developer extends AbstractForm {
+public class DeveloperForm extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
