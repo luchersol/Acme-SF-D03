@@ -10,52 +10,45 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.datatypes.Money;
-import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
 @Setter
-
-public class Contract extends AbstractEntity {
+@Getter
+public class ProgressLogs extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	@NotNull
-	private Project				project;
-
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	@NotBlank
-	private String				code;
+	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
+	private String				record_id;
 
-	@Past
+	@Positive
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
-
-	@NotBlank
-	@Length(max = 75)
-	private String				providerName;
-
-	@NotBlank
-	@Length(max = 75)
-	private String				customerName;
+	private Integer				completeness;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				goal;
+	private String				comment;
 
 	@NotNull
-	private Money				budget;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				registration_moment;
+
+	@NotBlank
+	@Length(max = 75)
+	private String				responsible_person;
+
+	@NotNull
+	@ManyToOne
+	private Contract			contract;
 
 }
