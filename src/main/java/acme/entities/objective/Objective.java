@@ -28,7 +28,7 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiation_moment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
