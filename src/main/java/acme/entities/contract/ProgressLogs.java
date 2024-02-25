@@ -29,7 +29,7 @@ public class ProgressLogs extends AbstractEntity {
 	@Column(unique = true)
 	@NotBlank
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
-	private String				record_id;
+	private String				recordId;
 
 	@Positive
 	@NotNull
@@ -41,11 +41,11 @@ public class ProgressLogs extends AbstractEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				registration_moment;
+	private Date				registrationMoment;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				responsible_person;
+	private String				responsiblePerson;
 
 	@NotNull
 	@ManyToOne
