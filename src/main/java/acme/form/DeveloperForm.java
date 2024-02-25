@@ -14,9 +14,9 @@ public class DeveloperForm extends AbstractForm {
 	Double						totalTrainingModulesWithUpdateMoment;
 	Double						totalTrainingSessionsWithLink;
 
-	Double						averageTimeOfTrainingModules;
-	Double						deviationTimeOfTrainingModules;
-	Double						minimumTimeOfTrainingModules;
-	Double						maximumTimeOfTrainingModules;
+	Double						averageTimeOfTraining;
+	Double						deviationTimeOfTraining;
+	Double						minimumTimeOfTraining;
+	Double						maximumTimeOfTraining;
 
 }
