@@ -9,4 +9,5 @@ user-account-client-01,true,"UserIdentity{name: 'Marina', surname: 'Calero Lopez
 user-account-client-02,true,"UserIdentity{name: 'Pepa', surname: 'Matin Duran', email: 'ppmd@acme.com'}",client2,client2
 user-account-developer-01,true,"UserIdentity{name: 'Nacho', surname: 'Gonzalez Murrillo', email: 'nacho@acme.com'}",developer1,developer1
 user-account-developer-02,true,"UserIdentity{name: 'Daniel', surname: 'Galván Russo', email: 'dani@acme.com'}",developer2,developer2
-
+user-account-auditor-01,true,"UserIdentity{name: 'Daniel', surname: 'Galván Cancio', email: 'dagc@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name: 'Jorge', surname: 'Negro Blanco', email: 'jonb@acme.com'}",auditor2,auditor2
