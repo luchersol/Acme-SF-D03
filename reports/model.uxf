@@ -436,4 +436,55 @@ m2=0..n
 m1=1</panel_attributes>
     <additional_attributes>10.0;10.0;300.0;10.0;300.0;50.0</additional_attributes>
   </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>378</x>
+      <y>855</y>
+      <w>279</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>The author must be computed as follows: 
+“〈username〉 - 〈surname, name〉”, where 
+“〈username〉” denotes the username of the 
+principal who has posted the note and 
+“〈surname, name〉” denotes his or her full name.
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>261</x>
+      <y>621</y>
+      <w>369</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice 
+--
++ instantiationMoment: Date {Temporal(TIMESTAMP), Past, NotBlank}
++ title: String {NotBlank, Length(max=75)}
++ username: String {NotBlank}
++ name: String {NotBlank, Pattern(“^[A-Za-z]+, [A-Za-z]+$”)}
++ /author: String {NotBlank, Length(max=75)}
++ message: String {NotBlank, Length(max=100)}
++ contactEmail: String {Email}
++ link: String {Link}
+
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>792</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
 </diagram>
