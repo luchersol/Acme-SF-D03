@@ -50,7 +50,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
-	private String				furtherInformationLink;
+	private String				link;
 
 	private Integer				estimatedTotalTime;
 
