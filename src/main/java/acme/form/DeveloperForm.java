@@ -7,16 +7,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Developer extends AbstractForm {
+public class DeveloperForm extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
 	Double						totalTrainingModulesWithUpdateMoment;
 	Double						totalTrainingSessionsWithLink;
 
-	Double						averageTimeOfTrainingModules;
-	Double						deviationTimeOfTrainingModules;
-	Double						minimumTimeOfTrainingModules;
-	Double						maximumTimeOfTrainingModules;
+	Double						averageTimeOfTraining;
+	Double						deviationTimeOfTraining;
+	Double						minimumTimeOfTraining;
+	Double						maximumTimeOfTraining;
 
 }

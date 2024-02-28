@@ -1,5 +1,5 @@
 
-package acme.entities.objective;
+package acme.entities.banner;
 
 import java.util.Date;
 
@@ -17,43 +17,38 @@ import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Getter
 @Setter
-
-public class Objective extends AbstractEntity {
+@Getter
+@Entity
+public class Bannner extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
+	private Date				instanciationMoment;
+
+	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				updateMoment;
+
+	@Past
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				displayStart;
+
+	@URL
+	@NotNull
+	private String				image;
 
 	@NotBlank
 	@Length(max = 75)
-	private String				title;
-
-	@NotBlank
-	@Length(max = 100)
-	private String				description;
-
-	@NotNull
-	private Priority			priority;
-
-	@NotNull
-	private Boolean				status;
-
-	@Past
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				startDate;
-
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				endDate;
+	private String				slogan;
 
 	@URL
+	@NotNull
 	private String				link;
 
 }
