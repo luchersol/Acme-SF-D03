@@ -41,7 +41,6 @@ public class AuditRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
-	@NotNull
 	private Mark				mark;
 
 	@URL
