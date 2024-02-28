@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class Bannner extends AbstractEntity {
+public class Banner extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -33,9 +33,6 @@ public class Bannner extends AbstractEntity {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				displayStart;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				displayEnd;
 
 	@URL
 	@NotNull
