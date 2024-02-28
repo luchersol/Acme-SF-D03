@@ -10,10 +10,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import acme.client.data.AbstractEntity;
 import lombok.Getter;
@@ -33,12 +35,14 @@ public class ProgressLogs extends AbstractEntity {
 
 	@Positive
 	@NotNull
-	private Integer				completeness;
+	@Range(min = 0, max = 100)
+	private Double				completeness;
 
 	@NotBlank
 	@Length(max = 100)
 	private String				comment;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationMoment;
