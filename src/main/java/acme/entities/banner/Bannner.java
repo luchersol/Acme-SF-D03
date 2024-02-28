@@ -27,17 +27,15 @@ public class Bannner extends AbstractEntity {
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instanciationMoment;
-
-	@Past
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				updateMoment;
+	private Date				instanciationOrUpdateMoment;
 
 	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				displayStart;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				displayEnd;
 
 	@URL
 	@NotNull
