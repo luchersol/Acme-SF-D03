@@ -1,0 +1,4 @@
+key,code,instantionMoment,heading,description,departament,emailAddress,link
+claim-01,C-0001,2022/01/1 12:00,Heading-01,Description-01,Departament-01,claim@gmail.com,https://www.google.com/claim-01
+claim-02,C-0002,2022/01/2 12:00,Heading-02,Description-02,Departament-02,null,https://www.google.com/claim-02
+claim-03,C-0003,2022/01/3 12:00,Heading-03,Description-03,Departament-03,claim@gmail.com,null

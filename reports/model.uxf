@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="15.1.0">
+<diagram program="umlet" version="15.1">
   <help_text>// Uncomment the following line to change the fontsize and font:
 fontsize=10
 // fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
@@ -28,8 +28,8 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>666</x>
-      <y>351</y>
+      <x>675</x>
+      <y>342</y>
       <w>252</w>
       <h>108</h>
     </coordinates>
@@ -38,7 +38,7 @@ Project
 --
 + code: String {NotBlank, Pattern=/[A-Z]{3}-[0-9]{4}/, Unique}
 + title: String {NotBlank, Length(max=100)}
-+ abstract: String {NotBlank, Length(max=100)}
++ abstractProject: String {NotBlank, Length(max=100)}
 + indication: boolean
 + cost: Money
 + link: String {Url}
@@ -48,8 +48,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
-      <y>342</y>
+      <x>405</x>
+      <y>333</y>
       <w>243</w>
       <h>117</h>
     </coordinates>
@@ -69,12 +69,12 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>72</y>
+      <x>207</x>
+      <y>63</y>
       <w>216</w>
       <h>81</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
 Manager
 --
 + degree: String {NotBlank, Length(max=75)}
@@ -87,8 +87,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
-      <y>144</y>
+      <x>684</x>
+      <y>135</y>
       <w>243</w>
       <h>117</h>
     </coordinates>
@@ -107,8 +107,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>90</y>
+      <x>414</x>
+      <y>81</y>
       <w>423</w>
       <h>72</h>
     </coordinates>
@@ -120,8 +120,8 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>450</x>
-      <y>216</y>
+      <x>459</x>
+      <y>207</y>
       <w>153</w>
       <h>54</h>
     </coordinates>
@@ -134,8 +134,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>99</y>
+      <x>414</x>
+      <y>90</y>
       <w>144</w>
       <h>135</h>
     </coordinates>
@@ -145,8 +145,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>234</y>
+      <x>603</x>
+      <y>225</y>
       <w>216</w>
       <h>90</h>
     </coordinates>
@@ -156,8 +156,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>972</x>
-      <y>378</y>
+      <x>981</x>
+      <y>369</y>
       <w>180</w>
       <h>36</h>
     </coordinates>
@@ -169,8 +169,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>909</x>
-      <y>387</y>
+      <x>918</x>
+      <y>378</y>
       <w>81</w>
       <h>45</h>
     </coordinates>
@@ -180,8 +180,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>945</x>
-      <y>144</y>
+      <x>954</x>
+      <y>135</y>
       <w>63</w>
       <h>90</h>
     </coordinates>
@@ -198,8 +198,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
-      <y>252</y>
+      <x>792</x>
+      <y>243</y>
       <w>45</w>
       <h>117</h>
     </coordinates>
@@ -211,8 +211,8 @@ m2=  1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>288</y>
+      <x>189</x>
+      <y>279</y>
       <w>198</w>
       <h>171</h>
     </coordinates>
@@ -235,34 +235,10 @@ bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>270</x>
-      <y>0</y>
-      <w>99</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-AbstractRole
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>306</x>
-      <y>27</y>
-      <w>27</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>972</x>
-      <y>432</y>
+      <x>981</x>
+      <y>423</y>
       <w>126</w>
       <h>36</h>
     </coordinates>
@@ -274,8 +250,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>909</x>
-      <y>432</y>
+      <x>918</x>
+      <y>423</y>
       <w>81</w>
       <h>36</h>
     </coordinates>

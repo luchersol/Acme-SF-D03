@@ -1,0 +1,4 @@
+key,title,description,estimatedCost,acceptanceCriteria,link,priority,key:manager,key:project
+user-story-01,Story-01,Description-Story-01,3,Criteria-01,https://www.google.com/user-story-01,MUST,manager-01,project-01
+user-story-02,Story-02,Description-Story-02,2,Criteria-02,null,SHOULD,manager-02,project-02
+user-story-03,Story-03,Description-Story-03,5,Criteria-03,null,WONT,manager-02,project-02
