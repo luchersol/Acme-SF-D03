@@ -1,18 +1,17 @@
 
-package acme.entities.audits;
+package acme.entities.sponsorShip;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -20,34 +19,45 @@ import acme.client.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
 @Entity
-public class AuditRecord extends AbstractEntity {
+@Getter
+@Setter
+public class Invoice extends AbstractEntity {
+
+	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
+	// Attributes -------------------------------------------------------------
+
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
 	private String				code;
 
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				startDate;
+	private Date				registrationTime;
 
-	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				endDate;
+	@NotNull
+	private Date				date;
 
-	private Mark				mark;
+	@PositiveOrZero
+	private int					quantity;
+
+	@PositiveOrZero
+	private double				tax;
 
 	@URL
 	private String				link;
 
-	@ManyToOne
-	@Valid
-	private CodeAudit			codeAudit;
+	// Derived attributes -------------------------------------------------------------
+
+
+	public double totalAmount() {
+		return this.quantity + this.tax / 100 * this.quantity;
+	}
 
 }

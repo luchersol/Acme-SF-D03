@@ -44,8 +44,14 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	private Boolean				status;
 
+	@Past
 	@NotNull
-	private Date				duration;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startDate;
+
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@URL
 	private String				link;
