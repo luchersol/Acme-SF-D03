@@ -55,7 +55,7 @@ public class TrainingSession extends AbstractEntity {
 	private String				contactEmail;
 
 	@URL
-	private String				furtherInformationLink;
+	private String				link;
 
 	@NotNull
 	@Valid
