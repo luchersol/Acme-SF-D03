@@ -44,9 +44,11 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	private Boolean				status;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
