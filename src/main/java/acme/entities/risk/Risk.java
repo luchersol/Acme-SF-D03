@@ -1,5 +1,5 @@
 
-package acme.entities.contract;
+package acme.entities.risk;
 
 import java.util.Date;
 
@@ -8,52 +8,51 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
-public class ProgressLogs extends AbstractEntity {
+@Setter
+public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
-	private String				recordId;
+	@Column(unique = true)
+	@Pattern(regexp = "R-[0-9]{3}")
+	private String				reference;
+
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				identificationDate;
 
 	@Positive
-	@NotNull
-	@Range(min = 0, max = 100)
-	private Double				completeness;
+	private double				impact;
+
+	@Positive
+	private double				probability;
+
+	private double				value;
 
 	@NotBlank
 	@Length(max = 100)
-	private String				comment;
+	private String				description;
 
-	@Past
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				registrationMoment;
+	@URL
+	private String				link;
 
-	@NotBlank
-	@Length(max = 75)
-	private String				responsiblePerson;
-
-	@Valid
-	@ManyToOne(optional = false)
-	private Contract			contract;
+	@ManyToOne
+	private Project				project;
 
 }
