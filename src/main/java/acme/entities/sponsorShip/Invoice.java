@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
@@ -36,11 +37,11 @@ public class Invoice extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotBlank
+	@NotNull
 	private Date				registrationTime;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotBlank
+	@NotNull
 	private Date				date;
 
 	@PositiveOrZero
