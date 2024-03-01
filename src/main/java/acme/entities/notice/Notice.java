@@ -6,23 +6,21 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
+import acme.datatypes.UserIdentity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Notice extends AbstractEntity {
+public class Notice extends UserIdentity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -36,19 +34,12 @@ public class Notice extends AbstractEntity {
 	private String				title;
 
 	@NotBlank
-	@Pattern(regexp = "^[A-Za-z]+, [A-Za-z]+$")
-	private String				name;
-
-	@NotBlank
-	@Length(max = 100)
+	@Length(max = 25)
 	private String				username;
 
 	@NotBlank
 	@Length(max = 100)
 	private String				message;
-
-	@Email
-	private String				contactEmail;
 
 	@URL
 	private String				link;
@@ -58,7 +49,7 @@ public class Notice extends AbstractEntity {
 
 	@Length(max = 75)
 	public String author() {
-		return this.username + " - " + this.name;
+		return this.username + " - " + this.getFullName();
 	}
 
 }
