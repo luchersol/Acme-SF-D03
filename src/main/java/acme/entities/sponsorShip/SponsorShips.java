@@ -20,7 +20,6 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.TypeOfSponsorship;
 import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;

@@ -8,7 +8,6 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
-import acme.datatypes.SponsorType;
 import acme.entities.sponsorShip.Invoice;
 import acme.entities.sponsorShip.SponsorShips;
 import lombok.Getter;
