@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
@@ -38,12 +39,15 @@ public class Risk extends AbstractEntity {
 	private Date				identificationDate;
 
 	@Positive
-	private double				impact;
+	@NotNull
+	private Double				impact;
 
 	@Positive
-	private double				probability;
+	@NotNull
+	private Double				probability;
 
-	private double				value;
+	@NotNull
+	private Double				value;
 
 	@NotBlank
 	@Length(max = 100)
