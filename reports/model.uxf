@@ -28,7 +28,6 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-
       <x>342</x>
       <y>279</y>
       <w>252</w>
@@ -37,7 +36,6 @@ fontsize=10
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Project
 --
-
 + code: String {Pattern=/[A-Z]{3}-[0-9]{4}/, NotBlank, Unique}
 + title: String {NotBlank, Length(max=101)}
 + abstract: String {NotBlank, Length(max=101)}
@@ -50,7 +48,6 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-
       <x>342</x>
       <y>423</y>
       <w>243</w>
