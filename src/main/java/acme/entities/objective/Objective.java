@@ -20,7 +20,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 public class Objective extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -44,6 +43,7 @@ public class Objective extends AbstractEntity {
 	@NotNull
 	private Boolean				status;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;

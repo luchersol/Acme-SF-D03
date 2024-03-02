@@ -30,10 +30,6 @@ public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne(optional = false)
-	@Valid
-	private Project				project;
-
 	@NotNull
 	private Boolean				draftMode;
 
@@ -59,5 +55,9 @@ public class CodeAudit extends AbstractEntity {
 
 	@URL
 	private String				link;
+
+	@ManyToOne(optional = false)
+	@Valid
+	private Project				project;
 
 }

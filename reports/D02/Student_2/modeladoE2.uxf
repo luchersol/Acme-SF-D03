@@ -33,7 +33,7 @@ bg=green</panel_attributes>
 ProgressLogs
 --
 -recordId: String { Unique,Pattern=/PG-[A-Z]{1,2}-[0-9]{4}/, NotBlank }
--completeness: Integer {NotNull, Positive}
+-completeness: Double {NotNull, Positive, Range(0,100)}
 -comment: String {NotBlank, Length(0,100)}
 -registrationMoment: Date {Past, NotNull, Temporal(TIMESTAMP)}
 -responsiblePerson: {NotBlank, Length(0,75)}

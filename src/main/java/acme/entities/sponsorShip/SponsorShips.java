@@ -1,10 +1,13 @@
 
-package acme.entities.claim;
+package acme.entities.sponsorShip;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -12,18 +15,19 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class SponsorShips extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -33,29 +37,40 @@ public class Claim extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "C-[0-9]{4}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
-	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantiationMoment;
+	@NotNull
+	private Date				moment;
 
-	@NotBlank
-	@Length(max = 75)
-	private String				heading;
+	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
+	private Date				startDate;
 
-	@NotBlank
-	@Length(max = 100)
-	private String				description;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
-	@NotBlank
-	@Length(max = 100)
-	private String				departament;
+	@NotNull
+	@Positive
+	private Integer				amount;
+
+	@NotNull
+	private TypeOfSponsorship	typeOfSponsorship;
 
 	@Email
 	private String				email;
 
 	@URL
 	private String				link;
+
+	// Relationships -------------------------------------------------------------
+
+	@ManyToOne(optional = false)
+	private Project				project;
+
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Invoice				invoice;
+
 }
