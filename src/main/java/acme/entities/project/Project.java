@@ -40,7 +40,8 @@ public class Project extends AbstractEntity {
 	@Length(max = 100)
 	private String				abstract_;
 
-	private boolean				indication;
+	@NotNull
+	private Boolean				indication;
 
 	@NotNull
 	@Valid

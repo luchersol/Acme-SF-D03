@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -34,9 +34,9 @@ public class ProgressLogs extends AbstractEntity {
 	@Pattern(regexp = "PG-[A-Z]{1,2}-[0-9]{4}")
 	private String				recordId;
 
-	@Positive
+	@PositiveOrZero
 	@NotNull
-	@Range(min = 0, max = 100)
+	@Range(max = 100)
 	private Double				completeness;
 
 	@NotBlank
