@@ -20,6 +20,7 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,7 +54,7 @@ public class Sponsorship extends AbstractEntity {
 	private Date				endDate;
 
 	@PositiveOrZero
-	private int					amount;
+	private Money				amount;
 
 	private TypeOfSponsorship	typeOfSponsorship;
 
