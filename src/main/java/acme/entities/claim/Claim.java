@@ -39,7 +39,7 @@ public class Claim extends AbstractEntity {
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				instantionMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
@@ -54,7 +54,7 @@ public class Claim extends AbstractEntity {
 	private String				departament;
 
 	@Email
-	private String				emailAddress;
+	private String				email;
 
 	@URL
 	private String				link;

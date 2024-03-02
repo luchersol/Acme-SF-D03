@@ -1,5 +1,5 @@
 
-package acme.entities.objective;
+package acme.entities.notice;
 
 import java.util.Date;
 
@@ -13,20 +13,20 @@ import javax.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.client.data.AbstractEntity;
+import acme.datatypes.UserIdentity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Objective extends AbstractEntity {
+public class Notice extends UserIdentity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
+	@NotNull
 	private Date				instantiationMoment;
 
 	@NotBlank
@@ -34,24 +34,22 @@ public class Objective extends AbstractEntity {
 	private String				title;
 
 	@NotBlank
+	@Length(max = 25)
+	private String				username;
+
+	@NotBlank
 	@Length(max = 100)
-	private String				description;
-
-	@NotNull
-	private Priority			priority;
-
-	@NotNull
-	private Boolean				status;
-
-	@Past
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				startDate;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				endDate;
+	private String				message;
 
 	@URL
 	private String				link;
+
+	// Derived attributes -------------------------------------------------------------
+
+
+	@Length(max = 75)
+	public String author() {
+		return this.username + " - " + this.getFullName();
+	}
 
 }
