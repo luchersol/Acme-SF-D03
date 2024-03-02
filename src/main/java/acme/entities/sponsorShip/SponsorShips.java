@@ -15,12 +15,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.TypeOfSponsorship;
 import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,13 +52,15 @@ public class SponsorShips extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
-	@PositiveOrZero
-	private int					amount;
+	@NotNull
+	@Positive
+	private Integer				amount;
 
+	@NotNull
 	private TypeOfSponsorship	typeOfSponsorship;
 
 	@Email
-	private String				contactEmail;
+	private String				email;
 
 	@URL
 	private String				link;
