@@ -1,12 +1,16 @@
 
-package acme.entities.sponsorShip;
+package acme.entities.sponsorship;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -16,13 +20,14 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Invoice extends AbstractEntity {
+public class Sponsorship extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -32,32 +37,38 @@ public class Invoice extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
 	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				registrationTime;
+	private Date				moment;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				date;
+	private Date				startDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@PositiveOrZero
-	private int					quantity;
+	private int					amount;
 
-	@PositiveOrZero
-	private double				tax;
+	private TypeOfSponsorship	typeOfSponsorship;
+
+	@Email
+	private String				contactEmail;
 
 	@URL
 	private String				link;
 
-	// Derived attributes -------------------------------------------------------------
+	// Relationships -------------------------------------------------------------
 
+	@ManyToOne(optional = false)
+	private Project				project;
 
-	public double totalAmount() {
-		return this.quantity + this.tax / 100 * this.quantity;
-	}
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Invoice				invoice;
 
 }

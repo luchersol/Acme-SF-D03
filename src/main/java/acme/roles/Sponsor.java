@@ -8,8 +8,8 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
-import acme.entities.sponsorShip.Invoice;
-import acme.entities.sponsorShip.SponsorShips;
+import acme.entities.sponsorship.Invoice;
+import acme.entities.sponsorship.Sponsorship;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +40,6 @@ public class Sponsor extends AbstractRole {
 	private Invoice				invoices;
 
 	@ManyToMany
-	private SponsorShips		sponsorships;
+	private Sponsorship			sponsorships;
 
 }
