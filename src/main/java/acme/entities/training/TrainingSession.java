@@ -11,7 +11,6 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -54,9 +53,8 @@ public class TrainingSession extends AbstractEntity {
 	@URL
 	private String				link;
 
-	@NotNull
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private TrainingModule		trainingModule;
 
 }
