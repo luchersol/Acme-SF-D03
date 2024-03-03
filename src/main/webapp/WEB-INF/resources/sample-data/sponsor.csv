@@ -1,21 +1,21 @@
-key,tax,link,amountOfSponsorships,quantityOfInvoices,invoices,sponsorships
-sponsor-1,8.0,http://example.com/1,AVERAGE,MINIMUM,10,5
-sponsor-2,18.0,http://example.com/2,DEVIATION,MAXIMUM,17,12
-sponsor-3,3.0,http://example.com/3,MAXIMUM,DEVIATION,8,15
-sponsor-4,11.0,http://example.com/4,MINIMUM,AVERAGE,13,2
-sponsor-5,24.0,http://example.com/5,AVERAGE,MAXIMUM,6,7
-sponsor-6,29.0,http://example.com/6,MAXIMUM,MINIMUM,11,14
-sponsor-7,7.0,http://example.com/7,DEVIATION,AVERAGE,16,3
-sponsor-8,16.0,http://example.com/8,MINIMUM,DEVIATION,1,19
-sponsor-9,13.0,http://example.com/9,AVERAGE,MAXIMUM,18,20
-sponsor-10,22.0,http://example.com/10,DEVIATION,MINIMUM,4,9
-sponsor-11,5.0,http://example.com/11,MAXIMUM,AVERAGE,2,1
-sponsor-12,9.0,http://example.com/12,MINIMUM,DEVIATION,14,17
-sponsor-13,6.0,http://example.com/13,AVERAGE,MINIMUM,7,10
-sponsor-14,15.0,http://example.com/14,DEVIATION,MAXIMUM,3,11
-sponsor-15,23.0,http://example.com/15,MAXIMUM,AVERAGE,15,13
-sponsor-16,2.0,http://example.com/16,MINIMUM,DEVIATION,12,6
-sponsor-17,12.0,http://example.com/17,AVERAGE,MINIMUM,20,8
-sponsor-18,20.0,http://example.com/18,DEVIATION,MAXIMUM,9,16
-sponsor-19,4.0,http://example.com/19,MAXIMUM,AVERAGE,19,4
-sponsor-20,10.0,http://example.com/20,MINIMUM,DEVIATION,5,18
+key,name,benefits,web,email
+sponsor-1,Name1,"Benefit1, Benefit2, Benefit3",http://web1.com,email1@example.com
+sponsor-2,Name2,"Benefit4, Benefit5, Benefit6",http://web2.com,email2@example.com
+sponsor-3,Name3,"Benefit7, Benefit8, Benefit9",http://web3.com,email3@example.com
+sponsor-4,Name4,"Benefit10, Benefit11, Benefit12",http://web4.com,email4@example.com
+sponsor-5,Name5,"Benefit13, Benefit14, Benefit15",http://web5.com,email5@example.com
+sponsor-6,Name6,"Benefit16, Benefit17, Benefit18",http://web6.com,email6@example.com
+sponsor-7,Name7,"Benefit19, Benefit20, Benefit21",http://web7.com,email7@example.com
+sponsor-8,Name8,"Benefit22, Benefit23, Benefit24",http://web8.com,email8@example.com
+sponsor-9,Name9,"Benefit25, Benefit26, Benefit27",http://web9.com,email9@example.com
+sponsor-10,Name10,"Benefit28, Benefit29, Benefit30",http://web10.com,email10@example.com
+sponsor-11,Name11,"Benefit31, Benefit32, Benefit33",http://web11.com,email11@example.com
+sponsor-12,Name12,"Benefit34, Benefit35, Benefit36",http://web12.com,email12@example.com
+sponsor-13,Name13,"Benefit37, Benefit38, Benefit39",http://web13.com,email13@example.com
+sponsor-14,Name14,"Benefit40, Benefit41, Benefit42",http://web14.com,email14@example.com
+sponsor-15,Name15,"Benefit43, Benefit44, Benefit45",http://web15.com,email15@example.com
+sponsor-16,Name16,"Benefit46, Benefit47, Benefit48",http://web16.com,email16@example.com
+sponsor-17,Name17,"Benefit49, Benefit50, Benefit51",http://web17.com,email17@example.com
+sponsor-18,Name18,"Benefit52, Benefit53, Benefit54",http://web18.com,email18@example.com
+sponsor-19,Name19,"Benefit55, Benefit56, Benefit57",http://web19.com,email19@example.com
+sponsor-20,Name20,"Benefit58, Benefit59, Benefit60",http://web20.com,email20@example.com
