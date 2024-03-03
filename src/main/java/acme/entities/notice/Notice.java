@@ -51,7 +51,6 @@ public class Notice extends AbstractEntity {
 	@NotBlank
 	private String				surname;
 
-	@NotBlank
 	@Email
 	private String				email;
 
