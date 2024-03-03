@@ -66,7 +66,7 @@ public class Invoice extends AbstractEntity {
 	// Derived attributes -------------------------------------------------------------
 
 
-	public double totalAmount() {
+	public Double totalAmount() {
 		return this.quantity + this.tax / 100 * this.quantity;
 	}
 
