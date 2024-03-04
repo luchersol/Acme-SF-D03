@@ -15,6 +15,7 @@ import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.data.annotation.Transient;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.project.Project;
@@ -43,8 +44,6 @@ public class Risk extends AbstractEntity {
 	@Positive
 	private double				probability;
 
-	private double				value;
-
 	@NotBlank
 	@Length(max = 100)
 	private String				description;
@@ -54,5 +53,11 @@ public class Risk extends AbstractEntity {
 
 	@ManyToOne
 	private Project				project;
+
+
+	@Transient
+	public Double getValue() {
+		return this.probability * this.impact;
+	}
 
 }
