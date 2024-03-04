@@ -61,6 +61,7 @@ public class Claim extends AbstractEntity {
 	@URL
 	private String				link;
 
-	@ManyToOne
+	@NotNull
+	@ManyToOne(optional = false)
 	private Any					author;
 }
