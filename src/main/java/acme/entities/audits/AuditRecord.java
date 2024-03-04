@@ -41,12 +41,14 @@ public class AuditRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
+	@NotNull
 	private Mark				mark;
 
 	@URL
 	private String				link;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
 	private CodeAudit			codeAudit;
 

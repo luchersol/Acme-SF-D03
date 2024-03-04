@@ -15,10 +15,10 @@ public class ManagerForm extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	Double						totalNumberProjectMust;
-	Double						totalNumberProjectShould;
-	Double						totalNumberProjectCould;
-	Double						totalNumberProjectWont;
+	Integer						totalNumberProjectMust;
+	Integer						totalNumberProjectShould;
+	Integer						totalNumberProjectCould;
+	Integer						totalNumberProjectWont;
 
 	Double						averageEstimatedCostUserStories;
 	Double						deviationEstimatedCostUserStories;

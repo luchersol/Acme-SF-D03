@@ -25,14 +25,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 public class Contract extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	@Valid
-	@ManyToOne(optional = false)
-	private Project				project;
 
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
@@ -59,5 +54,9 @@ public class Contract extends AbstractEntity {
 	@Valid
 	@NotNull
 	private Money				budget;
+
+	@Valid
+	@ManyToOne(optional = false)
+	private Project				project;
 
 }
