@@ -49,10 +49,12 @@ public class UserStory extends AbstractEntity {
 	@NotNull
 	private Priority			priority;
 
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager				manager;
 
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;
