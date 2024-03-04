@@ -7,9 +7,9 @@ public class SponsorForm extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	Double						totalInvoicesWithTaxLessThanOrEqualTo21;
+	Integer						totalInvoicesWithTaxLessThanOrEqualTo21;
 
-	Double						totalSponsorshipWithLink;
+	Integer						totalSponsorshipWithLink;
 
 	Double						averageAmountOfTheSponsorships;
 	Double						deviationAmountOfTheSponsorships;
