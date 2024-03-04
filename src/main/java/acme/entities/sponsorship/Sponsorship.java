@@ -3,19 +3,17 @@ package acme.entities.sponsorship;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -53,23 +51,23 @@ public class Sponsorship extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
-	@PositiveOrZero
+	@NotNull
+	@Valid
 	private Money				amount;
 
+	@NotNull
 	private TypeOfSponsorship	typeOfSponsorship;
 
 	@Email
-	private String				contactEmail;
+	private String				email;
 
 	@URL
 	private String				link;
 
 	// Relationships -------------------------------------------------------------
 
+	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;
-
-	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Invoice				invoice;
 
 }
