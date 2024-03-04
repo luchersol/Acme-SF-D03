@@ -1,4 +1,4 @@
-key,code,registrationTime,date,quantity,tax,link
+key,code,registrationTime,dueDate,quantity,tax,link
 invoice-1,IN-1842-7159,2023/06/15 08:30:00,2023/07/10 10:00:00,10,5.0,http://example.com/invoice/1
 invoice-2,IN-2485-6402,2024/03/20 14:45:00,2024/05/05 12:30:00,15,6.0,http://example.com/invoice/2
 invoice-3,IN-7632-9187,2023/11/05 09:20:00,2023/12/15 16:20:00,20,7.0,http://example.com/invoice/3
