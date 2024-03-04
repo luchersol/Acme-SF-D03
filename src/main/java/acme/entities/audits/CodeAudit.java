@@ -35,7 +35,8 @@ public class CodeAudit extends AbstractEntity {
 	private Boolean				draftMode;
 
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
+	@NotNull
 	Auditor						auditor;
 
 	@NotBlank
@@ -62,6 +63,7 @@ public class CodeAudit extends AbstractEntity {
 	private String				link;
 
 	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
 	private Project				project;
 
