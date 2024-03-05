@@ -13,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
@@ -44,9 +45,9 @@ public class Invoice extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				date;
+	private Date				dueDate;
 
-	@PositiveOrZero
+	@Positive
 	@NotNull
 	private Integer				quantity;
 
