@@ -2,6 +2,7 @@
 package acme.form;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,9 +18,9 @@ public class ClientForm extends AbstractForm {
 	Integer						completenessBetween50and75;
 	Integer						completenessAbove75;
 
-	Double						averageBudgetOfContracts;
-	Double						deviationBudgetOfContracts;
-	Double						minimumBudgetOfContracts;
-	Double						maximumBudgetOfContracts;
+	Money						averageBudgetOfContracts;
+	Money						deviationBudgetOfContracts;
+	Money						minimumBudgetOfContracts;
+	Money						maximumBudgetOfContracts;
 
 }
