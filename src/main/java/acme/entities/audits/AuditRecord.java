@@ -47,7 +47,8 @@ public class AuditRecord extends AbstractEntity {
 	@URL
 	private String				link;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
+	@NotNull
 	@Valid
 	private CodeAudit			codeAudit;
 

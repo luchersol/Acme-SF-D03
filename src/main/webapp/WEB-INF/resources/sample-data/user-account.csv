@@ -13,3 +13,5 @@ user-account-auditor-01,true,"UserIdentity{name: 'Daniel', surname: 'Galván Can
 user-account-auditor-02,true,"UserIdentity{name: 'Jorge', surname: 'Negro Blanco', email: 'jonb@acme.com'}",auditor2,auditor2
 user-account-sponsor-01,true,"UserIdentity{name: 'Jose Manuel', surname: 'Miret Martín', email: 'josema@acme.com'}",sponsor1,sponsor1
 user-account-sponsor-02,true,"UserIdentity{name: 'Alejandro', surname: 'Izquierdo Bejarano', email: 'alex@acme.com'}",sponsor2,sponsor2
+user-account-administrator-01,true,"UserIdentity{name: 'Lola', surname: 'Capote González', email: 'lolita@acme.com'}",administrator1,administrator1
+user-account-administrator-02,true,"UserIdentity{name: 'Manuel', surname: 'García Pérez', email: 'manux@acme.com'}",administrator2,administrator2
