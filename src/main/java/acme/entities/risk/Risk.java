@@ -31,6 +31,11 @@ public class Risk extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Project				project;
+
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "R-[0-9]{3}")

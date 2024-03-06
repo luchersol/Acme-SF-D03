@@ -3,6 +3,7 @@ package acme.entities.project;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -14,6 +15,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -53,6 +55,11 @@ public class Project extends AbstractEntity {
 
 	@NotNull
 	private Boolean				draftMode;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Manager				manager;
 
 
 	@Transient
