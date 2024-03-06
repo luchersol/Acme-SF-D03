@@ -54,9 +54,4 @@ public class UserStory extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Manager				manager;
 
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	private Project				project;
-
 }
