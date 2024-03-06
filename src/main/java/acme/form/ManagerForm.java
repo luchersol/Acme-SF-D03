@@ -2,6 +2,7 @@
 package acme.form;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,9 +26,9 @@ public class ManagerForm extends AbstractForm {
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
 
-	Double						averageEstimatedCostProjects;
-	Double						deviationEstimatedCostProjects;
-	Double						minimumEstimatedCostProjects;
-	Double						maximumEstimatedCostProjects;
+	Money						averageEstimatedCostProjects;
+	Money						deviationEstimatedCostProjects;
+	Money						minimumEstimatedCostProjects;
+	Money						maximumEstimatedCostProjects;
 
 }
