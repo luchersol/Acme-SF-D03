@@ -70,7 +70,7 @@ bg=green
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Sponsorship 
 --
-+ code: String {NotBlank, Unique, Pattern(“[A-Z]{1,3}-[0-9]{3}”)}
++ code: String {NotBlank, Unique, Pattern(regex=“[A-Z]{1,3}-[0-9]{3}”)}
 + moment: Date {Temporal(TIMESTAMP), Past, NotNull}
 + startDate: Date {Temporal(TIMESTAMP), NotNull, Past}
 + endDate: Date {Temporal(TIMESTAMP), NotNull, Past}
@@ -117,7 +117,7 @@ bg=gray</panel_attributes>
       <w>27</w>
       <h>126</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
@@ -257,7 +257,7 @@ Notice
 + message: String {NotBlank, Length(max=100)}
 + email: String {Email}
 + link: String {Link}
-
++ draftMode: Boolean {NotNull}
 
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -297,5 +297,31 @@ SponsorForm
 
 bg=green</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>216</y>
+      <w>252</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m2=0..n
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>405</y>
+      <w>252</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m2=0..n
+m1=1</panel_attributes>
+    <additional_attributes>10.0;70.0;240.0;70.0;240.0;10.0</additional_attributes>
   </element>
 </diagram>
