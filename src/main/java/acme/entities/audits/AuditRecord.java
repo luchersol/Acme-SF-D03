@@ -37,6 +37,7 @@ public class AuditRecord extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
 
+	@Past
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
