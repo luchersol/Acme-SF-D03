@@ -3,8 +3,6 @@ package acme.roles;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,8 +12,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractRole;
-import acme.entities.contract.Contract;
-import acme.entities.contract.ProgressLogs;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -45,14 +41,4 @@ public class Clients extends AbstractRole {
 
 	@URL
 	private String				link;
-
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	private Contract			contract;
-
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	private ProgressLogs		progressLogs;
 }

@@ -19,6 +19,7 @@ import org.hibernate.validator.constraints.Length;
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
 import acme.entities.project.Project;
+import acme.roles.Clients;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,8 +32,14 @@ public class Contract extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Valid
+	@NotNull
 	@ManyToOne(optional = false)
 	private Project				project;
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	private Clients				clients;
 
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}")
