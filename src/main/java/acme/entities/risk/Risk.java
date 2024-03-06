@@ -52,7 +52,7 @@ public class Risk extends AbstractEntity {
 
 	@NotNull
 	@Positive
-	private Double				probability;  // restringi valor
+	private Double				probability;
 
 	@NotBlank
 	@Length(max = 100)
@@ -63,7 +63,14 @@ public class Risk extends AbstractEntity {
 
 
 	@Transient
-	private Double getValue() {
+	public Double getValue() {
 		return this.probability * this.impact;
 	}
+
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Project project;
+
 }
