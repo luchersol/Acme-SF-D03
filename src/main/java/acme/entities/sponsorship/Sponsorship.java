@@ -56,7 +56,7 @@ public class Sponsorship extends AbstractEntity {
 	private Money				amount;
 
 	@NotNull
-	private TypeOfSponsorship	typeOfSponsorship;
+	private TypeOfSponsorship	type;
 
 	@Email
 	private String				email;
@@ -66,6 +66,7 @@ public class Sponsorship extends AbstractEntity {
 
 	// Relationships -------------------------------------------------------------
 
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Project				project;

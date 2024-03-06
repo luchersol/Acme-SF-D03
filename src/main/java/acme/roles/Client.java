@@ -19,7 +19,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class Clients extends AbstractRole {
+public class Client extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 

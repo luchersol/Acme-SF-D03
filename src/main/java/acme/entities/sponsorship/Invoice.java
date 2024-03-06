@@ -59,6 +59,7 @@ public class Invoice extends AbstractEntity {
 
 	// Relationships -------------------------------------------------------------
 
+	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Sponsorship			sponsorship;
