@@ -1,7 +1,7 @@
 
 package acme.entities.objective;
 
-public enum Priority {
+public enum PriorityObjective {
 	LOW, MEDIUM, HIGH;
 
 }
