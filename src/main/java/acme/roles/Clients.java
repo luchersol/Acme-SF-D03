@@ -41,5 +41,4 @@ public class Clients extends AbstractRole {
 
 	@URL
 	private String				link;
-
 }

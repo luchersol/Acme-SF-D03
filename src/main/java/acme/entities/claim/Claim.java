@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
@@ -18,7 +17,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.client.data.accounts.Any;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -61,7 +59,4 @@ public class Claim extends AbstractEntity {
 	@URL
 	private String				link;
 
-	@NotNull
-	@ManyToOne(optional = false)
-	private Any					author;
 }

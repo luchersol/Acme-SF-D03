@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -20,7 +19,6 @@ import org.hibernate.validator.constraints.URL;
 import org.springframework.data.annotation.Transient;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -55,10 +53,6 @@ public class Risk extends AbstractEntity {
 
 	@URL
 	private String				link;
-
-	@ManyToOne
-	private Project				project;
-
 
 	@Transient
 	public Double getValue() {

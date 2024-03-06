@@ -18,6 +18,7 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,11 +45,10 @@ public class Invoice extends AbstractEntity {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	private Date				date;
+	private Date				dueDate;
 
-	@PositiveOrZero
 	@NotNull
-	private Integer				quantity;
+	private Money				quantity;
 
 	@PositiveOrZero
 	@NotNull
@@ -66,8 +66,12 @@ public class Invoice extends AbstractEntity {
 	// Derived attributes -------------------------------------------------------------
 
 
-	public Double totalAmount() {
-		return this.quantity + this.tax / 100 * this.quantity;
+	public Money totalAmount() {
+		Double finalAmount = this.quantity.getAmount() + this.tax / 100 * this.quantity.getAmount();
+		Money finalMoney = new Money();
+		finalMoney.setAmount(finalAmount);
+		finalMoney.setCurrency(this.quantity.getCurrency());
+		return finalMoney;
 	}
 
 }

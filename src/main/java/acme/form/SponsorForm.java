@@ -2,6 +2,7 @@
 package acme.form;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 
 public class SponsorForm extends AbstractForm {
 
@@ -11,10 +12,10 @@ public class SponsorForm extends AbstractForm {
 
 	Integer						totalSponsorshipWithLink;
 
-	Double						averageAmountOfTheSponsorships;
-	Double						deviationAmountOfTheSponsorships;
-	Double						minimumAmountOfTheSponsorships;
-	Double						maximumAmountOfTheSponsorships;
+	Money						averageAmountOfTheSponsorships;
+	Money						deviationAmountOfTheSponsorships;
+	Money						minimumAmountOfTheSponsorships;
+	Money						maximumAmountOfTheSponsorships;
 
 	Double						averageQuantityOfTheInvoices;
 	Double						deviationQuantityOfTheInvoices;
