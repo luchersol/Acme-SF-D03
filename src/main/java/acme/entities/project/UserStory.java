@@ -12,7 +12,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.Priority;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,8 +35,9 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 100)
 	private String				description;
 
+	@NotNull
 	@Positive
-	private int					estimatedCost;
+	private Integer				estimatedCost; //Representa horas
 
 	@NotBlank
 	@Length(max = 100)
@@ -51,7 +51,7 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Manager				manager;
 
 	@NotNull

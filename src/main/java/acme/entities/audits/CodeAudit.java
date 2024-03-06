@@ -6,7 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.project.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,9 +30,13 @@ public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne(optional = false)
+	@NotNull
+	private Boolean				draftMode;
+
 	@Valid
-	private Project				project;
+	@ManyToOne(optional = false)
+	@NotNull
+	Auditor						auditor;
 
 	@NotBlank
 	@Column(unique = true)
@@ -39,6 +45,7 @@ public class CodeAudit extends AbstractEntity {
 
 	@Past
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				execution;
 
 	@NotNull
@@ -48,10 +55,15 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 100)
 	private String				correctiveActions;
 
-	@Transient
+	@NotNull
 	private Mark				mark;
 
 	@URL
 	private String				link;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Project				project;
 
 }

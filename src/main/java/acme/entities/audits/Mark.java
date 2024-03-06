@@ -8,6 +8,6 @@ public enum Mark {
 
 	@Override
 	public String toString() {
-		return this.equals(A_PLUS) ? "A+" : this.equals(F_MINUS) ? "F-" : String.valueOf(this);
+		return this.equals(A_PLUS) ? "A+" : this.equals(F_MINUS) ? "F-" : super.toString();
 	}
 }
