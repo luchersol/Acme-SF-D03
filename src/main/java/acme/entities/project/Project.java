@@ -3,6 +3,7 @@ package acme.entities.project;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -38,9 +39,10 @@ public class Project extends AbstractEntity {
 
 	@NotBlank
 	@Length(max = 100)
-	private String				abstract_;
+	private String				abstractProject;
 
-	private boolean				indication;
+	@NotNull
+	private Boolean				indication;
 
 	@NotNull
 	@Valid
@@ -48,4 +50,13 @@ public class Project extends AbstractEntity {
 
 	@URL
 	private String				link;
+
+	@NotNull
+	private Boolean				draftMode;
+
+
+	@Transient
+	public Boolean isValid() {
+		return (!this.indication || this.draftMode) && this.cost.getAmount() >= 0;
+	}
 }
