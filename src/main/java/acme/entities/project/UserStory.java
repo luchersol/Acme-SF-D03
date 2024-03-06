@@ -47,7 +47,7 @@ public class UserStory extends AbstractEntity {
 	private String				link;
 
 	@NotNull
-	private Priority			priority;
+	private PriorityUserStory			priority;
 
 	@NotNull
 	@Valid
