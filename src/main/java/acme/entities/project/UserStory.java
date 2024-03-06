@@ -37,7 +37,7 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@Positive
-	private Double				estimatedCost; //Representa horas
+	private Integer				estimatedCost; //Representa horas
 
 	@NotBlank
 	@Length(max = 100)

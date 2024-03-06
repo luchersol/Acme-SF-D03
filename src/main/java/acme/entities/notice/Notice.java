@@ -1,7 +1,6 @@
 
 package acme.entities.notice;
 
-import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -36,7 +35,8 @@ public class Notice extends AbstractEntity {
 	private String				title;
 
 	@NotBlank
-	private String				username;
+	@Length(max = 75)
+	private String				author;
 
 	@NotBlank
 	@Length(max = 100)
@@ -45,33 +45,7 @@ public class Notice extends AbstractEntity {
 	@URL
 	private String				link;
 
-	@NotBlank
-	private String				name;
-
-	@NotBlank
-	private String				surname;
-
 	@Email
 	private String				email;
-
-	// Derived attributes -------------------------------------------------------------
-
-
-	@Transient
-	public String getFullName() {
-		StringBuilder result;
-
-		result = new StringBuilder();
-		result.append(this.surname);
-		result.append(", ");
-		result.append(this.name);
-
-		return result.toString();
-	}
-
-	@Length(max = 75)
-	public String author() {
-		return this.username + " - " + this.getFullName();
-	}
 
 }

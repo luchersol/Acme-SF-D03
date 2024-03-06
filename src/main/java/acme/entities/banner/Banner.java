@@ -33,6 +33,7 @@ public class Banner extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				displayStart;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				displayEnd;
 
