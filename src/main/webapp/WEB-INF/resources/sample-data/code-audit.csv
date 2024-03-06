@@ -1,5 +1,9 @@
 key,key:project,key:auditor,draft-mode,code,execution,type,corrective-actions,link
+<<<<<<< HEAD
 code-audit-01,project-01,auditor-01,false,ZBC-123,2019/08/25 22:15,STATIC,corrective-actions1,null
+=======
+code-audit-01,project-01,auditor-01,false,BBC-123,2019/08/25 22:15,STATIC,corrective-actions1,null
+>>>>>>> branch 'develop' of https://github.com/luchersol/Acme-SF-D02-24.1.git
 code-audit-02,project-02,auditor-01,false,X-456,2010/07/25 23:15,STATIC,corrective-actions2,null
 code-audit-03,project-02,auditor-01,false,AA-000,2010/07/25 23:16,STATIC,corrective-actions3,null
 code-audit-04,project-02,auditor-01,true,ZZZ-100,2010/07/25 23:19,STATIC,corrective-actions4,null
