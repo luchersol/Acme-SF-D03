@@ -5,16 +5,22 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.PositiveOrZero;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.project.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,15 +37,15 @@ public class TrainingModule extends AbstractEntity {
 	private String				code;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotBlank
+	@NotNull
 	@Past
 	private Date				creationMoment;
 
 	@NotBlank
-	@Size(max = 100)
+	@Length(max = 100)
 	private String				details;
 
-	@NotBlank
+	@NotNull
 	private DifficultyLevel		difficultyLevel;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -47,8 +53,20 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
-	private String				furtherInformationLink;
+	private String				link;
 
-	private int					estimatedTotalTime;
+	@NotNull
+	@PositiveOrZero
+	private Double				estimatedTotalTime;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	private Developer			developer;
 
 }

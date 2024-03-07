@@ -2,16 +2,14 @@
 package acme.entities.audits;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
@@ -20,8 +18,8 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.datatypes.AuditType;
-import acme.datatypes.Mark;
+import acme.entities.project.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,9 +30,13 @@ public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	//@ManyToOne(optional = false)
-	//@Valid
-	//	private Project project;
+	@NotNull
+	private Boolean				draftMode;
+
+	@Valid
+	@ManyToOne(optional = false)
+	@NotNull
+	Auditor						auditor;
 
 	@NotBlank
 	@Column(unique = true)
@@ -43,6 +45,7 @@ public class CodeAudit extends AbstractEntity {
 
 	@Past
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				execution;
 
 	@NotNull
@@ -52,20 +55,15 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 100)
 	private String				correctiveActions;
 
-
-	@Transient
-	private Mark getMark() {
-		Mark res = this.getAuditRecords().stream().map(x -> x.getMark()).collect(Collectors.groupingBy(x -> x, Collectors.counting())).entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(null);
-		return res;
-	};
-
+	@NotNull
+	private Mark				mark;
 
 	@URL
-	private String				furtherInformation;
+	private String				link;
 
-	@OneToMany
+	@ManyToOne(optional = false)
 	@NotNull
-	@NotEmpty
-	private List<AuditRecord>	auditRecords;
+	@Valid
+	private Project				project;
 
 }

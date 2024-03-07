@@ -11,12 +11,12 @@ public class DeveloperForm extends AbstractForm {
 
 	private static final long	serialVersionUID	= 1L;
 
-	Double						totalTrainingModulesWithUpdateMoment;
-	Double						totalTrainingSessionsWithLink;
+	Integer						totalTrainingModulesWithUpdateMoment;
+	Integer						totalTrainingSessionsWithLink;
 
-	Double						averageTimeOfTrainingModules;
-	Double						deviationTimeOfTrainingModules;
-	Double						minimumTimeOfTrainingModules;
-	Double						maximumTimeOfTrainingModules;
+	Double						averageTimeOfTraining;
+	Double						deviationTimeOfTraining;
+	Double						minimumTimeOfTraining;
+	Double						maximumTimeOfTraining;
 
 }
