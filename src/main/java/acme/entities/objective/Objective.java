@@ -38,7 +38,7 @@ public class Objective extends AbstractEntity {
 	private String				description;
 
 	@NotNull
-	private Priority			priority;
+	private PriorityObjective			priority;
 
 	@NotNull
 	private Boolean				status;

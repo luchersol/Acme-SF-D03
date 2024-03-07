@@ -18,6 +18,7 @@ public class AdministratorForm extends AbstractForm {
 	Integer						totalNumberDeveloper;
 	Integer						totalNumberManager;
 	Integer						totalNumberProvider;
+	Integer						totalNumberSponsor;
 
 	Double						ratioNoticesWithEmailAndLink;
 	Double						ratioCriticalObjetives;
