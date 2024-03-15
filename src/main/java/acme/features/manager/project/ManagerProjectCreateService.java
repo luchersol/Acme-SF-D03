@@ -75,11 +75,4 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		this.repository.save(object);
 	}
 
-	@Override
-	public void unbind(final Project object) {
-		assert object != null;
-
-		//		super.getResponse().addData(dataset);
-	}
-
 }

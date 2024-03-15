@@ -12,6 +12,8 @@
 
 package acme.features.manager.project;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,42 +40,24 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 	@Override
 	public void load() {
-		Project project = new Project();
+		Project object;
+		int id;
 
-		super.getBuffer().addData(project);
-	}
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findOneProjectById(id);
 
-	@Override
-	public void bind(final Project object) {
-		Dataset dataset;
-
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void validate(final Project object) {
-		assert object != null;
-
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-	}
-
-	@Override
-	public void perform(final Project object) {
-		assert object != null;
-
-		this.repository.save(object);
+		assert Objects.nonNull(object);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
 		assert object != null;
 
-		//		super.getResponse().addData(dataset);
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+
+		super.getResponse().addData(dataset);
 	}
 
 }

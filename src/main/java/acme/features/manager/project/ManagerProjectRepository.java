@@ -23,6 +23,9 @@ import acme.entities.project.Project;
 @Repository
 public interface ManagerProjectRepository extends AbstractRepository {
 
+	@Query("SELECT p FROM Project p WHERE p.id = :id")
+	Project findOneProjectById(int id);
+
 	@Query("SELECT p FROM Project p WHERE p.manager.id = :managerId")
 	Collection<Project> findProjectsByManagerId(int managerId);
 

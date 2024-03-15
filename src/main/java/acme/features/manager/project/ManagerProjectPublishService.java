@@ -12,17 +12,16 @@
 
 package acme.features.manager.project;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectListMineService extends AbstractService<Manager, Project> {
+public class ManagerProjectPublishService extends AbstractService<Manager, Project> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -39,20 +38,41 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 
 	@Override
 	public void load() {
-		Collection<Project> project;
-		int managerId;
+		Project object = new Project();
+		object.setCode("");
+		object.setTitle("");
+		object.setAbstractProject("");
+		object.setIndication(false);
+		object.setCost(null);
+		object.setLink(null);
 
-		managerId = this.getRequest().getData("managerId", int.class);
-		project = this.repository.findProjectsByManagerId(managerId);
-
-		super.getBuffer().addData(project);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void bind(final Project object) {
+		Dataset dataset;
+
+		dataset = super.unbind(object, "");
+
+		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void validate(final Project object) {
 		assert object != null;
 
-		//		super.getResponse().addData(dataset);
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+	}
+
+	@Override
+	public void perform(final Project object) {
+		assert object != null;
+
+		this.repository.save(object);
 	}
 
 }

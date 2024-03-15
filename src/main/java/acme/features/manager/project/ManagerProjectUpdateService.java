@@ -12,6 +12,8 @@
 
 package acme.features.manager.project;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +35,15 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Project object;
+
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findOneProjectById(id);
+		status = Objects.nonNull(object) && !object.getDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -44,7 +54,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void bind(final Project object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
