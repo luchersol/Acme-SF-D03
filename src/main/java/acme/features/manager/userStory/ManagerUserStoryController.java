@@ -18,11 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.project.Project;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerUserStoryController extends AbstractController<Manager, Project> {
+public class ManagerUserStoryController extends AbstractController<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -31,15 +31,18 @@ public class ManagerUserStoryController extends AbstractController<Manager, Proj
 
 	@Autowired
 	private ManagerUserStoryShowService		showService;
-	
+
 	@Autowired
-	private ManagerUserStoryCreateService		createService;	
-	
+	private ManagerUserStoryCreateService	createService;
+
 	@Autowired
-	private ManagerUserStoryUpdateService		updateService;	
-	
+	private ManagerUserStoryUpdateService	updateService;
+
 	@Autowired
-	private ManagerUserStoryDeleteService		deleteService;
+	private ManagerUserStoryDeleteService	deleteService;
+
+	@Autowired
+	private ManagerUserStoryPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -51,6 +54,7 @@ public class ManagerUserStoryController extends AbstractController<Manager, Proj
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("publish", this.publishService);
 	}
 
 }

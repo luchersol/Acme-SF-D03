@@ -21,7 +21,7 @@ import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -38,18 +38,41 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void load() {
-		UserStory project = new UserStory();
+		UserStory object = new UserStory();
 
-		super.getBuffer().addData(project);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final UserStory object) {
+	public void bind(final UserStory object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void validate(final UserStory object) {
+		assert object != null;
+
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+	}
+
+	@Override
+	public void perform(final UserStory object) {
+		assert object != null;
+
+		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.unbind(object);
 	}
 
 }

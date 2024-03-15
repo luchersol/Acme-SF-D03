@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryListMineService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryListMineService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -38,35 +38,18 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Pr
 
 	@Override
 	public void load() {
-		Project project = new Project();
+		UserStory project = new UserStory();
 
 		super.getBuffer().addData(project);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final UserStory object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void validate(final Project object) {
-		assert object != null;
-
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-	}
-
-	@Override
-	public void perform(final Project object) {
-		assert object != null;
-
-		this.repository.save(object);
 	}
 
 }

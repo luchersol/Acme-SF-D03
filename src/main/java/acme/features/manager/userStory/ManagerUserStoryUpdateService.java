@@ -18,10 +18,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryUpdateService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -44,7 +45,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, Proj
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void bind(final UserStory object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
@@ -53,7 +54,7 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, Proj
 	}
 
 	@Override
-	public void validate(final Project object) {
+	public void validate(final UserStory object) {
 		assert object != null;
 
 		boolean confirmation;
@@ -63,10 +64,16 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, Proj
 	}
 
 	@Override
-	public void perform(final Project object) {
+	public void perform(final UserStory object) {
 		assert object != null;
 
 		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.unbind(object);
 	}
 
 }

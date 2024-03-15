@@ -16,11 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryDeleteService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -37,13 +37,19 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, Proj
 
 	@Override
 	public void load() {
-		Project project = new Project();
+		UserStory project = new UserStory();
 
 		super.getBuffer().addData(project);
 	}
 
 	@Override
-	public void validate(final Project object) {
+	public void bind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.bind(object);
+	}
+
+	@Override
+	public void validate(final UserStory object) {
 		assert object != null;
 
 		boolean confirmation;
@@ -53,17 +59,16 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, Proj
 	}
 
 	@Override
-	public void perform(final Project object) {
+	public void perform(final UserStory object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
-		assert object != null;
-
-		//		super.getResponse().addData(dataset);
+	public void unbind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.unbind(object);
 	}
 
 }
