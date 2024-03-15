@@ -7,14 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Any;
-import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.claim.Claim;
 
 @Service
-public class AnyClaimCreateService extends AbstractService<Any, Claim> {
+public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -25,7 +23,9 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -64,17 +64,4 @@ public class AnyClaimCreateService extends AbstractService<Any, Claim> {
 		this.repository.save(object);
 	}
 
-	@Override
-	public void unbind(final Claim object) {
-		assert object != null;
-
-		SelectChoices choices;
-		Dataset dataset;
-
-		dataset = super.unbind(object, "title", "status", "text", "moreInfo");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
-
-		super.getResponse().addData(dataset);
-	}
 }

@@ -16,17 +16,21 @@ public class AnyClaimController extends AbstractController<Any, Claim> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
+	private AnyClaimListAllService	listAllService;
+
+	@Autowired
 	private AnyClaimShowService		showService;
 
 	@Autowired
-	private AnyClaimCreateService	createService;
+	private AnyClaimPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.showService);
-		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("list-all", this.listAllService);
+		super.addBasicCommand("create", this.publishService);
 	}
 }
