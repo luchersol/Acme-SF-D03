@@ -21,28 +21,28 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("SELECT COUNT(DISTINCT us.project) FROM UserStory us WHERE us.priority = MUST")
+	@Query("SELECT COUNT(DISTINCT pu.project) FROM ProjectUserStory pu WHERE pu.userStory.priority = acme.entities.project.PriorityUserStory.MUST")
 	Integer totalNumberProjectMust();
 
-	@Query("SELECT COUNT(DISTINCT us.project) FROM UserStory us WHERE us.priority = SHOULD")
+	@Query("SELECT COUNT(DISTINCT pu.project) FROM ProjectUserStory pu WHERE pu.userStory.priority = acme.entities.project.PriorityUserStory.SHOULD")
 	Integer totalNumberProjectShould();
 
-	@Query("SELECT COUNT(DISTINCT us.project) FROM UserStory us WHERE us.priority = COULD")
+	@Query("SELECT COUNT(DISTINCT pu.project) FROM ProjectUserStory pu WHERE pu.userStory.priority = acme.entities.project.PriorityUserStory.COULD")
 	Integer totalNumberProjectCould();
 
-	@Query("SELECT COUNT(DISTINCT us.project) FROM UserStory us WHERE us.priority = WONT")
+	@Query("SELECT COUNT(DISTINCT pu.project) FROM ProjectUserStory pu WHERE pu.userStory.priority = acme.entities.project.PriorityUserStory.WONT")
 	Integer totalNumberProjectWont();
 
-	@Query("SELECT avg(us.estimatedCost.amount) FROM UserStory us")
+	@Query("SELECT avg(us.estimatedCost) FROM UserStory us")
 	Double averageEstimatedCostUserStories();
 
-	@Query("SELECT stddev(us.estimatedCost.amount) FROM UserStory us")
+	@Query("SELECT stddev(us.estimatedCost) FROM UserStory us")
 	Double deviationEstimatedCostUserStories();
 
-	@Query("SELECT min(us.estimatedCost.amount) FROM UserStory us")
+	@Query("SELECT min(us.estimatedCost) FROM UserStory us")
 	Double minimumEstimatedCostUserStories();
 
-	@Query("SELECT max(us.estimatedCost.amount) FROM UserStory us")
+	@Query("SELECT max(us.estimatedCost) FROM UserStory us")
 	Double maximumEstimatedCostUserStories();
 
 	@Query("SELECT avg(p.cost.amount) FROM Project p")
