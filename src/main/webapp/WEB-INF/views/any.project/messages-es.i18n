@@ -1,0 +1,20 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.duty.form.title = Detalles de responsabilidad
+any.duty.list.title = Lista de responsabilidades
+
+any.duty.form.label.title = Título:
+any.duty.form.label.description = Descripción:
+any.duty.form.label.workLoad = Carga de trabajo:
+any.duty.form.label.moreInfo = Más información: (Opcional)
+
+any.duty.list.label.title = Título
+any.duty.list.label.workLoad = Carga
