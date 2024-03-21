@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
@@ -41,10 +42,8 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	public void load() {
 		Collection<Project> project;
 		int managerId;
-
-		managerId = this.getRequest().getData("managerId", int.class);
+		managerId = this.getRequest().getPrincipal().getAccountId();
 		project = this.repository.findProjectsByManagerId(managerId);
-
 		super.getBuffer().addData(project);
 	}
 
@@ -52,7 +51,10 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	public void unbind(final Project object) {
 		assert object != null;
 
-		//		super.getResponse().addData(dataset);
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "title", "indication");
+
+		super.getResponse().addData(dataset);
 	}
 
 }

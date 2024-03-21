@@ -18,10 +18,12 @@ import acme.client.data.datatypes.Money;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString()
 public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
