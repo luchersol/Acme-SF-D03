@@ -18,11 +18,11 @@ import org.springframework.stereotype.Service;
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.form.ManagerForm;
+import acme.form.Dashboard;
 import acme.roles.Manager;
 
 @Service
-public class ManagerDashboardShowService extends AbstractService<Manager, ManagerForm> {
+public class ManagerDashboardShowService extends AbstractService<Manager, Dashboard> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -39,7 +39,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 
 	@Override
 	public void load() {
-		ManagerForm dashboard = new ManagerForm();
+		Dashboard dashboard = new Dashboard();
 		Integer totalNumberProjectMust = this.repository.totalNumberProjectMust();
 		Integer totalNumberProjectShould = this.repository.totalNumberProjectShould();
 		Integer totalNumberProjectCould = this.repository.totalNumberProjectCould();
@@ -70,7 +70,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 	}
 
 	@Override
-	public void unbind(final ManagerForm object) {
+	public void unbind(final Dashboard object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, //
