@@ -1,4 +1,4 @@
-# messages-es.i18n
+# messages-en.i18n
 #
 # Copyright (C) 2012-2024 Rafael Corchuelo.
 #
@@ -23,9 +23,9 @@ manager.dashboard.form.label.deviation-estimated-cost-user-stories = Deviation e
 manager.dashboard.form.label.minimum-estimated-cost-user-stories = Minimun estimated cost in user stories
 manager.dashboard.form.label.maximum-estimated-cost-user-stories = Maximun estimated cost in user stories
 
-#manager.dashboard.form.label.average-estimated-cost-projects = Average estimated cost in projects
-#manager.dashboard.form.label.deviation-estimated-cost-projects = Average estimated cost in projects
-#manager.dashboard.form.label.minimum-estimated-cost-projects = Average estimated cost in projects
-#manager.dashboard.form.label.maximum-estimated-cost-projects = Average estimated cost in projects
+manager.dashboard.form.label.average-estimated-cost-projects = Average estimated cost in projects
+manager.dashboard.form.label.deviation-estimated-cost-projects = Average estimated cost in projects
+manager.dashboard.form.label.minimum-estimated-cost-projects = Average estimated cost in projects
+manager.dashboard.form.label.maximum-estimated-cost-projects = Average estimated cost in projects
 
 

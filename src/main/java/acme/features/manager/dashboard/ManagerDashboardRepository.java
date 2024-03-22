@@ -12,6 +12,8 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -45,16 +47,27 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("SELECT max(us.estimatedCost) FROM UserStory us")
 	Double maximumEstimatedCostUserStories();
 
-	@Query("SELECT avg(p.cost.amount) FROM Project p")
-	Money averageEstimatedCostProjects();
+	@Query("SELECT p.cost FROM Project p")
+	List<Money> findAllCosts();
 
-	@Query("SELECT stddev(p.cost.amount) FROM Project p")
-	Money deviationEstimatedCostProjects();
+	default Money averageEstimatedCostProjects() {
+		List<Money> costs = this.findAllCosts();
+		return null;
+	};
 
-	@Query("SELECT min(p.cost.amount) FROM Project p")
-	Money minimumEstimatedCostProjects();
+	default Money deviationEstimatedCostProjects() {
+		List<Money> costs = this.findAllCosts();
+		return null;
+	};
 
-	@Query("SELECT max(p.cost.amount) FROM Project p")
-	Money maximumEstimatedCostProjects();
+	default Money minimumEstimatedCostProjects() {
+		List<Money> costs = this.findAllCosts();
+		return null;
+	};
+
+	default Money maximumEstimatedCostProjects() {
+		List<Money> costs = this.findAllCosts();
+		return null;
+	};
 
 }
