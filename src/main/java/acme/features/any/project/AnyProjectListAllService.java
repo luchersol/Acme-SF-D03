@@ -12,6 +12,8 @@
 
 package acme.features.any.project;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,16 +40,18 @@ public class AnyProjectListAllService extends AbstractService<Any, Project> {
 
 	@Override
 	public void load() {
-		Project dashboard = new Project();
+		Collection<Project> object;
 
-		super.getBuffer().addData(dashboard);
+		object = this.repository.findAllPublishedProjects();
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "*");
+		dataset = super.unbind(object, "code", "title");
 
 		super.getResponse().addData(dataset);
 	}

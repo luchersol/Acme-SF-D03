@@ -25,6 +25,10 @@ master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
 
+# master.menu.any #######################################################
+
+master.menu.any = Any
+master.menu.any.projects = Proyects
 
 # master.menu.administrator ###################################################
 

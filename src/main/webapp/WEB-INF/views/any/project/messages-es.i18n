@@ -8,13 +8,16 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.duty.form.title = Detalles de responsabilidad
-any.duty.list.title = Lista de responsabilidades
+any.duty.form.title = Detalles de Proyecto
+any.duty.list.title = Lista de Proyectos
 
-any.duty.form.label.title = Título:
-any.duty.form.label.description = Descripción:
-any.duty.form.label.workLoad = Carga de trabajo:
-any.duty.form.label.moreInfo = Más información: (Opcional)
+any.project.form.label.code = Código
+any.project.form.label.title = Título
+any.project.form.label.abstractProject = Resumen
+any.project.form.label.indication = Indicación
+any.project.form.label.cost = Coste	
+any.project.form.label.link = Link	
+any.project.form.label.manager = Manager
 
-any.duty.list.label.title = Título
-any.duty.list.label.workLoad = Carga
+any.project.list.label.code = Código
+any.project.list.label.title = Título	

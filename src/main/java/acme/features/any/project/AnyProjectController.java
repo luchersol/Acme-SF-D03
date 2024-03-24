@@ -40,7 +40,7 @@ public class AnyProjectController extends AbstractController<Any, Project> {
 
 		super.addBasicCommand("show", this.showService);
 
-		super.addCustomCommand("list", "list-all", this.listAllService);
+		super.addCustomCommand("list-all", "list", this.listAllService);
 
 	}
 

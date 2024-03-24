@@ -38,16 +38,21 @@ public class AnyProjectShowService extends AbstractService<Any, Project> {
 
 	@Override
 	public void load() {
-		Project dashboard = new Project();
+		Project object;
+		int id;
 
-		super.getBuffer().addData(dashboard);
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findPublishedProjectById(id);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "*");
+		dataset = super.unbind(object, "code", "title", "abstractProject", //
+			"indication", "cost", "link", "manager");
 
 		super.getResponse().addData(dataset);
 	}
