@@ -10,23 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.userAcount;
+package acme.features.authenticated.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
+import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserAccountUpdateService extends AbstractService<Manager, UserAccount> {
+public class AuthenticatedManagerUpdateService extends AbstractService<Authenticated, Manager> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserAccountRepository repository;
+	private AuthenticatedManagerRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -44,33 +46,39 @@ public class ManagerUserAccountUpdateService extends AbstractService<Manager, Us
 	}
 
 	@Override
-	public void bind(final UserAccount object) {
+	public void bind(final Manager object) {
 		assert object != null;
 
-		super.bind(object, "name", "description", "moreInfo");
+		super.bind(object, "degree", "overview", "certifications", "link");
 	}
 
 	@Override
-	public void validate(final UserAccount object) {
+	public void validate(final Manager object) {
 		assert object != null;
 	}
 
 	@Override
-	public void perform(final UserAccount object) {
+	public void perform(final Manager object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final UserAccount object) {
+	public void unbind(final Manager object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "name", "description", "moreInfo");
+		dataset = super.unbind(object, "degree", "overview", "certifications", "link");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void onSuccess() {
+		if (super.getRequest().getMethod().equals("POST"))
+			PrincipalHelper.handleUpdate();
 	}
 
 }

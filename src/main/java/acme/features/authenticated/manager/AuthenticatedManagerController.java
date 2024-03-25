@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.userAcount;
+package acme.features.authenticated.manager;
 
 import javax.annotation.PostConstruct;
 
@@ -18,16 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.UserAccount;
+import acme.client.data.accounts.Authenticated;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerUserAccountController extends AbstractController<Manager, UserAccount> {
+public class AuthenticatedManagerController extends AbstractController<Authenticated, Manager> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserAccountUpdateService updateService;
+	private AuthenticatedManagerUpdateService updateService;
 
 	// Constructors -----------------------------------------------------------
 

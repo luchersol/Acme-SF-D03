@@ -25,6 +25,10 @@ master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
 
+# master.menu.manager #########################################################
+
+master.menu.manager = Manager
+master.menu.manager.user-accounts = User Account
 
 # master.menu.administrator ###################################################
 
@@ -51,5 +55,5 @@ master.menu.user-account = Account
 master.menu.user-account.general-data = General data
 master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
-master.menu.user-account.consumer = Consumer data
-master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.manager = Manager data
+master.menu.user-account.become-consumer = Become a manager
