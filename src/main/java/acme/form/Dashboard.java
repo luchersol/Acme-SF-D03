@@ -1,8 +1,9 @@
 
 package acme.form;
 
+import java.util.Collection;
+
 import acme.client.data.AbstractForm;
-import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +27,9 @@ public class Dashboard extends AbstractForm {
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
 
-	Money						averageEstimatedCostProjects;
-	Money						deviationEstimatedCostProjects;
-	Money						minimumEstimatedCostProjects;
-	Money						maximumEstimatedCostProjects;
+	Collection<Object[]>		averageEstimatedCostProjects;
+	Collection<Object[]>		deviationEstimatedCostProjects;
+	Collection<Object[]>		minimumEstimatedCostProjects;
+	Collection<Object[]>		maximumEstimatedCostProjects;
 
 }

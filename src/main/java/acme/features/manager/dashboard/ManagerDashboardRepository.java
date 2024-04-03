@@ -12,12 +12,11 @@
 
 package acme.features.manager.dashboard;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 
 @Repository
@@ -47,27 +46,16 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("SELECT max(us.estimatedCost) FROM UserStory us")
 	Double maximumEstimatedCostUserStories();
 
-	@Query("SELECT p.cost FROM Project p")
-	List<Money> findAllCosts();
+	@Query("SELECT p.cost.currency, avg(p.cost.amount) FROM Project p GROUP BY p.cost.currency")
+	Collection<Object[]> averageEstimatedCostProjects();
 
-	default Money averageEstimatedCostProjects() {
-		List<Money> costs = this.findAllCosts();
-		return null;
-	};
+	@Query("SELECT p.cost.currency, stddev(p.cost.amount) FROM Project p GROUP BY p.cost.currency")
+	Collection<Object[]> deviationEstimatedCostProjects();
 
-	default Money deviationEstimatedCostProjects() {
-		List<Money> costs = this.findAllCosts();
-		return null;
-	};
+	@Query("SELECT p.cost.currency, min(p.cost.amount) FROM Project p GROUP BY p.cost.currency")
+	Collection<Object[]> minimumEstimatedCostProjects();
 
-	default Money minimumEstimatedCostProjects() {
-		List<Money> costs = this.findAllCosts();
-		return null;
-	};
-
-	default Money maximumEstimatedCostProjects() {
-		List<Money> costs = this.findAllCosts();
-		return null;
-	};
+	@Query("SELECT p.cost.currency, max(p.cost.amount) FROM Project p GROUP BY p.cost.currency")
+	Collection<Object[]> maximumEstimatedCostProjects();
 
 }

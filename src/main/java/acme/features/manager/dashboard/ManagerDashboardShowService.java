@@ -12,10 +12,11 @@
 
 package acme.features.manager.dashboard;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.form.Dashboard;
@@ -40,6 +41,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Dashbo
 	@Override
 	public void load() {
 		Dashboard dashboard = new Dashboard();
+
 		Integer totalNumberProjectMust = this.repository.totalNumberProjectMust();
 		Integer totalNumberProjectShould = this.repository.totalNumberProjectShould();
 		Integer totalNumberProjectCould = this.repository.totalNumberProjectCould();
@@ -48,10 +50,16 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Dashbo
 		Double deviationEstimatedCostUserStories = this.repository.deviationEstimatedCostUserStories();
 		Double minimumEstimatedCostUserStories = this.repository.minimumEstimatedCostUserStories();
 		Double maximumEstimatedCostUserStories = this.repository.maximumEstimatedCostUserStories();
-		Money averageEstimatedCostProjects = this.repository.averageEstimatedCostProjects();
-		Money deviationEstimatedCostProjects = this.repository.deviationEstimatedCostProjects();
-		Money minimumEstimatedCostProjects = this.repository.minimumEstimatedCostProjects();
-		Money maximumEstimatedCostProjects = this.repository.maximumEstimatedCostProjects();
+		System.out.println("/");
+		//		System.out.println(this.repository.averageEstimatedCostProjects());
+		//		System.out.println(this.repository.deviationEstimatedCostProjects());
+		//		System.out.println(this.repository.minimumEstimatedCostProjects());
+		System.out.println(this.repository.maximumEstimatedCostProjects());
+		System.out.println("/");
+		Collection<Object[]> averageEstimatedCostProjects = this.repository.averageEstimatedCostProjects();
+		Collection<Object[]> deviationEstimatedCostProjects = this.repository.deviationEstimatedCostProjects();
+		Collection<Object[]> minimumEstimatedCostProjects = this.repository.minimumEstimatedCostProjects();
+		Collection<Object[]> maximumEstimatedCostProjects = this.repository.maximumEstimatedCostProjects();
 
 		dashboard.setTotalNumberProjectMust(totalNumberProjectMust);
 		dashboard.setTotalNumberProjectShould(totalNumberProjectShould);
