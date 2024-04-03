@@ -42,7 +42,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 	public void load() {
 		Collection<Project> project;
 		int managerId;
-		managerId = this.getRequest().getPrincipal().getAccountId();
+		managerId = this.getRequest().getPrincipal().getActiveRoleId();
 		project = this.repository.findProjectsByManagerId(managerId);
 		super.getBuffer().addData(project);
 	}
