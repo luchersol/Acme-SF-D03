@@ -56,4 +56,4 @@ master.menu.user-account.become-consumer = Become a consumer
 
 # master.menu.client ####################################################
 master.menu.client = Client
-master.menu.client.contract = Contract
+master.menu.client.contract = My contracts
