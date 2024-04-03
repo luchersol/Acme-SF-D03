@@ -1,5 +1,5 @@
 /*
- * DeveloperTrainingModuleCreateService.java
+ * AdministratorDashboardShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -18,19 +18,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.training.TrainingModule;
+import acme.entities.training.DifficultyLevel;
+import acme.entities.training.Training;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingPublishService extends AbstractService<Developer, Training> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingModuleRepository repository;
+	private DeveloperTrainingRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -42,24 +41,30 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 	@Override
 	public void load() {
-		TrainingModule object;
-		Date moment;
+		// Initialize the required objects
+		DifficultyLevel difficultyLevel = DifficultyLevel.ADVANCED;
 
-		moment = MomentHelper.getCurrentMoment();
+		// Initialize the date objects
+		Date creationMoment = new Date();
+		Date updateMoment = new Date();
 
-		object = new TrainingModule();
+		// Create a new Training object
+		Training object = new Training("CODE-123", creationMoment, "Details about the training", difficultyLevel, updateMoment, "http://example.com", 10.0, null, null);
+
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void bind(final TrainingModule object) {
-		assert object != null;
+	public void bind(final Training object) {
+		Dataset dataset;
 
-		super.bind(object, "title", "status", "text", "moreInfo");
+		dataset = super.unbind(object, "");
+
+		super.getResponse().addData(dataset);
 	}
 
 	@Override
-	public void validate(final TrainingModule object) {
+	public void validate(final Training object) {
 		assert object != null;
 
 		boolean confirmation;
@@ -69,27 +74,10 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	}
 
 	@Override
-	public void perform(final TrainingModule object) {
+	public void perform(final Training object) {
 		assert object != null;
 
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
 		this.repository.save(object);
-	}
-
-	@Override
-	public void unbind(final TrainingModule object) {
-		assert object != null;
-
-		SelectChoices choices;
-		Dataset dataset;
-
-		dataset = super.unbind(object, "title", "status", "text", "moreInfo");
-		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
-
-		super.getResponse().addData(dataset);
 	}
 
 }

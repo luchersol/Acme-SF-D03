@@ -13,24 +13,23 @@
 package acme.features.developer.training;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.training.TrainingModule;
+import acme.entities.training.Training;
 
 @Repository
-public interface DeveloperTrainingModuleRepository extends AbstractRepository {
+public interface DeveloperTrainingRepository extends AbstractRepository {
 
-	@Query("select a from TrainingModule a where a.id = :id")
-	TrainingModule findOneTrainingModuleById(int id);
+	@Query("SELECT t FROM Training t WHERE t.id = :id")
+	Training findOneTrainingById(int id);
 
-	@Query("select a from TrainingModule a")
-	Collection<TrainingModule> findAllTrainingModules();
+	@Query("SELECT t FROM Training t WHERE t.developer.userAccount.id = :developerId")
+	Collection<Training> findTrainingsByDeveloperId(int developerId);
 
-	@Query("select a from TrainingModule a where a.moment > :deadline")
-	Collection<TrainingModule> findRecentTrainingModules(Date deadline);
+	@Query("SELECT t FROM Training t WHERE t.developer.id = :developerId AND t.draftMode = FALSE")
+	Collection<Training> findPublishedTrainings(int developerId);
 
 }

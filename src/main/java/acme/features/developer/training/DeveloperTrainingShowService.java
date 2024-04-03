@@ -1,5 +1,5 @@
 /*
- * DeveloperCompanyListRecentService.java
+ * DeveloperTrainingModuleShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -12,26 +12,23 @@
 
 package acme.features.developer.training;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Collection;
-import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.training.TrainingModule;
+import acme.entities.training.Training;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleListRecentService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingShowService extends AbstractService<Developer, Training> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingModuleRepository repository;
+	private DeveloperTrainingRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -43,22 +40,22 @@ public class DeveloperTrainingModuleListRecentService extends AbstractService<De
 
 	@Override
 	public void load() {
-		Collection<TrainingModule> objects;
-		Date deadline;
+		Training object;
+		int id;
 
-		deadline = MomentHelper.deltaFromCurrentMoment(-30, ChronoUnit.DAYS);
-		objects = this.repository.findRecentTrainingModules(deadline);
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingById(id);
 
-		super.getBuffer().addData(objects);
+		assert Objects.nonNull(object);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final TrainingModule object) {
+	public void unbind(final Training object) {
 		assert object != null;
 
 		Dataset dataset;
-
-		dataset = super.unbind(object, "title", "moment", "status");
+		dataset = super.unbind(object, "code", "details");
 
 		super.getResponse().addData(dataset);
 	}

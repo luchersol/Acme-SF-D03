@@ -55,6 +55,6 @@ public class TrainingSession extends AbstractEntity {
 
 	@Valid
 	@ManyToOne(optional = false)
-	private TrainingModule		trainingModule;
+	private Training		trainingModule;
 
 }

@@ -27,7 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TrainingModule extends AbstractEntity {
+public class Training extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -68,5 +68,24 @@ public class TrainingModule extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Developer			developer;
+
+	@NotNull
+	private Boolean				draftMode;
+
+
+	public Training() {
+	}
+
+	public Training(final String code, final Date creationMoment, final String details, final DifficultyLevel difficultyLevel, final Date updateMoment, final String link, final Double estimatedTotalTime, final Project project, final Developer developer) {
+		this.code = code;
+		this.creationMoment = creationMoment;
+		this.details = details;
+		this.difficultyLevel = difficultyLevel;
+		this.updateMoment = updateMoment;
+		this.link = link;
+		this.estimatedTotalTime = estimatedTotalTime;
+		this.project = project;
+		this.developer = developer;
+	}
 
 }

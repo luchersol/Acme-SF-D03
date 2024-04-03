@@ -18,25 +18,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.training.TrainingModule;
+import acme.entities.training.Training;
 import acme.roles.Developer;
 
 @Controller
-public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
+public class DeveloperTrainingController extends AbstractController<Developer, Training> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingModuleListAllService		listAllService;
+	private DeveloperTrainingListMineService	listMineService;
 
 	@Autowired
-	private DeveloperTrainingModuleListRecentService	listRecentService;
+	private DeveloperTrainingShowService		showService;
 
 	@Autowired
-	private DeveloperTrainingModuleShowService			showService;
+	private DeveloperTrainingCreateService		createService;
 
 	@Autowired
-	private DeveloperTrainingModuleCreateService		createService;
+	private DeveloperTrainingUpdateService		updateService;
+
+	@Autowired
+	private DeveloperTrainingDeleteService		deleteService;
+
+	@Autowired
+	private DeveloperTrainingPublishService		publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -45,8 +51,11 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-		super.addCustomCommand("list-all", "list", this.listAllService);
-		super.addCustomCommand("list-recent", "list", this.listRecentService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+
+		super.addCustomCommand("publish", "perform", this.publishService);
+		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
 
 }
