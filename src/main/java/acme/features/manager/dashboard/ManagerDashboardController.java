@@ -18,11 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.form.Dashboard;
+import acme.form.ManagerForm;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerDashboardController extends AbstractController<Manager, Dashboard> {
+public class ManagerDashboardController extends AbstractController<Manager, ManagerForm> {
 
 	// Internal state ---------------------------------------------------------
 

@@ -1,15 +1,16 @@
 
 package acme.form;
 
-import java.util.Collection;
+import java.util.List;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Dashboard extends AbstractForm {
+public class ManagerForm extends AbstractForm {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -27,9 +28,9 @@ public class Dashboard extends AbstractForm {
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
 
-	Collection<Object[]>		averageEstimatedCostProjects;
-	Collection<Object[]>		deviationEstimatedCostProjects;
-	Collection<Object[]>		minimumEstimatedCostProjects;
-	Collection<Object[]>		maximumEstimatedCostProjects;
+	List<Money>					averageEstimatedCostProjects;
+	List<Money>					deviationEstimatedCostProjects;
+	List<Money>					minimumEstimatedCostProjects;
+	List<Money>					maximumEstimatedCostProjects;
 
 }

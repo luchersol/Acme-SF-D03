@@ -13,17 +13,22 @@
 package acme.features.manager.dashboard;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.common.base.Function;
+
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.form.Dashboard;
+import acme.form.ManagerForm;
 import acme.roles.Manager;
 
 @Service
-public class ManagerDashboardShowService extends AbstractService<Manager, Dashboard> {
+public class ManagerDashboardShowService extends AbstractService<Manager, ManagerForm> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -40,26 +45,29 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Dashbo
 
 	@Override
 	public void load() {
-		Dashboard dashboard = new Dashboard();
+		ManagerForm dashboard = new ManagerForm();
+		int managerId;
+		managerId = this.getRequest().getPrincipal().getActiveRoleId();
 
-		Integer totalNumberProjectMust = this.repository.totalNumberProjectMust();
-		Integer totalNumberProjectShould = this.repository.totalNumberProjectShould();
-		Integer totalNumberProjectCould = this.repository.totalNumberProjectCould();
-		Integer totalNumberProjectWont = this.repository.totalNumberProjectWont();
-		Double averageEstimatedCostUserStories = this.repository.averageEstimatedCostUserStories();
-		Double deviationEstimatedCostUserStories = this.repository.deviationEstimatedCostUserStories();
-		Double minimumEstimatedCostUserStories = this.repository.minimumEstimatedCostUserStories();
-		Double maximumEstimatedCostUserStories = this.repository.maximumEstimatedCostUserStories();
-		System.out.println("/");
-		//		System.out.println(this.repository.averageEstimatedCostProjects());
-		//		System.out.println(this.repository.deviationEstimatedCostProjects());
-		//		System.out.println(this.repository.minimumEstimatedCostProjects());
-		System.out.println(this.repository.maximumEstimatedCostProjects());
-		System.out.println("/");
-		Collection<Object[]> averageEstimatedCostProjects = this.repository.averageEstimatedCostProjects();
-		Collection<Object[]> deviationEstimatedCostProjects = this.repository.deviationEstimatedCostProjects();
-		Collection<Object[]> minimumEstimatedCostProjects = this.repository.minimumEstimatedCostProjects();
-		Collection<Object[]> maximumEstimatedCostProjects = this.repository.maximumEstimatedCostProjects();
+		Function<Collection<Object[]>, List<Money>> transformToListMoney = collect -> collect.stream().map(obj -> {
+			Money money = new Money();
+			money.setCurrency((String) obj[0]);
+			money.setAmount((Double) obj[1]);
+			return money;
+		}).collect(Collectors.toList());
+
+		Integer totalNumberProjectMust = this.repository.totalNumberProjectMust(managerId);
+		Integer totalNumberProjectShould = this.repository.totalNumberProjectShould(managerId);
+		Integer totalNumberProjectCould = this.repository.totalNumberProjectCould(managerId);
+		Integer totalNumberProjectWont = this.repository.totalNumberProjectWont(managerId);
+		Double averageEstimatedCostUserStories = this.repository.averageEstimatedCostUserStories(managerId);
+		Double deviationEstimatedCostUserStories = this.repository.deviationEstimatedCostUserStories(managerId);
+		Double minimumEstimatedCostUserStories = this.repository.minimumEstimatedCostUserStories(managerId);
+		Double maximumEstimatedCostUserStories = this.repository.maximumEstimatedCostUserStories(managerId);
+		List<Money> averageEstimatedCostProjects = transformToListMoney.apply(this.repository.averageEstimatedCostProjects(managerId));
+		List<Money> deviationEstimatedCostProjects = transformToListMoney.apply(this.repository.deviationEstimatedCostProjects(managerId));
+		List<Money> minimumEstimatedCostProjects = transformToListMoney.apply(this.repository.minimumEstimatedCostProjects(managerId));
+		List<Money> maximumEstimatedCostProjects = transformToListMoney.apply(this.repository.maximumEstimatedCostProjects(managerId));
 
 		dashboard.setTotalNumberProjectMust(totalNumberProjectMust);
 		dashboard.setTotalNumberProjectShould(totalNumberProjectShould);
@@ -78,7 +86,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Dashbo
 	}
 
 	@Override
-	public void unbind(final Dashboard object) {
+	public void unbind(final ManagerForm object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, //
