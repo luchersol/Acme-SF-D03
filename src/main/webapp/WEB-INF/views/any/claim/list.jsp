@@ -16,9 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="administrator.announcement.list.label.moment" path="moment" width="20%"/>
-	<acme:list-column code="administrator.announcement.list.label.status" path="status" width="10%"/>
-	<acme:list-column code="administrator.announcement.list.label.title" path="title" width="70%"/>	
+	<acme:list-column code="any.claim.list.label.code" path="code"/>
+	<acme:list-column code="any.claim.list.label.heading" path="heading"/>
+	<acme:list-column code="any.claim.list.label.link" path="link"/>	
 </acme:list>
 
-<acme:button code="administrator.announcement.list.button.create" action="/administrator/announcement/create"/>
+<acme:button code="any.claim.list.button.publish" action="/any/claim/publish"/>

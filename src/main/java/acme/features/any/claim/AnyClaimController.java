@@ -30,7 +30,8 @@ public class AnyClaimController extends AbstractController<Any, Claim> {
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("list-all", this.listAllService);
-		super.addBasicCommand("create", this.publishService);
+
+		super.addCustomCommand("list-all", "list", this.listAllService);
+		super.addCustomCommand("publish", "create", this.publishService);
 	}
 }
