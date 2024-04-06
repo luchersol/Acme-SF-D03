@@ -12,8 +12,6 @@
 
 package acme.features.manager.project;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +44,8 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		id = this.getRequest().getData("id", int.class);
 		object = this.repository.findOneProjectById(id);
 
-		assert Objects.nonNull(object);
+		assert object != null;
+
 		super.getBuffer().addData(object);
 	}
 
@@ -55,7 +54,8 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

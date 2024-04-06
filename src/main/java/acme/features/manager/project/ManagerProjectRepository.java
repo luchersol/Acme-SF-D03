@@ -18,18 +18,67 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.audits.AuditRecord;
+import acme.entities.audits.CodeAudit;
+import acme.entities.contract.Contract;
+import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
+import acme.entities.project.ProjectUserStory;
+import acme.entities.risk.Risk;
+import acme.entities.sponsorship.Invoice;
+import acme.entities.sponsorship.Sponsorship;
+import acme.entities.training.TrainingModule;
+import acme.entities.training.TrainingSession;
 
 @Repository
 public interface ManagerProjectRepository extends AbstractRepository {
 
-	@Query("SELECT p FROM Project p WHERE p.id = :id")
+	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 
-	@Query("SELECT p FROM Project p WHERE p.manager.id = :managerId")
+	@Query("select s from Sponsorship s where s.project.id = :projectId")
+	Collection<Sponsorship> findSponsoshipsByProjectId(int projectId);
+
+	@Query("select i from Invoice i where i.sponsorship.project.id = :projectId")
+	Collection<Invoice> findInvoicesByProjectId(int projectId);
+
+	@Query("select tm from TrainingModule tm where tm.project.id = :projectId")
+	Collection<TrainingModule> findTraningModulesByProjectId(int projectId);
+
+	@Query("select ts from TrainingSession ts where ts.trainingModule.project.id = :projectId")
+	Collection<TrainingSession> findTraningSessionsByProjectId(int projectId);
+
+	@Query("select r from Risk r where r.project.id = :projectId")
+	Collection<Risk> findRisksByProjectId(int projectId);
+
+	@Query("select ca from CodeAudit ca where ca.project.id = :projectId")
+	Collection<CodeAudit> findCodeAuditsByProjectId(int projectId);
+
+	@Query("select ar from AuditRecord ar where ar.codeAudit.project.id = :projectId")
+	Collection<AuditRecord> findAuditRecordsByProjectId(int projectId);
+
+	@Query("select c from Contract c where c.project.id = :projectId")
+	Collection<Contract> findContractsByProjectId(int projectId);
+
+	@Query("select pl from ProgressLog pl where pl.contract.project.id = :projectId")
+	Collection<ProgressLog> findProgressLogsByProjectId(int projectId);
+
+	@Query("select pu from ProjectUserStory pu where pu.project.id = :projectId")
+	Collection<ProjectUserStory> findRelationsUserStoriesWithProjectByProjectId(int projectId);
+
+	@Query("select p from Project p")
+	Collection<Project> findAllProjects();
+
+	@Query("select p from Project p where p.manager.id = :managerId")
 	Collection<Project> findProjectsByManagerId(int managerId);
 
-	@Query("SELECT p FROM Project p WHERE p.manager.id = :managerId AND p.draftMode = FALSE")
-	Collection<Project> findPublishedProjects(int managerId);
+	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode = false")
+	Collection<Project> findPublishedProjectsByManagerId(int managerId);
+
+	@Query("select count(pu.project) = 0 from ProjectUserStory pu where pu.userStory.draftMode = false and pu.project.id = :projectId")
+	Boolean allUserStoriesPublishedByProjecId(int projectId);
+
+	@Query("select count(pu.project) > 0 from ProjectUserStory pu where pu.project.id = :projectId")
+	Boolean anyUserStoryByProjectId(int projectId);
 
 }

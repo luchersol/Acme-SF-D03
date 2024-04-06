@@ -17,8 +17,9 @@
 
 
 <acme:list>
-	<acme:list-column code="manager.project.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="manager.project.list.label.title" path="title" width="10%"/>
-	<acme:list-column code="manager.project.list.label.indication" path="indication" width="10%"/>
+	<acme:list-column code="manager.project.list.label.code" path="code"/>
+	<acme:list-column code="manager.project.list.label.title" path="title"/>
 </acme:list>
+
+<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
 

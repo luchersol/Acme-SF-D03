@@ -12,8 +12,6 @@
 
 package acme.features.manager.project;
 
-import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +36,13 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		boolean status;
 		int id;
 		Project object;
+		Manager manager;
 
-		id = this.getRequest().getData("id", int.class);
+		id = super.getRequest().getData("id", int.class);
+
 		object = this.repository.findOneProjectById(id);
-		status = Objects.nonNull(object) && !object.getDraftMode();
+		manager = object == null ? null : object.getManager();
+		status = object != null && object.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,21 +56,14 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void bind(final Project object) {
-		Dataset dataset;
+		assert object != null;
 
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 	}
 
 	@Override
 	public void validate(final Project object) {
-		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
@@ -77,6 +71,15 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final Project object) {
+		Dataset dataset;
+
+		dataset = super.unbind(object, "");
+
+		super.getResponse().addData(dataset);
 	}
 
 }

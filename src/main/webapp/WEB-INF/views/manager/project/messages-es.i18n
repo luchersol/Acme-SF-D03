@@ -25,3 +25,12 @@ manager.project.list.label.title = Titulo
 manager.project.list.label.indication = Indicacion
 
 manager.project.list.button.create = Crear
+manager.project.form.button.create = Create
+manager.project.form.button.update = Actualizar
+manager.project.form.button.delete = Borrar
+manager.project.form.button.publish = Publicar
+
+manager.project.form.error.publishedUserStories = Todas las historias de usuario del proyecto deben estar publicadas
+manager.project.form.error.withoutUserStories = El proyecto debe tener alguna historia de usuario
+manager.project.form.error.fatalError = No puedes publicar proyectos con errores fatales
+manager.project.form.error.cost = El coste debe positivo o cero

@@ -4,7 +4,6 @@ package acme.entities.project;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -63,9 +62,4 @@ public class Project extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Manager				manager;
 
-
-	@Transient
-	public Boolean isValid() {
-		return (!this.indication || this.draftMode) && this.cost.getAmount() >= 0;
-	}
 }

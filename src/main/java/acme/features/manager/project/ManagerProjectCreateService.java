@@ -39,33 +39,29 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void load() {
 		Project object = new Project();
-		object.setCode("");
-		object.setTitle("");
-		object.setAbstractProject("");
-		object.setIndication(false);
-		object.setCost(null);
-		object.setLink(null);
+
+		object.setDraftMode(true);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Project object) {
-		Dataset dataset;
+		assert object != null;
 
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 	}
 
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
 
-		boolean confirmation;
+		boolean state;
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			state = object.getCost().getAmount() >= 0;
+			super.state(state, "cost", "manager.project.form.error.cost");
+		}
 	}
 
 	@Override
@@ -73,6 +69,16 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		assert object != null;
 
 		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final Project object) {
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+
+		super.getBuffer().addData(dataset);
+
 	}
 
 }

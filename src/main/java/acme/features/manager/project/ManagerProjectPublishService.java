@@ -39,40 +39,56 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void load() {
 		Project object = new Project();
-		object.setCode("");
-		object.setTitle("");
-		object.setAbstractProject("");
-		object.setIndication(false);
-		object.setCost(null);
-		object.setLink(null);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final Project object) {
-		Dataset dataset;
+		assert object != null;
 
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link", "manager");
 	}
 
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
 
-		boolean confirmation;
+		boolean state;
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+		if (!super.getBuffer().getErrors().hasErrors("publishedUserStories")) {
+			state = this.repository.allUserStoriesPublishedByProjecId(object.getId());
+			super.state(state, "publishedUserStories", "manager.project.form.error.publishedUserStories");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("withoutUserStories")) {
+			state = this.repository.anyUserStoryByProjectId(object.getId());
+			super.state(state, "withoutUserStories", "manager.project.form.error.withoutUserStories");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("fatalError")) {
+			state = object.getIndication();
+			super.state(state, "fatalError", "manager.project.form.error.fatalError");
+		}
+
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
 
+		object.setDraftMode(false);
+
 		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final Project object) {
+		assert object != null;
+
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode", "manager");
+
+		super.getBuffer().addData(dataset);
 	}
 
 }

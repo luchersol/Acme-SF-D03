@@ -52,7 +52,7 @@ public class ManagerProjectListMineService extends AbstractService<Manager, Proj
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "title", "indication");
+		dataset = super.unbind(object, "code", "title");
 
 		super.getResponse().addData(dataset);
 	}

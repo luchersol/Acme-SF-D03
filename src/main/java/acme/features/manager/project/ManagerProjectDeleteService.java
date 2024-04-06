@@ -12,14 +12,25 @@
 
 package acme.features.manager.project;
 
-import java.util.Objects;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.audits.AuditRecord;
+import acme.entities.audits.CodeAudit;
+import acme.entities.contract.Contract;
+import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
+import acme.entities.project.ProjectUserStory;
+import acme.entities.project.UserStory;
+import acme.entities.risk.Risk;
+import acme.entities.sponsorship.Invoice;
+import acme.entities.sponsorship.Sponsorship;
+import acme.entities.training.TrainingModule;
+import acme.entities.training.TrainingSession;
 import acme.roles.Manager;
 
 @Service
@@ -38,10 +49,12 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		boolean status;
 		int id;
 		Project object;
+		Manager manager;
 
 		id = this.getRequest().getData("id", int.class);
 		object = this.repository.findOneProjectById(id);
-		status = Objects.nonNull(object) && !object.getDraftMode();
+		manager = object == null ? null : object.getManager();
+		status = object != null && object.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,28 +68,58 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 
 	@Override
 	public void bind(final Project object) {
-		Dataset dataset;
+		assert object != null;
 
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 	}
 
 	@Override
 	public void validate(final Project object) {
-		assert object != null;
-
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+		int projectId = object.getId();
+		// Borrar Sponsorship(Invoice), TrainingModule(TrainingSession), Risk, CodeAudit(AuditRecord), Contract (ProgressLog), UserStory
 
-		this.repository.save(object);
+		Collection<Invoice> invoices = this.repository.findInvoicesByProjectId(projectId);
+		Collection<Sponsorship> sponsorships = this.repository.findSponsoshipsByProjectId(projectId);
+		Collection<TrainingSession> trainingSessions = this.repository.findTraningSessionsByProjectId(projectId);
+		Collection<TrainingModule> trainingModules = this.repository.findTraningModulesByProjectId(projectId);
+		Collection<Risk> risks = this.repository.findRisksByProjectId(projectId);
+		Collection<AuditRecord> auditRecords = this.repository.findAuditRecordsByProjectId(projectId);
+		Collection<CodeAudit> codeAudits = this.repository.findCodeAuditsByProjectId(projectId);
+		Collection<ProgressLog> progressLogs = this.repository.findProgressLogsByProjectId(projectId);
+		Collection<Contract> contracts = this.repository.findContractsByProjectId(projectId);
+		Collection<ProjectUserStory> projectUserStories = this.repository.findRelationsUserStoriesWithProjectByProjectId(projectId);
+		Collection<UserStory> userStories = projectUserStories.stream().map(ProjectUserStory::getUserStory).toList();
+
+		System.out.println(progressLogs);
+		System.out.println(contracts);
+		this.repository.deleteAll(invoices);
+		this.repository.deleteAll(sponsorships);
+		this.repository.deleteAll(trainingSessions);
+		this.repository.deleteAll(trainingModules);
+		this.repository.deleteAll(risks);
+		this.repository.deleteAll(auditRecords);
+		this.repository.deleteAll(codeAudits);
+		this.repository.deleteAll(progressLogs);
+		this.repository.deleteAll(contracts);
+		this.repository.deleteAll(projectUserStories);
+		this.repository.deleteAll(userStories);
+		this.repository.delete(object);
+
+	}
+
+	@Override
+	public void unbind(final Project object) {
+		Dataset dataset;
+
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+
+		super.getBuffer().addData(dataset);
+
 	}
 
 }
