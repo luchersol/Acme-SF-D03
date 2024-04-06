@@ -22,7 +22,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString()
+@ToString
 public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------

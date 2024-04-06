@@ -29,12 +29,16 @@ import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
+import acme.roles.Manager;
 
 @Repository
 public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
+
+	@Query("select m from Manager m where m.id = :id")
+	Manager findManagerById(int id);
 
 	@Query("select s from Sponsorship s where s.project.id = :projectId")
 	Collection<Sponsorship> findSponsoshipsByProjectId(int projectId);

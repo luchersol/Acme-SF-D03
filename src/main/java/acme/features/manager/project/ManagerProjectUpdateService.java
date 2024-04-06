@@ -49,7 +49,16 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void load() {
-		Project project = new Project();
+		Manager manager;
+		Project project;
+		int managerId;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findManagerById(managerId);
+
+		project = new Project();
+		project.setDraftMode(true);
+		project.setManager(manager);
 
 		super.getBuffer().addData(project);
 	}
@@ -76,8 +85,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
-
-		dataset = super.unbind(object, "");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		super.getResponse().addData(dataset);
 	}

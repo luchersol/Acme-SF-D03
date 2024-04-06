@@ -34,22 +34,40 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
+		System.out.println("1: " + super.getBuffer().getErrors());
 	}
 
 	@Override
 	public void load() {
-		Project object = new Project();
+		Project object;
+		Manager manager;
+		int managerId;
 
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findManagerById(managerId);
+
+		object = new Project();
+		object.setCode("");
+		object.setTitle("");
+		object.setAbstractProject("");
+		object.setIndication(false);
+		object.setCost(null);
+		object.setLink("");
 		object.setDraftMode(true);
+		object.setManager(manager);
 
+		System.out.println("2.1: " + super.getBuffer().getErrors());
 		super.getBuffer().addData(object);
+		System.out.println("2.2: " + super.getBuffer().getErrors());
 	}
 
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-
+		System.out.println("3.1: " + super.getBuffer().getErrors());
 		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+		System.out.println(object);
+		System.out.println("3.2: " + super.getBuffer().getErrors());
 	}
 
 	@Override
@@ -62,19 +80,22 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 			state = object.getCost().getAmount() >= 0;
 			super.state(state, "cost", "manager.project.form.error.cost");
 		}
+		System.out.println("4: " + super.getBuffer().getErrors());
 	}
 
 	@Override
 	public void perform(final Project object) {
+		System.out.println("PERFORM");
 		assert object != null;
-
+		System.out.println(object);
+		System.out.println(object.getManager());
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
-
+		System.out.println("CARGA");
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		super.getBuffer().addData(dataset);
