@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
 import java.util.Collection;
 
@@ -18,18 +18,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 
 @Repository
-public interface DeveloperTrainingRepository extends AbstractRepository {
+public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
-	@Query("SELECT t FROM Training t WHERE t.id = :id")
-	Training findOneTrainingById(int id);
+	@Query("SELECT t FROM TrainingModule t WHERE t.id = :id")
+	TrainingModule findOneTrainingById(int id);
 
-	@Query("SELECT t FROM Training t WHERE t.developer.userAccount.id = :developerId")
-	Collection<Training> findTrainingsByDeveloperId(int developerId);
+	@Query("SELECT t FROM TrainingModule t WHERE t.developer.userAccount.id = :developerId")
+	Collection<TrainingModule> findTrainingsByDeveloperId(int developerId);
 
-	@Query("SELECT t FROM Training t WHERE t.developer.id = :developerId AND t.draftMode = FALSE")
-	Collection<Training> findPublishedTrainings(int developerId);
+	@Query("SELECT t FROM TrainingModule t WHERE t.developer.id = :developerId AND t.draftMode = FALSE")
+	Collection<TrainingModule> findPublishedTrainings(int developerId);
 
 }

@@ -1,5 +1,5 @@
 /*
- * AdministratorDashboardShowService.java
+ * DeveloperTrainingModuleShowService.java
  *
  * Copyright (C) 2012-2024 Rafael Corchuelo.
  *
@@ -10,25 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
-import java.util.Collection;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingListMineService extends AbstractService<Developer, Training> {
+public class DeveloperTrainingModuleShowService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingRepository repository;
+	private DeveloperTrainingModuleRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -40,19 +40,22 @@ public class DeveloperTrainingListMineService extends AbstractService<Developer,
 
 	@Override
 	public void load() {
-		Collection<Training> training;
-		int developerId;
-		developerId = this.getRequest().getPrincipal().getAccountId();
-		training = this.repository.findTrainingsByDeveloperId(developerId);
-		super.getBuffer().addData(training);
+		TrainingModule object;
+		int id;
+
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingById(id);
+
+		assert Objects.nonNull(object);
+		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final Training object) {
+	public void unbind(final TrainingModule object) {
 		assert object != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "code", "details");
+		dataset = super.unbind(object, "code", "details", "creationMoment", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
 
 		super.getResponse().addData(dataset);
 	}

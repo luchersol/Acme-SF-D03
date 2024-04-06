@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
 import java.util.Objects;
 
@@ -19,16 +19,16 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingUpdateService extends AbstractService<Developer, Training> {
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingRepository repository;
+	private DeveloperTrainingModuleRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -37,7 +37,7 @@ public class DeveloperTrainingUpdateService extends AbstractService<Developer, T
 	public void authorise() {
 		boolean status;
 		int id;
-		Training object;
+		TrainingModule object;
 
 		id = this.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingById(id);
@@ -48,13 +48,13 @@ public class DeveloperTrainingUpdateService extends AbstractService<Developer, T
 
 	@Override
 	public void load() {
-		Training project = new Training();
+		TrainingModule project = new TrainingModule();
 
 		super.getBuffer().addData(project);
 	}
 
 	@Override
-	public void bind(final Training object) {
+	public void bind(final TrainingModule object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
@@ -63,7 +63,7 @@ public class DeveloperTrainingUpdateService extends AbstractService<Developer, T
 	}
 
 	@Override
-	public void validate(final Training object) {
+	public void validate(final TrainingModule object) {
 		assert object != null;
 
 		boolean confirmation;
@@ -73,7 +73,7 @@ public class DeveloperTrainingUpdateService extends AbstractService<Developer, T
 	}
 
 	@Override
-	public void perform(final Training object) {
+	public void perform(final TrainingModule object) {
 		assert object != null;
 
 		this.repository.save(object);

@@ -10,52 +10,51 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
-import java.util.Date;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.training.DifficultyLevel;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingPublishService extends AbstractService<Developer, Training> {
+public class DeveloperTrainingModuleDeleteService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingRepository repository;
+	private DeveloperTrainingModuleRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		TrainingModule object;
+
+		id = this.getRequest().getData("id", int.class);
+		object = this.repository.findOneTrainingById(id);
+		status = Objects.nonNull(object) && !object.getDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		// Initialize the required objects
-		DifficultyLevel difficultyLevel = DifficultyLevel.ADVANCED;
+		TrainingModule training = new TrainingModule();
 
-		// Initialize the date objects
-		Date creationMoment = new Date();
-		Date updateMoment = new Date();
-
-		// Create a new Training object
-		Training object = new Training("CODE-123", creationMoment, "Details about the training", difficultyLevel, updateMoment, "http://example.com", 10.0, null, null);
-
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(training);
 	}
 
 	@Override
-	public void bind(final Training object) {
+	public void bind(final TrainingModule object) {
 		Dataset dataset;
 
 		dataset = super.unbind(object, "");
@@ -64,7 +63,7 @@ public class DeveloperTrainingPublishService extends AbstractService<Developer, 
 	}
 
 	@Override
-	public void validate(final Training object) {
+	public void validate(final TrainingModule object) {
 		assert object != null;
 
 		boolean confirmation;
@@ -74,7 +73,7 @@ public class DeveloperTrainingPublishService extends AbstractService<Developer, 
 	}
 
 	@Override
-	public void perform(final Training object) {
+	public void perform(final TrainingModule object) {
 		assert object != null;
 
 		this.repository.save(object);

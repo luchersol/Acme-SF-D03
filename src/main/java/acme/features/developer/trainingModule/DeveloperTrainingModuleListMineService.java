@@ -10,73 +10,51 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
-import java.util.Objects;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingDeleteService extends AbstractService<Developer, Training> {
+public class DeveloperTrainingModuleListMineService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingRepository repository;
+	private DeveloperTrainingModuleRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Training object;
-
-		id = this.getRequest().getData("id", int.class);
-		object = this.repository.findOneTrainingById(id);
-		status = Objects.nonNull(object) && !object.getDraftMode();
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Training training = new Training();
-
+		Collection<TrainingModule> training;
+		int developerId;
+		developerId = this.getRequest().getPrincipal().getAccountId();
+		training = this.repository.findTrainingsByDeveloperId(developerId);
 		super.getBuffer().addData(training);
 	}
 
 	@Override
-	public void bind(final Training object) {
-		Dataset dataset;
+	public void unbind(final TrainingModule object) {
+		assert object != null;
 
-		dataset = super.unbind(object, "");
+		Dataset dataset;
+		dataset = super.unbind(object, "code", "details", "creationMoment", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void validate(final Training object) {
-		assert object != null;
-
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
-	}
-
-	@Override
-	public void perform(final Training object) {
-		assert object != null;
-
-		this.repository.save(object);
 	}
 
 }

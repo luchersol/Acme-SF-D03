@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.developer.training;
+package acme.features.developer.trainingModule;
 
 import javax.annotation.PostConstruct;
 
@@ -18,31 +18,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.training.Training;
+import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
 
 @Controller
-public class DeveloperTrainingController extends AbstractController<Developer, Training> {
+public class DeveloperTrainingModuleController extends AbstractController<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingListMineService	listMineService;
+	private DeveloperTrainingModuleListMineService	listMineService;
 
 	@Autowired
-	private DeveloperTrainingShowService		showService;
+	private DeveloperTrainingModuleShowService		showService;
 
 	@Autowired
-	private DeveloperTrainingCreateService		createService;
+	private DeveloperTrainingModuleCreateService		createService;
 
 	@Autowired
-	private DeveloperTrainingUpdateService		updateService;
+	private DeveloperTrainingModuleUpdateService		updateService;
 
 	@Autowired
-	private DeveloperTrainingDeleteService		deleteService;
+	private DeveloperTrainingModuleDeleteService		deleteService;
 
 	@Autowired
-	private DeveloperTrainingPublishService		publishService;
+	private DeveloperTrainingModulePublishService		publishService;
 
 	// Constructors -----------------------------------------------------------
 
