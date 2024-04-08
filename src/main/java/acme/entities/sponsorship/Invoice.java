@@ -71,6 +71,8 @@ public class Invoice extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Sponsor				sponsor;
 
+	private boolean				draftMode;
+
 	// Derived attributes -------------------------------------------------------------
 
 

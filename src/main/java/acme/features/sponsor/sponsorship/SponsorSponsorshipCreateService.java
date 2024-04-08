@@ -1,14 +1,16 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Principal;
-import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -25,26 +27,19 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = !this.getRequest().getPrincipal().hasRole(Sponsor.class);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Sponsor object;
-		Principal principal;
-		int userAccountId;
-		UserAccount userAccount;
+		Sponsorship object;
+		Sponsor sponsor;
 
-		principal = this.getRequest().getPrincipal();
-		userAccountId = principal.getAccountId();
-		userAccount = this.repository.findOneUserAccountById(userAccountId);
+		sponsor = this.repository.findOneSponsorById(super.getRequest().getPrincipal().getActiveRoleId());
 
-		object = new Sponsor();
-		object.setUserAccount(userAccount);
+		object = new Sponsorship();
+		object.setDraftMode(true);
+		object.setSponsor(sponsor);
 
 		super.getBuffer().addData(object);
 	}
@@ -53,7 +48,17 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		// duda con TakeChargeOf (relación many-to-many Sponsor y Project)
+		// en el otro proyecto es WorkFor (company y employer)
+
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		object.setProject(project);
 	}
 
 	@Override
@@ -72,9 +77,20 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
+		int sponsorId;
+		Collection<Project> projects;
+		SelectChoices choices;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		// duda con TakeChargeOf (relación many-to-many Sponsor y Project)
+
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		choices = SelectChoices.from(projects, "title", object.getProject());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
 
 		super.getResponse().addData(dataset);
 	}
@@ -84,5 +100,4 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (super.getRequest().getMethod().equals("POST"))
 			PrincipalHelper.handleUpdate();
 	}
-
 }

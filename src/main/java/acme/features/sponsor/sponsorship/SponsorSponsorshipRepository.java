@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.data.accounts.UserAccount;
 import acme.client.repositories.AbstractRepository;
+import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
@@ -29,5 +30,14 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select i from Invoice i where i.sponsor.id = :id")
 	Collection<Invoice> findManyInvoicesBySponsor(int id);
+
+	@Query("select p from Project p where p.id = :id")
+	Project findOneProjectById(int id);
+
+	@Query("select i from Invoice i where i.sponsorship.id = :id")
+	Collection<Invoice> findManyInvoicesBySponsorshipId(int id);
+
+	@Query("select tco.project from TakeChargeOf tco where tco.sponsor.id = :id")
+	Collection<Project> findManyProjectsBySponsorId(int id);
 
 }

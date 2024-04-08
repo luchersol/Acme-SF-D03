@@ -1,11 +1,15 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -30,7 +34,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		masterId = super.getRequest().getData("id", int.class);
 		sponsorship = this.repository.findOneSponsorshipById(masterId);
 		sponsor = sponsorship == null ? null : sponsorship.getSponsor();
-		status = sponsorship != null && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && sponsorship.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,8 +53,14 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void bind(final Sponsorship object) {
 		assert object != null;
+		int projectId;
+		Project project;
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		object.setProject(project);
 	}
 
 	@Override
@@ -69,9 +79,19 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
+		int sponsorId;
+		Collection<Project> projects;
+		SelectChoices choices;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		choices = SelectChoices.from(projects, "title", object.getProject());
+
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 

@@ -19,13 +19,14 @@ sponsor.sponsorship.list.label.code = Código
 sponsor.sponsorship.list.button.create = Crear
 
 sponsor.sponsorship.form.label.code = Código: 
+sponsor.sponsorship.form.label.project = Projecto:
 sponsor.sponsorship.form.label.moment = Momento: 
 sponsor.sponsorship.form.label.startDate = Fecha inicio:
 sponsor.sponsorship.form.label.endDate = Fecha final:
 sponsor.sponsorship.form.label.amount = Cantidad:
 sponsor.sponsorship.form.label.type = Tipo de patrocinio:
-sponsor.sponsorship.form.label.email = Correo:
-sponsor.sponsorship.form.label.link = Más información:
+sponsor.sponsorship.form.label.email = Correo (Opcional):
+sponsor.sponsorship.form.label.link = Más información (Opcional):
 		
 sponsor.sponsorship.form.button.update = Actualizar
 sponsor.sponsorship.form.button.delete = Borrar

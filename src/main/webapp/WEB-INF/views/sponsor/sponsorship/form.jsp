@@ -17,6 +17,7 @@
 
 <acme:form> 
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>	
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>	
 	<acme:input-moment code="sponsor.sponsorship.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.endDate" path="endDate"/>
