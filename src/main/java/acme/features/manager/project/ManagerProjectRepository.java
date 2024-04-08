@@ -34,6 +34,9 @@ import acme.roles.Manager;
 @Repository
 public interface ManagerProjectRepository extends AbstractRepository {
 
+	@Query("select sys.acceptedCurrencies from SystemConfiguration sys")
+	String findAcceptedCurrencies();
+
 	@Query("select p from Project p where p.id = :id")
 	Project findOneProjectById(int id);
 

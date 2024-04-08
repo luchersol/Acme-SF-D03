@@ -95,8 +95,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Collection<ProjectUserStory> projectUserStories = this.repository.findRelationsUserStoriesWithProjectByProjectId(projectId);
 		Collection<UserStory> userStories = projectUserStories.stream().map(ProjectUserStory::getUserStory).toList();
 
-		System.out.println(progressLogs);
-		System.out.println(contracts);
 		this.repository.deleteAll(invoices);
 		this.repository.deleteAll(sponsorships);
 		this.repository.deleteAll(trainingSessions);

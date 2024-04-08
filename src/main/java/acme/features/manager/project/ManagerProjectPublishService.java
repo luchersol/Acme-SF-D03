@@ -38,16 +38,25 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 	@Override
 	public void load() {
-		Project object = new Project();
+		Manager manager;
+		Project project;
+		int managerId;
 
-		super.getBuffer().addData(object);
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findManagerById(managerId);
+
+		project = new Project();
+		project.setDraftMode(false);
+		project.setManager(manager);
+
+		super.getBuffer().addData(project);
 	}
 
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link", "manager");
+		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 	}
 
 	@Override
@@ -58,24 +67,21 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		if (!super.getBuffer().getErrors().hasErrors("publishedUserStories")) {
 			state = this.repository.allUserStoriesPublishedByProjecId(object.getId());
-			super.state(state, "publishedUserStories", "manager.project.form.error.publishedUserStories");
+			super.state(state, "published-user-stories", "manager.project.form.error.published-user-stories");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("withoutUserStories")) {
 			state = this.repository.anyUserStoryByProjectId(object.getId());
-			super.state(state, "withoutUserStories", "manager.project.form.error.withoutUserStories");
+			super.state(state, "without-user-stories", "manager.project.form.error.without-user-stories");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("fatalError")) {
-			state = object.getIndication();
-			super.state(state, "fatalError", "manager.project.form.error.fatalError");
+			state = !object.getIndication();
+			super.state(state, "fatal-error", "manager.project.form.error.fatal-error");
 		}
-
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
-
-		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -86,7 +92,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode", "manager");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		super.getBuffer().addData(dataset);
 	}

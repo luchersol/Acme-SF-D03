@@ -22,13 +22,16 @@
 	<acme:input-checkbox code="manager.project.form.label.indication" path="indication"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
-	
-	<jstl:if test="${draftMode}">
-		<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
-		<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
-		<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
-	</jstl:if>
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
-	</jstl:if>
+
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode}">
+			<acme:submit code="manager.project.form.button.update" action="/manager/project/update?id=${id}"/>
+			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
+			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
+		</jstl:when>		
+	</jstl:choose>	
+
 </acme:form>

@@ -28,7 +28,8 @@ manager.project.form.button.update = Update
 manager.project.form.button.delete = Delete
 manager.project.form.button.publish = Publish
 
-manager.project.form.error.publishedUserStories = All user stories of the project must be published
-manager.project.form.error.withoutUserStories = The project must have any user story
-manager.project.form.error.fatalError = You can't publish proyects with fatal errors
-manager.project.form.error.cost = The cost must be positive or zero
+manager.project.form.error.published-user-stories = All user stories of the project must be published
+manager.project.form.error.without-user-stories = The project must have any user story
+manager.project.form.error.fatal-error = You can't publish proyects with fatal errors
+manager.project.form.error.negative-cost = The cost must be positive or zero
+manager.project.form.error.invalid-currency = The currency must be in the system configuration

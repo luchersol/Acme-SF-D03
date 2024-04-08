@@ -12,6 +12,7 @@
 
 package acme.features.manager.project;
 
+import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,9 +77,13 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
 			state = object.getCost().getAmount() >= 0;
-			super.state(state, "cost", "manager.project.form.error.cost");
+			super.state(state, "negative-cost", "manager.project.form.error.negative-cost");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("invalid-currency")) {
+			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getCost().getCurrency());
+			super.state(state, "invalid-currency", "manager.project.form.error.invalid-currency");
 		}
 		System.out.println("4: " + super.getBuffer().getErrors());
 	}
@@ -95,7 +100,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
-		System.out.println("CARGA");
+
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		super.getBuffer().addData(dataset);
