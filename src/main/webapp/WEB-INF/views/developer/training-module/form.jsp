@@ -27,10 +27,10 @@
 
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="developer.training-module.form.button.activities" action="/developer/activity/list?masterId=${id}"/>			
+			<acme:button code="developer.training-module.form.button.activities" action="/developer/training-session/list?masterId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:button code="developer.training-module.form.button.activities" action="/developer/activity/list?masterId=${id}"/>
+			<acme:button code="developer.training-module.form.button.activities" action="/developer/training-session/list?masterId=${id}"/>
 			<acme:submit code="developer.training-module.form.button.update" action="/developer/training-module/update"/>
 			<acme:submit code="developer.training-module.form.button.delete" action="/developer/training-module/delete"/>
 			<acme:submit code="developer.training-module.form.button.publish" action="/developer/training-module/publish"/>

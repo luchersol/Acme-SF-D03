@@ -12,6 +12,8 @@
 
 package acme.features.developer.trainingSession;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,6 +68,18 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+
+		// Validate time period
+		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
+			Date oneWeekAhead = new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
+			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + 7 * 24 * 60 * 60 * 1000); // One week period from the start time
+
+			boolean isOneWeekAhead = object.getTimeStart().after(oneWeekAhead);
+			boolean isOneWeekLong = object.getTimeEnd().after(oneWeekPeriod);
+
+			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
+			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
+		}
 	}
 
 	@Override
