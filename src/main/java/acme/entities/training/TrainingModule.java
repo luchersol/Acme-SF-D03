@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -73,19 +74,9 @@ public class TrainingModule extends AbstractEntity {
 	private Boolean				draftMode;
 
 
-	public TrainingModule() {
-	}
-
-	public TrainingModule(final String code, final Date creationMoment, final String details, final DifficultyLevel difficultyLevel, final Date updateMoment, final String link, final Double estimatedTotalTime, final Project project, final Developer developer) {
-		this.code = code;
-		this.creationMoment = creationMoment;
-		this.details = details;
-		this.difficultyLevel = difficultyLevel;
-		this.updateMoment = updateMoment;
-		this.link = link;
-		this.estimatedTotalTime = estimatedTotalTime;
-		this.project = project;
-		this.developer = developer;
+	@Transient
+	public Boolean isValid() {
+		return this.draftMode && this.estimatedTotalTime >= 0;
 	}
 
 }

@@ -25,4 +25,4 @@
 	<acme:list-column code="developer.training-module.list.label.estimatedTotalTime" path="estimatedTotalTime" width="10%"/>
 </acme:list>
 
-
+<acme:button code="developer.training-module.list.button.create" action="/developer/training-module/create"/>

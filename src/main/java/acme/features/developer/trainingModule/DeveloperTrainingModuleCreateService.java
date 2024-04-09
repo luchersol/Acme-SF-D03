@@ -12,13 +12,15 @@
 
 package acme.features.developer.trainingModule;
 
-import java.util.Date;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.training.DifficultyLevel;
 import acme.entities.training.TrainingModule;
 import acme.roles.Developer;
@@ -26,12 +28,8 @@ import acme.roles.Developer;
 @Service
 public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
-
-	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -41,36 +39,44 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 	@Override
 	public void load() {
-		// Initialize the required objects
-		DifficultyLevel difficultyLevel = DifficultyLevel.ADVANCED;
+		TrainingModule object;
+		Developer developer;
 
-		// Initialize the date objects
-		Date creationMoment = new Date();
-		Date updateMoment = new Date();
-
-		// Create a new Training object
-		TrainingModule object = new TrainingModule("CODE-123", creationMoment, "Details about the training", difficultyLevel, updateMoment, "http://example.com", 10.0, null, null);
+		developer = this.repository.findOneDeveloperById(super.getRequest().getPrincipal().getActiveRoleId());
+		object = new TrainingModule();
+		object.setDraftMode(true);
+		object.setDeveloper(developer);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final TrainingModule object) {
-		Dataset dataset;
+		assert object != null;
 
-		dataset = super.unbind(object, "");
+		int projectId;
+		Project project;
 
-		super.getResponse().addData(dataset);
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
+		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+		// Validate code
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			TrainingModule existing;
+			existing = this.repository.findOneTrainingByCode(object.getCode());
+			super.state(existing == null, "code", "developer.trainingModule.form.error.duplicated");
+		}
+		// Validate updateMoment
+		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
+			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
 	}
 
 	@Override
@@ -78,6 +84,28 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		assert object != null;
 
 		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final TrainingModule object) {
+		assert object != null;
+
+		Collection<Project> projects;
+		SelectChoices choicesProject;
+		SelectChoices choicesDifficulty;
+		Dataset dataset;
+
+		projects = this.repository.findAllProjects();
+		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");
+		dataset.put("project", choicesProject.getSelected().getKey());
+		dataset.put("projects", choicesProject);
+		dataset.put("difficultyLevel", choicesDifficulty.getSelected().getKey());
+		dataset.put("difficultyLevels", choicesDifficulty);
+
+		super.getResponse().addData(dataset);
 	}
 
 }
