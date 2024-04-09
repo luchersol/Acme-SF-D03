@@ -29,5 +29,6 @@ developer.training-session.list.label.timeEnd = Hora de finalización
 developer.training-session.list.label.location = Ubicación
 developer.training-session.list.label.instructor = Instructor
 developer.training-session.list.label.contactEmail = Correo electrónico de contacto
+developer.training-session.form.label.link = Enlace
 
 developer.training-session.list.button.create = Crear

@@ -29,5 +29,6 @@ developer.trainingSession.list.label.timeEnd = End Time
 developer.trainingSession.list.label.location = Location
 developer.trainingSession.list.label.instructor = Instructor
 developer.trainingSession.list.label.contactEmail = Contact Email
+developer.training-session.form.label.link = Link
 
 developer.trainingSession.list.button.create = Create

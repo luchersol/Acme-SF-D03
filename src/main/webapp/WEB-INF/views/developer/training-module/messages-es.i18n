@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.training-module.form.title = Proyectos de
+developer.training-module.form.title = Formulario de Entrenamiento
 developer.training-module.list.title = Listado de entrenamientos
 
 developer.training-module.form.label.code = Codigo:
