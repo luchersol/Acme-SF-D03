@@ -77,6 +77,10 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 
 		boolean state;
 
+		if (!super.getBuffer().getErrors().hasErrors("duplicated-code")) {
+			state = !this.repository.existsByCode(object.getCode());
+			super.state(state, "duplicated-code", "manager.project.form.error.duplicated-code");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
 			state = object.getCost().getAmount() >= 0;
 			super.state(state, "negative-cost", "manager.project.form.error.negative-cost");

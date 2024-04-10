@@ -33,3 +33,4 @@ manager.project.form.error.without-user-stories = The project must have any user
 manager.project.form.error.fatal-error = You can't publish proyects with fatal errors
 manager.project.form.error.negative-cost = The cost must be positive or zero
 manager.project.form.error.invalid-currency = The currency must be in the system configuration
+manager.project.form.error.duplicated-code = The code exists

@@ -66,7 +66,9 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void bind(final Project object) {
 		assert object != null;
 		System.out.println("3.1: " + super.getBuffer().getErrors());
+		System.out.println(object.getId() + ", " + object.getVersion());
 		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+
 		System.out.println(object);
 		System.out.println("3.2: " + super.getBuffer().getErrors());
 	}
@@ -77,6 +79,10 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		boolean state;
 
+		if (!super.getBuffer().getErrors().hasErrors("duplicated-code")) {
+			state = !this.repository.existsByCode(object.getCode());
+			super.state(state, "duplicated-code", "manager.project.form.error.duplicated-code");
+		}
 		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
 			state = object.getCost().getAmount() >= 0;
 			super.state(state, "negative-cost", "manager.project.form.error.negative-cost");
