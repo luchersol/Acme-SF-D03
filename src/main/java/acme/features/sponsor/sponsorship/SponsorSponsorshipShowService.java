@@ -1,11 +1,15 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
@@ -50,9 +54,23 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
+		int sponsorId;
+		Collection<Project> projects;
+		SelectChoices choices;
 		Dataset dataset;
 
+		if (!object.isDraftMode())
+			projects = this.repository.findAllProjects();
+		else {
+			sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+			projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		}
+		choices = SelectChoices.from(projects, "code", object.getProject());
+
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
+
 		super.getResponse().addData(dataset);
 	}
 }

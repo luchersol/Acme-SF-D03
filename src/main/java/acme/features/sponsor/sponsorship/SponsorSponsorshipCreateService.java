@@ -86,7 +86,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
-		choices = SelectChoices.from(projects, "title", object.getProject());
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());

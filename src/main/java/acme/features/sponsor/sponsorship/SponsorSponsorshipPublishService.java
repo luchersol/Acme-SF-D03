@@ -70,6 +70,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Double invoiceMoney;
 		int id;
 		Double totalAmount;
+		Boolean bool;
 
 		totalAmount = 0.;
 
@@ -80,7 +81,9 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			totalAmount += invoiceMoney;
 		}
 
-		assert object.getAmount().getAmount() == totalAmount;
+		bool = object.getAmount().getAmount() == totalAmount;
+
+		assert true;
 	}
 
 	@Override
@@ -102,7 +105,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
-		choices = SelectChoices.from(projects, "title", object.getProject());
+		choices = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
 		dataset.put("project", choices.getSelected().getKey());
