@@ -4,7 +4,6 @@ package acme.entities.project;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,10 +17,12 @@ import acme.client.data.datatypes.Money;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 public class Project extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -61,9 +62,4 @@ public class Project extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Manager				manager;
 
-
-	@Transient
-	public Boolean isValid() {
-		return (!this.indication || this.draftMode) && this.cost.getAmount() >= 0;
-	}
 }

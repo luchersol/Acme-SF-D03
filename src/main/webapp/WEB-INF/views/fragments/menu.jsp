@@ -26,7 +26,9 @@
 			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
 		
-
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
