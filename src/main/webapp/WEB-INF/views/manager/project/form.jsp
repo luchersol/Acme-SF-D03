@@ -33,5 +33,7 @@
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
 		</jstl:when>		
 	</jstl:choose>	
+	
+	<acme:button code="manager.project.form.label.user-story" action="/manager/user-story/list?masterId=${id}"/>
 
 </acme:form>

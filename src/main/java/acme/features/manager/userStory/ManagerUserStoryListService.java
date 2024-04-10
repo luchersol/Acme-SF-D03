@@ -12,6 +12,8 @@
 
 package acme.features.manager.userStory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryListMineService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryListService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -38,16 +40,20 @@ public class ManagerUserStoryListMineService extends AbstractService<Manager, Us
 
 	@Override
 	public void load() {
-		UserStory project = new UserStory();
+		Collection<UserStory> object;
+		int projectId;
 
-		super.getBuffer().addData(project);
+		projectId = super.getRequest().getData("masterId", int.class);
+		object = this.repository.findUserStoriesByProjectId(projectId);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "");
+		dataset = super.unbind(object, "title", "priority");
 
 		super.getResponse().addData(dataset);
 	}

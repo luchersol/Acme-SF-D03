@@ -38,16 +38,20 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void load() {
-		UserStory project = new UserStory();
+		UserStory object;
+		int id;
 
-		super.getBuffer().addData(project);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneUserStoryById(id);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
