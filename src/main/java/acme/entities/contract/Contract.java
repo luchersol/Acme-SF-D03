@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +21,7 @@ import org.hibernate.validator.constraints.Length;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.client.helpers.MomentHelper;
 import acme.entities.project.Project;
 import acme.roles.Client;
 import lombok.Getter;
@@ -26,6 +30,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "draftMode, instantiationMoment"), //
+	@Index(columnList = "client_id, id")
+})
 public class Contract extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -56,13 +64,27 @@ public class Contract extends AbstractEntity {
 	@NotNull
 	private Money				budget;
 
-	@Valid
 	@NotNull
-	@ManyToOne(optional = false)
-	private Project				project;
+	private Boolean				draftMode;
+
+
+	@Transient
+	public boolean isAvailable() {
+		boolean result;
+
+		result = !this.draftMode && MomentHelper.isFuture(this.instantiationMoment);
+
+		return result;
+	}
+
 
 	@Valid
 	@NotNull
 	@ManyToOne(optional = false)
-	private Client				client;
+	private Project	project;
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	private Client	client;
 }
