@@ -20,3 +20,6 @@
 	<acme:list-column code="client.contract.list.label.providerName" path="providerName" width="10%"/>
 	<acme:list-column code="client.contract.list.label.customerName" path="customerName" width="70%"/>
 </acme:list>
+
+<acme:button code="client.contract.list.button.create" action="/client/contract/create"/>
+

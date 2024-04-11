@@ -2,21 +2,20 @@
 package acme.features.client.contract;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
+import acme.entities.contract.ProgressLogs;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
 @Service
-public class ClientContractShowService extends AbstractService<Client, Contract> {
+public class ClientContractDeleteService extends AbstractService<Client, Contract> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -32,13 +31,12 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		int masterId;
 		Contract contract;
 		Client client;
-		Date currentMoment;
 
-		masterId = super.getRequest().getData("id", int.class);
+		masterId = this.getRequest().getData("id", int.class);
 		contract = this.repository.findOneContractById(masterId);
 		client = contract == null ? null : contract.getClient();
-		currentMoment = MomentHelper.getCurrentMoment();
-		status = super.getRequest().getPrincipal().hasRole(client) || contract != null && MomentHelper.isAfter(contract.getInstantiationMoment(), currentMoment);
+		status = contract != null && contract.getDraftMode() && //
+			super.getRequest().getPrincipal().hasRole(client);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -55,21 +53,53 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 	}
 
 	@Override
+	public void bind(final Contract contract) {
+		assert contract != null;
+
+		int projectId;
+		Project project;
+
+		projectId = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectById(projectId);
+
+		super.bind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget");
+		contract.setProject(project);
+	}
+
+	@Override
+	public void validate(final Contract contract) {
+		assert contract != null;
+	}
+
+	@Override
+	public void perform(final Contract contract) {
+		assert contract != null;
+
+		Collection<ProgressLogs> progressLogs;
+
+		progressLogs = this.repository.findManyProgressLogsId(contract.getId());
+		this.repository.deleteAll(progressLogs);
+		this.repository.delete(contract);
+
+	}
+
+	@Override
 	public void unbind(final Contract contract) {
 		assert contract != null;
 
 		Collection<Project> projectAllPublish;
-		SelectChoices choicesProject;
+		SelectChoices choices;
 		Dataset dataset;
 
 		projectAllPublish = this.repository.findAllProjectsPublish();
 
-		choicesProject = SelectChoices.from(projectAllPublish, "title", contract.getProject());
+		choices = SelectChoices.from(projectAllPublish, "title", contract.getProject());
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
-		dataset.put("project", choicesProject.getSelected().getKey());
-		dataset.put("projects", choicesProject);
+		dataset.put("project", choices.getSelected().getKey());
+		dataset.put("projects", choices);
 
-		super.getResponse().addData(dataset);
+		super.getBuffer().addData(dataset);
+
 	}
 }
