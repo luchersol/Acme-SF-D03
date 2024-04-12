@@ -25,6 +25,12 @@ master.menu.student4 = 53966183H: Miret Martín, José Manuel
 master.menu.student5 = 20231074K: Galván Cancio, Daniel
 master.menu.anonymous.favourite-link = Enlace favorito
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autentificado
+master.menu.authenticated.announcement.list = Ver anuncios
+master.menu.authenticated.money-exchage = Cambio de dinero
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
