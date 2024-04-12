@@ -35,11 +35,18 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 
+<<<<<<< HEAD
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.announcement.list = List announcements
 master.menu.authenticated.money-exchage = Money exchange
+=======
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = Projects
+>>>>>>> refs/heads/Task7-E1
 
 # master.menu.provider ########################################################
 
