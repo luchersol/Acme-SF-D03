@@ -18,10 +18,6 @@
 <acme:list>
 	<acme:list-column code="manager.user-story.list.label.title" path="title"/>
 	<acme:list-column code="manager.user-story.list.label.priority" path="priority"/>
-</acme:list>
-
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="manager.user-story.list.button.create" action="/manager/user-story/create"/>
-</jstl:if>		
+</acme:list>	
 	
 

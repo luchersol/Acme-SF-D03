@@ -78,7 +78,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("duplicated-code")) {
-			state = !this.repository.existsByCode(object.getCode());
+			state = this.repository.findDuplicatedByCodeAndId(object.getCode(), object.getId()) == null;
 			super.state(state, "duplicated-code", "manager.project.form.error.duplicated-code");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
@@ -102,6 +102,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	@Override
 	public void unbind(final Project object) {
 		Dataset dataset;
+
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);

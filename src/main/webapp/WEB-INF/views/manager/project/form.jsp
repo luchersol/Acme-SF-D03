@@ -16,6 +16,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
+
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>	
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
 	<acme:input-textarea code="manager.project.form.label.abstractProject" path="abstractProject"/>
@@ -28,12 +29,15 @@
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update?id=${id}"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
+			<acme:button code="manager.project.form.button.list.user-story" action="/manager/user-story/list?masterId=${id}"/>
+			<acme:button code="manager.project.form.button.create.user-story" action="/manager/user-story/create?masterId=${id}"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'show'}">
+			<acme:button code="manager.project.form.button.list.user-story" action="/manager/user-story/list?masterId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
 		</jstl:when>		
 	</jstl:choose>	
-	
-	<acme:button code="manager.project.form.label.user-story" action="/manager/user-story/list?masterId=${id}"/>
 
 </acme:form>

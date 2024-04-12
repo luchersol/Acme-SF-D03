@@ -49,6 +49,7 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void unbind(final UserStory object) {
+		assert object != null;
 		Dataset dataset;
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");

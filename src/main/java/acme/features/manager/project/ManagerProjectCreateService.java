@@ -48,12 +48,6 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		manager = this.repository.findManagerById(managerId);
 
 		object = new Project();
-		object.setCode("");
-		object.setTitle("");
-		object.setAbstractProject("");
-		object.setIndication(false);
-		object.setCost(null);
-		object.setLink("");
 		object.setDraftMode(true);
 		object.setManager(manager);
 
@@ -67,6 +61,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		assert object != null;
 		System.out.println("3.1: " + super.getBuffer().getErrors());
 		System.out.println(object.getId() + ", " + object.getVersion());
+
 		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		System.out.println(object);

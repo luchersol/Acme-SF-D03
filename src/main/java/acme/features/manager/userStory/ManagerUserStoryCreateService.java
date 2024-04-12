@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.project.PriorityUserStory;
+import acme.entities.project.Project;
+import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -38,40 +42,63 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void load() {
-		UserStory object = new UserStory();
+		UserStory object;
+		Manager manager;
+		int managerId;
+
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		manager = this.repository.findManagerById(managerId);
+
+		object = new UserStory();
+		object.setDraftMode(true);
+		object.setManager(manager);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
-		Dataset dataset;
-
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 	}
 
 	@Override
 	public void validate(final UserStory object) {
-		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		this.repository.save(object);
+		ProjectUserStory relation;
+		Project project;
+		UserStory userStory;
+		int projectId;
+
+		projectId = this.getRequest().getData("masterId", int.class);
+		project = this.repository.findOneProjectById(projectId);
+		userStory = this.repository.save(object);
+
+		relation = new ProjectUserStory();
+		relation.setProject(project);
+		relation.setUserStory(userStory);
+		this.repository.save(relation);
+
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
-		// TODO Auto-generated method stub
-		super.unbind(object);
+		assert object != null;
+		Dataset dataset;
+		SelectChoices choices;
+		int masterId;
+		masterId = this.getRequest().getData("masterId", int.class);
+
+		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
+		dataset.put("priorities", choices);
+		dataset.put("masterId", masterId);
+
+		super.getResponse().addData(dataset);
 	}
 }

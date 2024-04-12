@@ -12,10 +12,14 @@
 
 package acme.features.manager.userStory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -44,31 +48,35 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void bind(final UserStory object) {
-		// TODO Auto-generated method stub
-		super.bind(object);
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
+		Collection<ProjectUserStory> relations;
+		int userId = object.getId();
 
+		relations = this.repository.findRelationsUserStoriesWithProjectByUserStoryId(userId);
+
+		this.repository.deleteAll(relations);
 		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
-		// TODO Auto-generated method stub
-		super.unbind(object);
+		assert object != null;
+		Dataset dataset;
+
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
+
+		super.getResponse().addData(dataset);
 	}
 
 }
