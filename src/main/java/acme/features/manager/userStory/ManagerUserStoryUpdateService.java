@@ -10,23 +10,24 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.project;
+package acme.features.manager.userStory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
+import acme.entities.project.UserStory;
+import acme.roles.Manager;
 
 @Service
-public class AnyProjectShowService extends AbstractService<Any, Project> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -38,23 +39,41 @@ public class AnyProjectShowService extends AbstractService<Any, Project> {
 
 	@Override
 	public void load() {
-		Project object;
-		int id;
+		Project project = new Project();
 
-		id = this.getRequest().getData("id", int.class);
-		object = this.repository.findPublishedProjectById(id);
-
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(project);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void bind(final UserStory object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", //
-			"indication", "cost", "link");
+		dataset = super.unbind(object, "");
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void validate(final UserStory object) {
+		assert object != null;
+
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
+	}
+
+	@Override
+	public void perform(final UserStory object) {
+		assert object != null;
+
+		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.unbind(object);
 	}
 
 }

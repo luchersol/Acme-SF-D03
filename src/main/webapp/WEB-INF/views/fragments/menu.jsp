@@ -27,7 +27,7 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
-			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all"/>
+			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">

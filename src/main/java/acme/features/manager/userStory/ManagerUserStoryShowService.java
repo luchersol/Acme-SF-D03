@@ -10,23 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.project;
+package acme.features.manager.userStory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
+import acme.entities.project.UserStory;
+import acme.roles.Manager;
 
 @Service
-public class AnyProjectShowService extends AbstractService<Any, Project> {
+public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -38,21 +38,21 @@ public class AnyProjectShowService extends AbstractService<Any, Project> {
 
 	@Override
 	public void load() {
-		Project object;
+		UserStory object;
 		int id;
 
-		id = this.getRequest().getData("id", int.class);
-		object = this.repository.findPublishedProjectById(id);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final UserStory object) {
+		assert object != null;
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", //
-			"indication", "cost", "link");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

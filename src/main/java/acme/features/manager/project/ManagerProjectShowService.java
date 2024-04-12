@@ -10,23 +10,23 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.project;
+package acme.features.manager.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.project.Project;
+import acme.roles.Manager;
 
 @Service
-public class AnyProjectShowService extends AbstractService<Any, Project> {
+public class ManagerProjectShowService extends AbstractService<Manager, Project> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectRepository repository;
+	private ManagerProjectRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -42,17 +42,20 @@ public class AnyProjectShowService extends AbstractService<Any, Project> {
 		int id;
 
 		id = this.getRequest().getData("id", int.class);
-		object = this.repository.findPublishedProjectById(id);
+		object = this.repository.findOneProjectById(id);
+
+		assert object != null;
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final Project object) {
+		assert object != null;
+
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", //
-			"indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

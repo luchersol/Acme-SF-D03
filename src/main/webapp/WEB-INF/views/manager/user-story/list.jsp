@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- list.jsp
 -
 - Copyright (C) 2012-2024 Rafael Corchuelo.
 -
@@ -15,12 +15,9 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form readonly="${true}">
-	<acme:input-textbox code="any.project.form.label.code" path="code"/>
-	<acme:input-textbox code="any.project.form.label.title" path="title"/>
-	<acme:input-textbox code="any.project.form.label.abstractProject" path="abstractProject"/>
-	<acme:input-checkbox code="any.project.form.label.indication" path="indication"/>	
-	<acme:input-money code="any.project.form.label.cost" path="cost"/>	
-	<acme:input-url code="any.project.form.label.link" path="link"/>	
-</acme:form>
+<acme:list>
+	<acme:list-column code="manager.user-story.list.label.title" path="title"/>
+	<acme:list-column code="manager.user-story.list.label.priority" path="priority"/>
+</acme:list>	
+	
 

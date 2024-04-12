@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.any.project;
+package acme.features.manager.project;
 
 import javax.annotation.PostConstruct;
 
@@ -18,30 +18,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Any;
 import acme.entities.project.Project;
+import acme.roles.Manager;
 
 @Controller
-public class AnyProjectController extends AbstractController<Any, Project> {
+public class ManagerProjectController extends AbstractController<Manager, Project> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyProjectListAllService	listAllService;
+	private ManagerProjectListMineService	listMineService;
 
 	@Autowired
-	private AnyProjectShowService		showService;
+	private ManagerProjectShowService		showService;
+
+	@Autowired
+	private ManagerProjectCreateService		createService;
+
+	@Autowired
+	private ManagerProjectUpdateService		updateService;
+
+	@Autowired
+	private ManagerProjectDeleteService		deleteService;
+
+	@Autowired
+	private ManagerProjectPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
 
-		super.addCustomCommand("list-all-published", "list", this.listAllService);
-
+		super.addCustomCommand("publish", "update", this.publishService);
+		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
 
 }
