@@ -19,8 +19,15 @@
 	<acme:input-textbox code="manager.user-account.form.label.degree" path="degree"/>
 	<acme:input-textbox code="manager.user-account.form.label.overview" path="overview"/>	
 	<acme:input-textbox code="manager.user-account.form.label.certifications" path="certifications"/>
-	<acme:input-textbox code="manager.user-account.form.label.link" path="link"/>
+	<acme:input-url code="manager.user-account.form.label.link" path="link"/>
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update')}">
+			<acme:submit code="manager.user-account.form.button.update" action="/authenticated/manager/update"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="manager.user-account.form.button.create" action="/authenticated/manager/create"/>
+		</jstl:when>
+	</jstl:choose>
 </acme:form>
-
-<acme:button code="manager.user-account.form.button.update" action="/manager/user-account/update"/>
 

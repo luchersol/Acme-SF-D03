@@ -47,11 +47,14 @@ public class UserStory extends AbstractEntity {
 	private String				link;
 
 	@NotNull
-	private PriorityUserStory			priority;
+	private PriorityUserStory	priority;
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager				manager;
+
+	@NotNull
+	private Boolean				draftMode;
 
 }

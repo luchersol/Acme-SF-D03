@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Principal;
 import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
@@ -35,12 +36,26 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = !this.getRequest().getPrincipal().hasRole(Manager.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		UserAccount object = null;
+		Manager object;
+		Principal principal;
+		int userAccountId;
+		UserAccount userAccount;
+
+		principal = super.getRequest().getPrincipal();
+		userAccountId = principal.getAccountId();
+		userAccount = this.repository.findOneUserAccountById(userAccountId);
+
+		object = new Manager();
+		object.setUserAccount(userAccount);
 
 		super.getBuffer().addData(object);
 	}

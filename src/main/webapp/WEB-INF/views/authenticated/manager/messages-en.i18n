@@ -8,11 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.user-account.form.title = Manager form
+authenticated.manager.form.title = Manager form
 
 manager.user-account.form.label.degree = Degree
 manager.user-account.form.label.overview = Overview
 manager.user-account.form.label.certifications = Certifications
 manager.user-account.form.label.link = Link
 
+manager.user-account.form.button.create = Create
 manager.user-account.form.button.update = Update

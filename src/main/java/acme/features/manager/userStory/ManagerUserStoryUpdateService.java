@@ -10,25 +10,24 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.manager;
+package acme.features.manager.userStory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
-import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
+import acme.entities.project.Project;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class AuthenticatedManagerUpdateService extends AbstractService<Authenticated, Manager> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedManagerRepository repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -40,45 +39,41 @@ public class AuthenticatedManagerUpdateService extends AbstractService<Authentic
 
 	@Override
 	public void load() {
-		UserAccount object = null;
+		Project project = new Project();
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(project);
 	}
 
 	@Override
-	public void bind(final Manager object) {
+	public void bind(final UserStory object) {
+		Dataset dataset;
+
+		dataset = super.unbind(object, "");
+
+		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void validate(final UserStory object) {
 		assert object != null;
 
-		super.bind(object, "degree", "overview", "certifications", "link");
+		boolean confirmation;
+
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
-	public void validate(final Manager object) {
-		assert object != null;
-	}
-
-	@Override
-	public void perform(final Manager object) {
+	public void perform(final UserStory object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Manager object) {
-		assert object != null;
-
-		Dataset dataset;
-
-		dataset = super.unbind(object, "degree", "overview", "certifications", "link");
-
-		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
+	public void unbind(final UserStory object) {
+		// TODO Auto-generated method stub
+		super.unbind(object);
 	}
 
 }

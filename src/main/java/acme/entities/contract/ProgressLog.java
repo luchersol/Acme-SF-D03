@@ -24,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class ProgressLogs extends AbstractEntity {
+public class ProgressLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
