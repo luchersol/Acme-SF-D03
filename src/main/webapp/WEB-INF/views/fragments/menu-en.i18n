@@ -19,6 +19,7 @@ master.menu.sign-out = Sign out
 
 master.menu.developer = Developer
 master.menu.developer.favourite-link = My trainings
+master.menu.developer.favourite-dashboard = My dashboard
 
 # master.menu.anonymous #######################################################
 

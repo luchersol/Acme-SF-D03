@@ -13,11 +13,13 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
@@ -51,10 +53,11 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	public void load() {
 		TrainingModule object;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingById(id);
-
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
+		object.setUpdateMoment(moment);
 		super.getBuffer().addData(object);
 	}
 
@@ -67,7 +70,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-
 		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
 		object.setProject(project);
 	}
@@ -75,16 +77,23 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
 		// Validate updateMoment
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
 
+		// Validate Training Modules with Training Session
+		super.state(!this.repository.findManyTrainingSessionsByMasterId(object.getId()).isEmpty(), "code", "developer.training-module.form.error.publish");
+		boolean allSessionsInDraftMode = this.repository.areAllTrainingSessionsPublished(object.getId());
+		super.state(allSessionsInDraftMode, "code", "developer.training-module.form.error.allpublish");
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
+		object.setUpdateMoment(moment);
 		object.setDraftMode(false);
 		this.repository.save(object);
 	}
@@ -98,8 +107,9 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		SelectChoices choicesDifficulty;
 		Dataset dataset;
 
-		projects = this.repository.findAllProjects();
-		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		projects = this.repository.findAllProjectPublish();
+
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");

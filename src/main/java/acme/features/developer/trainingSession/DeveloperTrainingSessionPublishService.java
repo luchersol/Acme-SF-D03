@@ -1,16 +1,7 @@
-/*
- * EmployerDutyDeleteService.java
- *
- * Copyright (C) 2012-2024 Rafael Corchuelo.
- *
- * In keeping with the traditional purpose of furthering education and research, it is
- * the policy of the copyright owner to permit non-commercial use and redistribution of
- * this software. It has been tested carefully, but it is not guaranteed for any particular
- * purposes. The copyright owner does not offer any warranties or representations, nor do
- * they accept any liabilities with respect to them.
- */
 
 package acme.features.developer.trainingSession;
+
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +13,7 @@ import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingSessionDeleteService extends AbstractService<Developer, TrainingSession> {
+public class DeveloperTrainingSessionPublishService extends AbstractService<Developer, TrainingSession> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -40,7 +31,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 
 		trainingSessionId = super.getRequest().getData("id", int.class);
 		trainingModule = this.repository.findOneTrainingModuleByTrainingSessionId(trainingSessionId);
-		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		status = trainingModule != null && trainingModule.getDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,6 +40,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	public void load() {
 		TrainingSession object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneTrainingSessionById(id);
 
@@ -65,13 +57,25 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 	@Override
 	public void validate(final TrainingSession object) {
 		assert object != null;
+		// Validate time period
+		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
+			Date oneWeekAhead = new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
+			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + 7 * 24 * 60 * 60 * 1000); // One week period from the start time
+
+			boolean isOneWeekAhead = object.getTimeStart().after(oneWeekAhead);
+			boolean isOneWeekLong = object.getTimeEnd().after(oneWeekPeriod);
+
+			super.state(isOneWeekAhead, "timeStart", "developer.training-session.form.error.notOneWeekAhead");
+			super.state(isOneWeekLong, "timeEnd", "developer.training-session.form.error.notOneWeekLong");
+		}
 	}
 
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
 
-		this.repository.delete(object);
+		object.setDraftMode(false);
+		this.repository.save(object);
 	}
 
 	@Override

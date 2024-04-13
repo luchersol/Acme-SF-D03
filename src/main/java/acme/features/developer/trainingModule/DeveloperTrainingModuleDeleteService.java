@@ -75,12 +75,17 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		// Validate updateMoment
+		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
+			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-
+		this.repository.deleteAll(this.repository.findManyTrainingSessionsByMasterId(object.getId()));
 		this.repository.delete(object);
 	}
 
@@ -93,8 +98,9 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		SelectChoices choicesDifficulty;
 		Dataset dataset;
 
-		projects = this.repository.findAllProjects();
-		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		projects = this.repository.findAllProjectPublish();
+
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");

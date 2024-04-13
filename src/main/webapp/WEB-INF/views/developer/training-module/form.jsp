@@ -17,10 +17,12 @@
 
 <acme:form> 
 	<acme:input-textbox code="developer.training-module.form.label.code" path="code"/>
-	<acme:input-moment code="developer.training-module.form.label.creationMoment" path="creationMoment"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+		<acme:input-moment readonly="${true}" code="developer.training-module.form.label.creationMoment" path="creationMoment"/>
+		<acme:input-moment readonly="${true}" code="developer.training-module.form.label.updateMoment" path="updateMoment"/>
+	</jstl:if>
 	<acme:input-textarea code="developer.training-module.form.label.details" path="details"/>
 	<acme:input-select code="developer.training-module.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevels}"/>
-	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment"/>
 	<acme:input-url code="developer.training-module.form.label.link" path="link"/>
 	<acme:input-double code="developer.training-module.form.label.estimatedTotalTime" path="estimatedTotalTime" placeholder="developer.training-module.form.placeholder.estimatedTotalTime"/>
 	<acme:input-select code="developer.training-module.form.label.project" path="project" choices="${projects}"/>

@@ -8,8 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.training-session.form.title = Training Session Form
-developer.training-session.list.title = Listing of Training Sessions
+developer.training-session.form.title = Training Session Details
+developer.training-session.list.title = List of Training Sessions
 
 developer.training-session.form.label.code = Code:
 developer.training-session.form.label.timeStart = Start Time:
@@ -17,18 +17,23 @@ developer.training-session.form.label.timeEnd = End Time:
 developer.training-session.form.label.location = Location:
 developer.training-session.form.label.instructor = Instructor:
 developer.training-session.form.label.contactEmail = Contact Email:
-developer.training-session.form.label.link = Link: (Optional)
+developer.trainingSession.form.label.link = Link: (Optional)
 
-developer.training-session.form.button.create = Create		
-developer.trainingSession.form.button.update = Update
-developer.trainingSession.form.button.delete = Delete
+developer.training-session.form.button.create = Create	
+developer.training-session.form.button.update = Update
+developer.training-session.form.button.delete = Delete
+developer.training-session.form.button.publish = Publish
 
-developer.trainingSession.list.label.code = Code
-developer.trainingSession.list.label.timeStart = Start Time
-developer.trainingSession.list.label.timeEnd = End Time
-developer.trainingSession.list.label.location = Location
-developer.trainingSession.list.label.instructor = Instructor
-developer.trainingSession.list.label.contactEmail = Contact Email
+developer.training-session.list.label.code = Code
+developer.training-session.list.label.timeStart = Start Time
+developer.training-session.list.label.timeEnd = End Time
+developer.training-session.list.label.location = Location
+developer.training-session.list.label.instructor = Instructor
+developer.training-session.list.label.contactEmail = Contact Email
 developer.training-session.form.label.link = Link
 
-developer.trainingSession.list.button.create = Create
+developer.training-session.list.button.create = Create
+
+developer.training-session.form.error.duplicated = This reference is not free
+developer.training-session.form.error.notOneWeekAhead = At least one week after the current date.
+developer.training-session.form.error.notOneWeekLong = It has to have a minimum period of 1 week

@@ -13,11 +13,13 @@
 package acme.features.developer.trainingModule;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
@@ -46,7 +48,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		object = new TrainingModule();
 		object.setDraftMode(true);
 		object.setDeveloper(developer);
-
 		super.getBuffer().addData(object);
 	}
 
@@ -56,11 +57,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 
 		int projectId;
 		Project project;
-
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
-
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime");
+		Date moment;
+		moment = MomentHelper.getCurrentMoment();
+		object.setCreationMoment(moment);
+		object.setUpdateMoment(null);
+		super.bind(object, "code", "details", "difficultyLevel", "link", "estimatedTotalTime");
 		object.setProject(project);
 	}
 
@@ -76,13 +79,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		}
 		// Validate updateMoment
 		if (object.getUpdateMoment() != null && !super.getBuffer().getErrors().hasErrors("updateMoment"))
-			super.state(object.getUpdateMoment().after(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+			super.state(!object.getUpdateMoment().before(object.getCreationMoment()), "updateMoment", "developer.trainingModule.form.error.invalid-updateMoment");
+
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -95,8 +98,9 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		SelectChoices choicesDifficulty;
 		Dataset dataset;
 
-		projects = this.repository.findAllProjects();
-		choicesProject = SelectChoices.from(projects, "title", object.getProject());
+		projects = this.repository.findAllProjectPublish();
+
+		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		choicesDifficulty = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "link", "estimatedTotalTime", "draftMode");

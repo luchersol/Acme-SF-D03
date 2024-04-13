@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
 import acme.entities.training.TrainingModule;
+import acme.entities.training.TrainingSession;
 import acme.roles.Developer;
 
 @Repository
@@ -27,6 +28,15 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("SELECT t FROM TrainingModule t WHERE t.id = :id")
 	TrainingModule findOneTrainingById(int id);
+
+	@Query("select ts from TrainingSession ts where ts.trainingModule.id = :masterId")
+	Collection<TrainingSession> findManyTrainingSessionsByMasterId(int masterId);
+
+	@Query("select p from Project p where p.draftMode = false")
+	Collection<Project> findAllProjectPublish();
+
+	@Query("SELECT CASE WHEN COUNT(t) > 0 THEN false ELSE true END FROM TrainingSession t WHERE t.trainingModule.id = :id AND t.draftMode = true")
+	boolean areAllTrainingSessionsPublished(int id);
 
 	@Query("select d from Developer d where d.id = :id")
 	Developer findOneDeveloperById(int id);

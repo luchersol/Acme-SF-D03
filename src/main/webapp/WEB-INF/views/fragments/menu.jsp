@@ -47,6 +47,7 @@
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.favourite-link" action="/developer/training-module/list-mine"/>
+			<acme:menu-suboption code="master.menu.developer.favourite-dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>
 		
 	</acme:menu-left>

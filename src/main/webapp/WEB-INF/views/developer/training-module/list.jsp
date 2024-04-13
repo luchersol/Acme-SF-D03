@@ -16,13 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="developer.training-module.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="developer.training-module.list.label.details" path="details" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.creationMoment" path="creationMoment" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.difficultyLevel" path="difficultyLevel" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.updateMoment" path="updateMoment" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.link" path="link" width="10%"/>
-	<acme:list-column code="developer.training-module.list.label.estimatedTotalTime" path="estimatedTotalTime" width="10%"/>
+	<acme:list-column code="developer.training-module.list.label.code" path="code"/>
+	<acme:list-column code="developer.training-module.list.label.creationMoment" path="creationMoment"/>
+	<acme:list-column code="developer.training-module.list.label.difficultyLevel" path="difficultyLevel"/>
+	<acme:list-column code="developer.training-module.list.label.updateMoment" path="updateMoment"/>
 </acme:list>
 
 <acme:button code="developer.training-module.list.button.create" action="/developer/training-module/create"/>

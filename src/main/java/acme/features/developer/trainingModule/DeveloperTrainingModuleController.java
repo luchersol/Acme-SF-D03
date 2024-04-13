@@ -33,16 +33,16 @@ public class DeveloperTrainingModuleController extends AbstractController<Develo
 	private DeveloperTrainingModuleShowService		showService;
 
 	@Autowired
-	private DeveloperTrainingModuleCreateService		createService;
+	private DeveloperTrainingModuleCreateService	createService;
 
 	@Autowired
-	private DeveloperTrainingModuleUpdateService		updateService;
+	private DeveloperTrainingModuleUpdateService	updateService;
 
 	@Autowired
-	private DeveloperTrainingModuleDeleteService		deleteService;
+	private DeveloperTrainingModuleDeleteService	deleteService;
 
 	@Autowired
-	private DeveloperTrainingModulePublishService		publishService;
+	private DeveloperTrainingModulePublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 

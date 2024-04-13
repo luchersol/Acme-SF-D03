@@ -65,14 +65,13 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		object.setContactEmail("");
 		object.setLink("");
 		object.setTrainingModule(trainingModule);
-
+		object.setDraftMode(true);
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final TrainingSession object) {
 		assert object != null;
-
 		super.bind(object, "code", "timeStart", "timeEnd", "location", "instructor", "contactEmail", "link");
 	}
 
@@ -84,7 +83,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			TrainingSession existing;
 			existing = this.repository.findOneTrainingSessionByCode(object.getCode());
-			super.state(existing == null, "code", "developer.trainingSession.form.error.duplicated");
+			super.state(existing == null, "code", "developer.training-session.form.error.duplicated");
 		}
 
 		// Validate time period
