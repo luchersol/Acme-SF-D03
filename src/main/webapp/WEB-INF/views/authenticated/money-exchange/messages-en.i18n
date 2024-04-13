@@ -17,4 +17,7 @@ authenticated.money-exchange.form.label.target = Target money:
 	
 authenticated.money-exchange.form.button.perform = Perform exchange
 
-authenticated.money-exchange.form.label.api-error = Sorry, could not perform the exchange
+authenticated.money-exchange.form.error.api-error = Sorry, could not perform the exchange
+authenticated.money-exchange.form.error.invalid-currency = Not valid currency
+authenticated.money-exchange.form.error.not-system-currency = The source currency must not be the same as the system currency
+authenticated.money-exchange.form.error.cost = The cost must be positive

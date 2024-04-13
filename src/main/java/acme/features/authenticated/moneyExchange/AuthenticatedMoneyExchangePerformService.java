@@ -14,6 +14,8 @@ package acme.features.authenticated.moneyExchange;
 
 import java.util.Date;
 
+import org.assertj.core.util.Arrays;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,6 +32,10 @@ import acme.form.MoneyExchange;
 public class AuthenticatedMoneyExchangePerformService extends AbstractService<Authenticated, MoneyExchange> {
 
 	// AbstractService interface ----------------------------------------------
+
+	@Autowired
+	AuthenticatedMoneyExchangeRepository repository;
+
 
 	@Override
 	public void authorise() {
@@ -49,12 +55,28 @@ public class AuthenticatedMoneyExchangePerformService extends AbstractService<Au
 	public void bind(final MoneyExchange object) {
 		assert object != null;
 
-		super.bind(object, "source", "targetCurrency", "date", "target");
+		super.bind(object, "source", "target");
 	}
 
 	@Override
 	public void validate(final MoneyExchange object) {
 		assert object != null;
+
+		boolean state;
+
+		if (!super.getBuffer().getErrors().hasErrors("invalid-currency")) {
+			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getSource().getCurrency());
+			super.state(state, "invalid-currency", "authenticated.money-exchange.form.error.invalid-currency");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("invalid-currency")) {
+			state = !this.repository.findSystemCurrency().equals(object.getSource().getCurrency());
+			super.state(state, "invalid-currency", "authenticated.money-exchange.form.error.not-system-currency");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
+			state = object.getSource().getAmount() > 0;
+			super.state(state, "cost", "authenticated.money-exchange.form.error.cost");
+		}
+
 	}
 
 	@Override
@@ -66,10 +88,10 @@ public class AuthenticatedMoneyExchangePerformService extends AbstractService<Au
 		Date date;
 		MoneyExchange exchange;
 
+		targetCurrency = this.repository.findSystemCurrency();
 		source = super.getRequest().getData("source", Money.class);
-		targetCurrency = super.getRequest().getData("targetCurrency", String.class);
 		exchange = this.computeMoneyExchange(source, targetCurrency);
-		super.state(exchange != null, "*", "authenticated.money-exchange.form.label.api-error");
+		super.state(exchange != null, "*", "authenticated.money-exchange.form.error.api-error");
 		if (exchange == null) {
 			object.setTarget(null);
 			object.setDate(null);
@@ -87,7 +109,7 @@ public class AuthenticatedMoneyExchangePerformService extends AbstractService<Au
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "source", "targetCurrency", "date", "target");
+		dataset = super.unbind(object, "source", "date", "target");
 
 		super.getResponse().addData(dataset);
 	}
@@ -101,39 +123,36 @@ public class AuthenticatedMoneyExchangePerformService extends AbstractService<Au
 		MoneyExchange result;
 		RestTemplate api;
 		ExchangeRate record;
-		String sourceCurrency, key;
-		Double sourceAmount, targetAmount, rate;
+		String sourceCurrency;
+		Double sourceAmount, targetAmount;
 		Money target;
 		Date moment;
 
 		try {
 			api = new RestTemplate();
 
-			sourceCurrency = source.getCurrency();
 			sourceAmount = source.getAmount();
+			sourceCurrency = source.getCurrency();
 
 			record = api.getForObject( //				
-				"http://apilayer.net/api/live?source={0}&currencies={1}&access_key={2}&format=1", //
+				"https://api.apilayer.com/fixer/convert?amount={0}&from={1}&to={2}&apikey={3}", //
 				ExchangeRate.class, //
+				sourceAmount, //
 				sourceCurrency, //
 				targetCurrency, //
-				"63259d4389193b9554785f5cea807177");
+				"yeHndIIPA3fsXEMNyYTP30GmQmXWSVjs");
 
 			assert record != null;
-			key = String.format("%s%s", sourceCurrency, targetCurrency);
-			rate = record.getQuotes().get(key);
-			assert rate != null;
-			targetAmount = rate * sourceAmount;
+			targetAmount = record.getResult();
 
 			target = new Money();
 			target.setAmount(targetAmount);
 			target.setCurrency(targetCurrency);
 
-			moment = new Date(record.getTimestamp() * 1000L);
+			moment = new Date((long) (record.getInfo().get("timestamp") * 1000L));
 
 			result = new MoneyExchange();
 			result.setSource(source);
-			result.setTargetCurrency(targetCurrency);
 			result.setDate(moment);
 			result.setTarget(target);
 

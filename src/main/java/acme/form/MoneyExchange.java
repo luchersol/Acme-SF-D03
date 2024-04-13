@@ -15,9 +15,7 @@ package acme.form;
 import java.util.Date;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
@@ -37,10 +35,6 @@ public class MoneyExchange extends AbstractForm {
 	@NotNull
 	@Valid
 	public Money				source;
-
-	@NotBlank
-	@Pattern(regexp = "[A-Z]{3}")
-	public String				targetCurrency;
 
 	// Response attributes ----------------------------------------------------
 
