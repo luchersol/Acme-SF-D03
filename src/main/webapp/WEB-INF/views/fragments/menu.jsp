@@ -49,9 +49,12 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/dashboard/show"/>
+		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
