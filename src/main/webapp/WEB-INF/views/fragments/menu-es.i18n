@@ -24,6 +24,8 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martín, José Manuel
 master.menu.student5 = 20231074K: Galván Cancio, Daniel
 master.menu.anonymous.favourite-link = Enlace favorito
+master.menu.anonymous.publishedCodeAudit = Auditorías de código 
+master.menu.authenticated = Autenticado
 
 # master.menu.administrator ###################################################
 
@@ -52,3 +54,11 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.auditor = Datos de auditor
+
+# master.menu.auditor ##########################################################
+
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit.my-code-audits = Mis auditorías de código
+master.menu.auditor.dashboard = Panel de auditor
