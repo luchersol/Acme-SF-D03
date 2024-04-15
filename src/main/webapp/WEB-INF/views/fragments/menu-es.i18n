@@ -62,3 +62,8 @@ master.menu.user-account.auditor = Datos de auditor
 master.menu.auditor = Auditor
 master.menu.auditor.code-audit.my-code-audits = Mis auditorías de código
 master.menu.auditor.dashboard = Panel de auditor
+
+
+# master.menu.client ####################################################
+master.menu.client = Cliente
+master.menu.client.contract = Mis contratos
