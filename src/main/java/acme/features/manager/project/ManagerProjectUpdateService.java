@@ -75,21 +75,20 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 
-		boolean state;
+		boolean state;//PRO-0009 213
 
-		if (!super.getBuffer().getErrors().hasErrors("duplicated-code")) {
-			state = this.repository.findDuplicatedByCodeAndId(object.getCode(), object.getId()) == null;
-			super.state(state, "duplicated-code", "manager.project.form.error.duplicated-code");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
+			super.state(state, "code", "manager.project.form.error.duplicated-code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			state = object.getCost().getAmount() >= 0;
-			super.state(state, "negative-cost", "manager.project.form.error.negative-cost");
+			super.state(state, "cost", "manager.project.form.error.negative-cost");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("invalid-currency")) {
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getCost().getCurrency());
-			super.state(state, "invalid-currency", "manager.project.form.error.invalid-currency");
+			super.state(state, "cost", "manager.project.form.error.invalid-currency");
 		}
-		System.out.println("4: " + super.getBuffer().getErrors());
 	}
 
 	@Override

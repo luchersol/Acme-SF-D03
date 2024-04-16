@@ -65,17 +65,17 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("publishedUserStories")) {
+		if (!super.getBuffer().getErrors().hasErrors("*")) {
 			state = this.repository.allUserStoriesPublishedByProjecId(object.getId());
-			super.state(state, "published-user-stories", "manager.project.form.error.published-user-stories");
+			super.state(state, "*", "manager.project.form.error.published-user-stories");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("withoutUserStories")) {
+		if (!super.getBuffer().getErrors().hasErrors("*")) {
 			state = this.repository.anyUserStoryByProjectId(object.getId());
-			super.state(state, "without-user-stories", "manager.project.form.error.without-user-stories");
+			super.state(state, "*", "manager.project.form.error.without-user-stories");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("fatalError")) {
+		if (!super.getBuffer().getErrors().hasErrors("indication")) {
 			state = !object.getIndication();
-			super.state(state, "fatal-error", "manager.project.form.error.fatal-error");
+			super.state(state, "indication", "manager.project.form.error.fatal-error");
 		}
 	}
 
@@ -92,9 +92,9 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
-		super.getBuffer().addData(dataset);
+		super.getResponse().addData(dataset);
 	}
 
 }
