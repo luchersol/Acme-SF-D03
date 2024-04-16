@@ -24,7 +24,7 @@
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update?id=${id}"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>
 			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>

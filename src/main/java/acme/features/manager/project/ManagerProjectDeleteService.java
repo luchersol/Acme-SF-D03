@@ -26,7 +26,6 @@ import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UserStory;
-import acme.entities.risk.Risk;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.training.TrainingModule;
@@ -87,7 +86,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		Collection<Sponsorship> sponsorships = this.repository.findSponsoshipsByProjectId(projectId);
 		Collection<TrainingSession> trainingSessions = this.repository.findTraningSessionsByProjectId(projectId);
 		Collection<TrainingModule> trainingModules = this.repository.findTraningModulesByProjectId(projectId);
-		Collection<Risk> risks = this.repository.findRisksByProjectId(projectId);
 		Collection<AuditRecord> auditRecords = this.repository.findAuditRecordsByProjectId(projectId);
 		Collection<CodeAudit> codeAudits = this.repository.findCodeAuditsByProjectId(projectId);
 		Collection<ProgressLog> progressLogs = this.repository.findProgressLogsByProjectId(projectId);
@@ -99,7 +97,6 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 		this.repository.deleteAll(sponsorships);
 		this.repository.deleteAll(trainingSessions);
 		this.repository.deleteAll(trainingModules);
-		this.repository.deleteAll(risks);
 		this.repository.deleteAll(auditRecords);
 		this.repository.deleteAll(codeAudits);
 		this.repository.deleteAll(progressLogs);
@@ -116,7 +113,7 @@ public class ManagerProjectDeleteService extends AbstractService<Manager, Projec
 
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
-		super.getBuffer().addData(dataset);
+		super.getResponse().addData(dataset);
 
 	}
 
