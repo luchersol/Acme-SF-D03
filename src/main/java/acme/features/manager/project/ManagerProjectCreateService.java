@@ -35,7 +35,6 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
-		System.out.println("1: " + super.getBuffer().getErrors());
 	}
 
 	@Override
@@ -51,21 +50,14 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		object.setDraftMode(true);
 		object.setManager(manager);
 
-		System.out.println("2.1: " + super.getBuffer().getErrors());
 		super.getBuffer().addData(object);
-		System.out.println("2.2: " + super.getBuffer().getErrors());
 	}
 
 	@Override
 	public void bind(final Project object) {
 		assert object != null;
-		System.out.println("3.1: " + super.getBuffer().getErrors());
-		System.out.println(object.getId() + ", " + object.getVersion());
 
 		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
-
-		System.out.println(object);
-		System.out.println("3.2: " + super.getBuffer().getErrors());
 	}
 
 	@Override
@@ -74,27 +66,24 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("duplicated-code")) {
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			state = !this.repository.existsByCode(object.getCode());
-			super.state(state, "duplicated-code", "manager.project.form.error.duplicated-code");
+			super.state(state, "code", "manager.project.form.error.duplicated-code");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("negative-cost")) {
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			state = object.getCost().getAmount() >= 0;
-			super.state(state, "negative-cost", "manager.project.form.error.negative-cost");
+			super.state(state, "cost", "manager.project.form.error.negative-cost");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("invalid-currency")) {
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getCost().getCurrency());
-			super.state(state, "invalid-currency", "manager.project.form.error.invalid-currency");
+			super.state(state, "cost", "manager.project.form.error.invalid-currency");
 		}
-		System.out.println("4: " + super.getBuffer().getErrors());
 	}
 
 	@Override
 	public void perform(final Project object) {
-		System.out.println("PERFORM");
 		assert object != null;
-		System.out.println(object);
-		System.out.println(object.getManager());
+
 		this.repository.save(object);
 	}
 

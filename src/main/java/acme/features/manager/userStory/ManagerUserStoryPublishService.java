@@ -33,46 +33,59 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		UserStory userStory;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+
+		userStory = this.repository.findOneUserStoryById(id);
+		manager = userStory == null ? null : userStory.getManager();
+		status = userStory != null && userStory.getDraftMode() && this.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		UserStory object = new UserStory();
+		UserStory object;
+		int id;
+
+		id = this.getRequest().getData("id", int.class);
+
+		object = this.repository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
-		Dataset dataset;
-
-		dataset = super.unbind(object, "");
-
-		super.getResponse().addData(dataset);
+		assert object != null;
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
 
+		object.setDraftMode(false);
+
 		this.repository.save(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
-		// TODO Auto-generated method stub
-		super.unbind(object);
+		Dataset dataset;
+
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
+
+		super.getResponse().addData(dataset);
 	}
 
 }
