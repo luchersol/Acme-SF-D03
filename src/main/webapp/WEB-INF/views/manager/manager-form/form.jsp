@@ -16,14 +16,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:message code="manager.dashboard.form.title.general-indicators"/>
+	<acme:message code="manager.manager-form.form.title.general-indicators"/>
 </h2>
 
 <table class="table table-sm">
 
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.total-number-project-must"/>
+			<acme:message code="manager.manager-form.form.label.total-number-project-must"/>
 		</th>
 		<td>
 			<acme:print value="${totalNumberProjectMust}"/>
@@ -31,7 +31,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.total-number-project-should"/>
+			<acme:message code="manager.manager-form.form.label.total-number-project-should"/>
 		</th>
 		<td>
 			<acme:print value="${totalNumberProjectShould}"/>
@@ -39,7 +39,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.total-number-project-could"/>
+			<acme:message code="manager.manager-form.form.label.total-number-project-could"/>
 		</th>
 		<td>
 			<acme:print value="${totalNumberProjectCould}"/>
@@ -47,7 +47,7 @@
 	</tr>	
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.total-number-project-wont"/>
+			<acme:message code="manager.manager-form.form.label.total-number-project-wont"/>
 		</th>
 		<td>
 			<acme:print value="${totalNumberProjectWont}"/>
@@ -56,7 +56,7 @@
 	
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-estimated-cost-user-stories"/>
+			<acme:message code="manager.manager-form.form.label.average-estimated-cost-user-stories"/>
 		</th>
 		<td>
 			<acme:print value="${averageEstimatedCostUserStories}"/>
@@ -64,7 +64,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost-user-stories"/>
+			<acme:message code="manager.manager-form.form.label.deviation-estimated-cost-user-stories"/>
 		</th>
 		<td>
 			<acme:print value="${deviationEstimatedCostUserStories}"/>
@@ -72,7 +72,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-estimated-cost-user-stories"/>
+			<acme:message code="manager.manager-form.form.label.minimum-estimated-cost-user-stories"/>
 		</th>
 		<td>
 			<acme:print value="${minimumEstimatedCostUserStories}"/>
@@ -80,7 +80,7 @@
 	</tr>	
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-estimated-cost-user-stories"/>
+			<acme:message code="manager.manager-form.form.label.maximum-estimated-cost-user-stories"/>
 		</th>
 		<td>
 			<acme:print value="${maximumEstimatedCostUserStories}"/>
@@ -89,7 +89,7 @@
 	
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-estimated-cost-projects"/>
+			<acme:message code="manager.manager-form.form.label.average-estimated-cost-projects"/>
 		</th>
 		<td>
 			<acme:print value="${averageEstimatedCostProjects}"/>
@@ -97,7 +97,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost-projects"/>
+			<acme:message code="manager.manager-form.form.label.deviation-estimated-cost-projects"/>
 		</th>
 		<td>
 			<acme:print value="${deviationEstimatedCostProjects}"/>
@@ -105,7 +105,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.minimum-estimated-cost-projects"/>
+			<acme:message code="manager.manager-form.form.label.minimum-estimated-cost-projects"/>
 		</th>
 		<td>
 			<acme:print value="${minimumEstimatedCostProjects}"/>
@@ -113,7 +113,7 @@
 	</tr>	
 	<tr>
 		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.maximum-estimated-cost-projects"/>
+			<acme:message code="manager.manager-form.form.label.maximum-estimated-cost-projects"/>
 		</th>
 		<td>
 			<acme:print value="${maximumEstimatedCostProjects}"/>

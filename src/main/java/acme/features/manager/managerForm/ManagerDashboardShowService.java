@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.dashboard;
+package acme.features.manager.managerForm;
 
 import java.util.Collection;
 import java.util.List;
