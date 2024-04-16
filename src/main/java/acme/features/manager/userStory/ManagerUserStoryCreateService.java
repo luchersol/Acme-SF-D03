@@ -37,7 +37,18 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int projectId;
+		Project project;
+		Manager manager;
+
+		projectId = super.getRequest().getData("masterId", int.class);
+
+		project = this.repository.findOneProjectById(projectId);
+		manager = project == null ? null : project.getManager();
+		status = project != null && this.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -95,7 +106,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		masterId = this.getRequest().getData("masterId", int.class);
 
 		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
 		dataset.put("priorities", choices);
 		dataset.put("masterId", masterId);
 

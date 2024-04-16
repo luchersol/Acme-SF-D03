@@ -36,7 +36,18 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		UserStory userStory;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+
+		userStory = this.repository.findOneUserStoryById(id);
+		manager = userStory == null ? null : userStory.getManager();
+		status = userStory != null && userStory.getDraftMode() && this.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -48,7 +59,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void bind(final UserStory object) {
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 	}
 
 	@Override

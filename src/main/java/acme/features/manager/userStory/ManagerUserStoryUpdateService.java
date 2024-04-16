@@ -17,7 +17,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
+import acme.client.views.SelectChoices;
+import acme.entities.project.PriorityUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -34,21 +35,32 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		UserStory userStory;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+
+		userStory = this.repository.findOneUserStoryById(id);
+		manager = userStory == null ? null : userStory.getManager();
+		status = userStory != null && userStory.getDraftMode() && this.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Project project = new Project();
+		UserStory userStory = new UserStory();
 
-		super.getBuffer().addData(project);
+		super.getBuffer().addData(userStory);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "");
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 
 		super.getResponse().addData(dataset);
 	}
@@ -57,10 +69,6 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 	public void validate(final UserStory object) {
 		assert object != null;
 
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 	}
 
 	@Override
@@ -72,8 +80,15 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void unbind(final UserStory object) {
-		// TODO Auto-generated method stub
-		super.unbind(object);
+		assert object != null;
+		Dataset dataset;
+		SelectChoices choices;
+
+		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
+		dataset.put("priorities", choices);
+
+		super.getResponse().addData(dataset);
 	}
 
 }
