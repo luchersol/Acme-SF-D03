@@ -91,4 +91,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select count(p) > 0 from Project p where p.code = :code")
 	Boolean existsByCode(String code);
 
+	@Query("select count(p) > 0 from Project p where p.code = :code and p.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
+
 }
