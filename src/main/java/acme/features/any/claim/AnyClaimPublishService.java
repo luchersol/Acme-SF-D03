@@ -65,7 +65,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 		}
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			state = !this.repository.existsByCode(object.getCode());
-			super.state(state, "code", "any.claim.form.error.code");
+			super.state(state, "code", "any.claim.form.error.duplicated-code");
 		}
 
 	}

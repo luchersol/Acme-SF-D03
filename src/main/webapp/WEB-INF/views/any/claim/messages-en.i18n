@@ -30,4 +30,4 @@ any.claim.form.button.publish = Publish
 
 any.claim.list.button.publish = Publish
 
-any.claim.form.error.code = Musn't exist two equal codes
+any.claim.form.error.duplicated-code = Musn't exist two equal codes
