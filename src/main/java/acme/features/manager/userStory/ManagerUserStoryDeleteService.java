@@ -59,7 +59,7 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 
 	@Override
 	public void bind(final UserStory object) {
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 	}
 
 	@Override
