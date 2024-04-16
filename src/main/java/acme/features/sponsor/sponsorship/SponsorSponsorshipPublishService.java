@@ -1,13 +1,16 @@
 
 package acme.features.sponsor.sponsorship;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
@@ -60,30 +63,48 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		super.bind(object, "code", "startDate", "endDate", "amount", "type", "email", "link");
 		object.setProject(project);
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
-		List<Double> invoices;
-		Double invoiceMoney;
-		int id;
-		Double totalAmount;
-		Boolean bool;
+		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
 
-		totalAmount = 0.;
-
-		id = object.getId();
-		invoices = this.repository.findManyInvoicesBySponsor(id).stream().map(i -> i.totalAmount().getAmount()).toList();
-		for (int i = 0; i < invoices.size(); i++) {
-			invoiceMoney = invoices.get(i);
-			totalAmount += invoiceMoney;
+			existing = this.repository.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "sponsor.sponsorship.form.error.duplicated");
 		}
 
-		bool = object.getAmount().getAmount() == totalAmount;
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date minimumDeadline;
 
-		assert true;
+			minimumDeadline = MomentHelper.getCurrentMoment();
+			super.state(MomentHelper.isBefore(object.getStartDate(), minimumDeadline), "startDate", "sponsor.sponsorship.form.error.too-close");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date minimumDeadline;
+
+			minimumDeadline = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.MONTHS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("amount"))
+			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-salary");
+
+		{
+			List<Double> invoiceAmounts;
+			Double totalInvoiceAmount;
+			boolean isValid;
+
+			invoiceAmounts = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream().map(invoice -> invoice.totalAmount().getAmount()).toList();
+			totalInvoiceAmount = invoiceAmounts.stream().reduce(0.0, Double::sum);
+
+			isValid = invoiceAmounts != null && object.getAmount().getAmount().equals(totalInvoiceAmount);
+			super.state(isValid, "*", "sponsor.sponsorship.form.error.bad-money");
+		}
 	}
 
 	@Override
@@ -104,10 +125,10 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Dataset dataset;
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-		projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "amount", "type", "email", "link");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 

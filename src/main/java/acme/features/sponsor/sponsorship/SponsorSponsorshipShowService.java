@@ -63,7 +63,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 			projects = this.repository.findAllProjects();
 		else {
 			sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-			projects = this.repository.findManyProjectsBySponsorId(sponsorId);
+			projects = this.repository.findAllProjects();
 		}
 		choices = SelectChoices.from(projects, "code", object.getProject());
 

@@ -32,3 +32,9 @@ sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
 sponsor.sponsorship.form.button.create = Create
+
+sponsor.sponsorship.form.error.duplicated = This code is taken
+sponsor.sponsorship.form.error.too-close = Start Date must be before today 
+sponsor.sponsorship.form.error.too-close-start = The Start Date must be at least one month before the End Date
+sponsor.sponsorship.form.error.bad-money = The sum of the total amount of all the invoices must be equal to the amount of the sponsorship
+sponsor.sponsorship.form.error.negative-salary = The amount must be positive
