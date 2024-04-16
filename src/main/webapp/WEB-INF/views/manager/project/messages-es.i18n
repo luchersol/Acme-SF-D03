@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 manager.project.form.title = Detalles de proyecto
-manager.project.list.title = Mis proyectos
+manager.project.list.title = Listado de proyectos
 
 manager.project.form.label.code = Codigo
 manager.project.form.label.title = Titulo
