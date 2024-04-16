@@ -14,22 +14,110 @@
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
-
-<acme:form>
-	<acme:input-integer code="manager.dashboard.form.label.total-number-project-must" path="totalNumberProjectMust"/>	
-	<acme:input-integer code="manager.dashboard.form.label.total-number-project-should" path="totalNumberProjectShould"/>
-	<acme:input-integer code="manager.dashboard.form.label.total-number-project-could" path="totalNumberProjectCould"/>
-	<acme:input-integer code="manager.dashboard.form.label.total-number-project-wont" path="totalNumberProjectWont"/>
-	
-	<acme:input-double code="manager.dashboard.form.label.average-estimated-cost-user-stories" path="averageEstimatedCostUserStories"/>
-	<acme:input-double code="manager.dashboard.form.label.deviation-estimated-cost-user-stories" path="deviationEstimatedCostUserStories"/>
-	<acme:input-double code="manager.dashboard.form.label.minimun-estimated-cost-user-stories" path="minimumEstimatedCostUserStories"/>
-	<acme:input-double code="manager.dashboard.form.label.maximun-estimated-cost-user-stories" path="maximumEstimatedCostUserStories"/>
-	
-	<acme:input-money code="manager.dashboard.form.label.average-estimated-cost-projects" path="averageEstimatedCostProjects"/>
-	<acme:input-money code="manager.dashboard.form.label.deviation-estimated-cost-projects" path="deviationEstimatedCostProjects"/>
-	<acme:input-money code="manager.dashboard.form.label.minimum-estimated-cost-projects" path="minimumEstimatedCostProjects"/>
-	<acme:input-money code="manager.dashboard.form.label.maximum-estimated-cost-projects" path="maximumEstimatedCostProjects"/>	
-</acme:form>
 
+<h2>
+	<acme:message code="manager.dashboard.form.title.general-indicators"/>
+</h2>
 
+<table class="table table-sm">
+
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.total-number-project-must"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberProjectMust}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.total-number-project-should"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberProjectShould}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.total-number-project-could"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberProjectCould}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.total-number-project-wont"/>
+		</th>
+		<td>
+			<acme:print value="${totalNumberProjectWont}"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.average-estimated-cost-user-stories"/>
+		</th>
+		<td>
+			<acme:print value="${averageEstimatedCostUserStories}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost-user-stories"/>
+		</th>
+		<td>
+			<acme:print value="${deviationEstimatedCostUserStories}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.minimum-estimated-cost-user-stories"/>
+		</th>
+		<td>
+			<acme:print value="${minimumEstimatedCostUserStories}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.maximum-estimated-cost-user-stories"/>
+		</th>
+		<td>
+			<acme:print value="${maximumEstimatedCostUserStories}"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.average-estimated-cost-projects"/>
+		</th>
+		<td>
+			<acme:print value="${averageEstimatedCostProjects}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost-projects"/>
+		</th>
+		<td>
+			<acme:print value="${deviationEstimatedCostProjects}"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.minimum-estimated-cost-projects"/>
+		</th>
+		<td>
+			<acme:print value="${minimumEstimatedCostProjects}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="manager.dashboard.form.label.maximum-estimated-cost-projects"/>
+		</th>
+		<td>
+			<acme:print value="${maximumEstimatedCostProjects}"/>
+		</td>
+	</tr>
+	
+</table>
