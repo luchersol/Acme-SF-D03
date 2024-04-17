@@ -30,6 +30,7 @@ master.menu.authenticated = Authenticated
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
+master.menu.administrator.banner = Banners
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
 master.menu.administrator.populate-initial = Populate DB (initial)
