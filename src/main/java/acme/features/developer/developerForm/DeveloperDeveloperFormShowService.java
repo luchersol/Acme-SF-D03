@@ -24,12 +24,14 @@ public class DeveloperDeveloperFormShowService extends AbstractService<Developer
 	@Override
 	public void load() {
 		DeveloperForm developerForm = new DeveloperForm();
-		developerForm.setTotalTrainingModulesWithUpdateMoment(this.repository.totalNumberOfTrainingModulesWithUpdateMoment());
-		developerForm.setTotalTrainingSessionsWithLink(this.repository.totalNumberOfTrainingSessionsWithLink());
-		developerForm.setAverageTimeOfTraining(this.repository.averageTimeOfTrainingModules());
-		developerForm.setDeviationTimeOfTraining(this.repository.standardDeviationTimeOfTrainingModules());
-		developerForm.setMinimumTimeOfTraining(this.repository.minTimeOfTrainingModules());
-		developerForm.setMaximumTimeOfTraining(this.repository.maxTimeOfTrainingModules());
+		int developerId;
+		developerId = this.getRequest().getPrincipal().getAccountId();
+		developerForm.setTotalTrainingModulesWithUpdateMoment(this.repository.totalNumberOfTrainingModulesWithUpdateMoment(developerId));
+		developerForm.setTotalTrainingSessionsWithLink(this.repository.totalNumberOfTrainingSessionsWithLink(developerId));
+		developerForm.setAverageTimeOfTraining(this.repository.averageTimeOfTrainingModules(developerId));
+		developerForm.setDeviationTimeOfTraining(this.repository.standardDeviationTimeOfTrainingModules(developerId));
+		developerForm.setMinimumTimeOfTraining(this.repository.minTimeOfTrainingModules(developerId));
+		developerForm.setMaximumTimeOfTraining(this.repository.maxTimeOfTrainingModules(developerId));
 
 		super.getBuffer().addData(developerForm);
 	}

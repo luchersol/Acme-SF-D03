@@ -51,6 +51,11 @@ master.menu.developer = Desarrollador
 master.menu.developer.favourite-link = Mis entrenamientos
 master.menu.developer.favourite-dashboard = Mi panel de control
 
+# master.menu.any ##########################################################
+
+master.menu.any.favourite = Cualquiera
+master.menu.developer.favourite-publish = Entrenamientos publicados
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -59,3 +64,5 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.consumer = Datos de desarrollador
+master.menu.user-account.become-consumer = Hazte desarrollador

@@ -53,7 +53,7 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("SELECT t FROM TrainingModule t WHERE t.developer.userAccount.id = :developerId")
 	Collection<TrainingModule> findTrainingsByDeveloperId(int developerId);
 
-	@Query("SELECT t FROM TrainingModule t WHERE t.developer.id = :developerId AND t.draftMode = FALSE")
+	@Query("SELECT t FROM TrainingModule t where t.developer.userAccount.id = :developerId and t.draftMode = false")
 	Collection<TrainingModule> findPublishedTrainings(int developerId);
 
 }

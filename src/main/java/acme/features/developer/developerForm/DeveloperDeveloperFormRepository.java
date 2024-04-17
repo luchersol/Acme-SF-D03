@@ -9,22 +9,22 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface DeveloperDeveloperFormRepository extends AbstractRepository {
 
-	@Query("select count(m) from TrainingModule m where m.updateMoment is not null")
-	Integer totalNumberOfTrainingModulesWithUpdateMoment();
+	@Query("select count(m) from TrainingModule m where m.developer.userAccount.id = :id and m.updateMoment is not null")
+	Integer totalNumberOfTrainingModulesWithUpdateMoment(int id);
 
-	@Query("select count(s) from TrainingSession s where s.link is not null and trim(s.link) != ''")
-	Integer totalNumberOfTrainingSessionsWithLink();
+	@Query("select count(s) from TrainingSession s join s.trainingModule m where m.developer.userAccount.id = :developerId and s.link is not null and trim(s.link) != ''")
+	Integer totalNumberOfTrainingSessionsWithLink(int developerId);
 
-	@Query("select avg(m.estimatedTotalTime) from TrainingModule m")
-	Double averageTimeOfTrainingModules();
+	@Query("select avg(m.estimatedTotalTime) from TrainingModule m where m.developer.userAccount.id  = :id")
+	Double averageTimeOfTrainingModules(int id);
 
-	@Query("select stddev(m.estimatedTotalTime) from TrainingModule m")
-	Double standardDeviationTimeOfTrainingModules();
+	@Query("select stddev(m.estimatedTotalTime) from TrainingModule m where m.developer.userAccount.id  = :id")
+	Double standardDeviationTimeOfTrainingModules(int id);
 
-	@Query("select min(m.estimatedTotalTime) from TrainingModule m")
-	Double minTimeOfTrainingModules();
+	@Query("select min(m.estimatedTotalTime) from TrainingModule m where m.developer.userAccount.id  = :id")
+	Double minTimeOfTrainingModules(int id);
 
-	@Query("select max(m.estimatedTotalTime) from TrainingModule m")
-	Double maxTimeOfTrainingModules();
+	@Query("select max(m.estimatedTotalTime) from TrainingModule m where m.developer.userAccount.id = :id")
+	Double maxTimeOfTrainingModules(int id);
 
 }

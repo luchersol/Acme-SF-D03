@@ -49,6 +49,9 @@
 			<acme:menu-suboption code="master.menu.developer.favourite-link" action="/developer/training-module/list-mine"/>
 			<acme:menu-suboption code="master.menu.developer.favourite-dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.any.favourite">
+			<acme:menu-suboption code="master.menu.developer.favourite-publish" action="/any/training-module/list"/>
+		</acme:menu-option>
 		
 	</acme:menu-left>
 
@@ -62,6 +65,8 @@
 			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRole('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer" action="/authenticated/consumer/update" access="hasRole('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-developer" action="/authenticated/developer/create" access="!hasRole('Developer')"/>
+			<acme:menu-suboption code="master.menu.user-account.developer" action="/authenticated/developer/update" access="hasRole('Developer')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>

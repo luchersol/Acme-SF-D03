@@ -9,7 +9,7 @@
 # they accept any liabilities with respect to them.
 
 developer.training-module.form.title = Formulario de Entrenamiento
-developer.training-module.list.title = Listado de entrenamientos
+developer.training-module.list.title = Listado de mis entrenamientos
 
 developer.training-module.form.label.code = Codigo:
 developer.training-module.form.label.details = Detalles:

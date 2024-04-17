@@ -21,6 +21,11 @@ master.menu.developer = Developer
 master.menu.developer.favourite-link = My trainings
 master.menu.developer.favourite-dashboard = My dashboard
 
+# master.menu.any ##########################################################
+
+master.menu.any.favourite = Any
+master.menu.developer.favourite-publish = Published trainings
+
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
@@ -59,3 +64,5 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer
