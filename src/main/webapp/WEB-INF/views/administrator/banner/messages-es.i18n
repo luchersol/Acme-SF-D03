@@ -1,5 +1,5 @@
-auditor.code-audit.list.title = Anuncios
-auditor.code-audit.form.title = Detalles del enuncio
+administrator.banner.list.title = Anuncios
+administrator.banner.form.title = Detalles del enuncio
 
 administrator.banner.list.label.displayStart = Inicio de viasualización 	
 administrator.banner.list.label.displayEnd = Final de viasualización 	
