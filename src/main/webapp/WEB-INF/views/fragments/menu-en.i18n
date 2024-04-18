@@ -68,3 +68,5 @@ master.menu.auditor.dashboard = Dashboard
 # master.menu.client ####################################################
 master.menu.client = Client
 master.menu.client.contract = My contracts
+master.menu.authenticated.risk-list = List of Risks
+master.menu.administrator.risk-list = List of my risks
