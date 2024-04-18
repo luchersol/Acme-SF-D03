@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
@@ -74,13 +75,25 @@ public class ClientContractPublishService extends AbstractService<Client, Contra
 			Contract existing;
 
 			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null || existing.getId() == contract.getId(), "code", "assistant.tutorial.form.error.code");
+			super.state(existing == null || existing.getId() == contract.getId(), "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
 			state = contract.getBudget().getAmount() >= 0;
 			super.state(state, "budget", "client.contract.form.error.budget");
 		}
+
+		super.state(!this.repository.findManyProgressLogByMasterId(contract.getId()).isEmpty(), "code", "client.contract.form.error.publish");
+		boolean allContractInDraftMode = this.repository.areAllProgressLogPublished(contract.getId());
+		super.state(allContractInDraftMode, "code", "client.contract.form.error.allpublish");
+
+		if (!super.getBuffer().getErrors().hasErrors("budget")) {
+			Collection<Money> budgets = this.repository.areAllBudgetContractExcedCostProject(contract.getProject().getId());
+			state = budgets.isEmpty() && contract.getBudget().getAmount() < contract.getProject().getCost().getAmount()
+				|| budgets.stream().map(x -> x.getAmount()).mapToDouble(x -> x.doubleValue()).sum() + contract.getBudget().getAmount() < contract.getProject().getCost().getAmount();
+			super.state(state, "budget", "client.contract.form.error.budgetExcedCostProject");
+		}
+
 	}
 
 	@Override

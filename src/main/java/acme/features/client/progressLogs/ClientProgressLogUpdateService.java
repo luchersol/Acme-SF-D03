@@ -49,12 +49,19 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 	public void bind(final ProgressLog progressLog) {
 		assert progressLog != null;
 
-		super.bind(progressLog, "recordId", "comment", "registrationMoment", "responsiblePerson");
+		super.bind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 	}
 
 	@Override
 	public void validate(final ProgressLog progressLog) {
 		assert progressLog != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
+			ProgressLog existing;
+
+			existing = this.repository.findOneProgressLogByRecordId(progressLog.getRecordId());
+			super.state(existing == null || existing.getId() == progressLog.getId(), "recordId", "client.progress-log.form.error.code");
+		}
 	}
 
 	@Override
@@ -70,7 +77,7 @@ public class ClientProgressLogUpdateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLog, "recordId", "comment", "registrationMoment", "responsiblePerson");
+		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
 		dataset.put("masterId", progressLog.getContract().getId());
 		dataset.put("draftMode", progressLog.getContract().getDraftMode());
 	}

@@ -11,7 +11,7 @@ import acme.entities.contract.ProgressLog;
 import acme.roles.Client;
 
 @Service
-public class ClientProgressLogCreateService extends AbstractService<Client, ProgressLog> {
+public class ClientProgressLogPublishService extends AbstractService<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -24,11 +24,11 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int progressLogId;
 		Contract contract;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		contract = this.repository.findOneContractById(masterId);
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
 		status = contract != null && contract.getDraftMode() && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
@@ -37,20 +37,11 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	@Override
 	public void load() {
 		ProgressLog progressLog;
-		int masterId;
-		Contract contract;
+		int id;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		contract = this.repository.findOneContractById(masterId);
+		id = super.getRequest().getData("id", int.class);
+		progressLog = this.repository.findOneProgressLogById(id);
 
-		progressLog = new ProgressLog();
-		progressLog.setRecordId("");
-		progressLog.setCompleteness(0.00);
-		progressLog.setComment("");
-		progressLog.setRegistrationMoment(null);
-		progressLog.setResponsiblePerson("");
-		progressLog.setContract(contract);
-		progressLog.setDraftMode(true);
 		super.getBuffer().addData(progressLog);
 	}
 
@@ -65,20 +56,20 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 	public void validate(final ProgressLog progressLog) {
 		assert progressLog != null;
 
-		boolean state;
-
 		if (!super.getBuffer().getErrors().hasErrors("recordId")) {
 			ProgressLog existing;
 
 			existing = this.repository.findOneProgressLogByRecordId(progressLog.getRecordId());
 			super.state(existing == null || existing.getId() == progressLog.getId(), "recordId", "client.progress-log.form.error.code");
 		}
+
 	}
 
 	@Override
 	public void perform(final ProgressLog progressLog) {
 		assert progressLog != null;
 
+		progressLog.setDraftMode(false);
 		this.repository.save(progressLog);
 	}
 
@@ -88,8 +79,9 @@ public class ClientProgressLogCreateService extends AbstractService<Client, Prog
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset = super.unbind(progressLog, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson");
+		dataset.put("masterId", progressLog.getContract().getId());
+		dataset.put("draftMode", progressLog.getContract().getDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -19,7 +19,7 @@ client.contract.form.label.customerName = Customer Name:
 client.contract.form.label.goal = Goal:
 client.contract.form.label.budget = Budget:
 
-client.contract.form.button.progressLog = Progress Log
+client.contract.form.button.progress-log = Progress Log
 
 client.contract.form.button.delete = Delete
 client.contract.form.button.update = Update
@@ -34,3 +34,6 @@ client.contract.list.button.create = Create
 
 client.contract.form.error.budget = The budget must be positive or zero
 client.contract.form.error.code = The code is already taken
+client.contract.form.error.publish = You cannot publish without associated progress log
+client.contract.form.error.allpublish = Associated  progress log not publish
+client.contract.form.error.budgetExcedCostProject = Budget exceeds project cost

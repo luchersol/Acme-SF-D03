@@ -35,12 +35,12 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 	@Override
 	public void authorise() {
 		boolean status;
-		int dutyId;
+		int progressLogId;
 		Contract contract;
 
-		dutyId = super.getRequest().getData("id", int.class);
-		contract = this.repository.findOneContractByProgressLogId(dutyId);
-		status = contract != null && (!contract.getDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		progressLogId = super.getRequest().getData("id", int.class);
+		contract = this.repository.findOneContractByProgressLogId(progressLogId);
+		status = contract != null && super.getRequest().getPrincipal().hasRole(contract.getClient());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -62,9 +62,9 @@ public class ClientProgressLogShowService extends AbstractService<Client, Progre
 
 		Dataset dataset;
 
-		dataset = super.unbind(progressLogs, "recordId", "comment", "registrationMoment", "responsiblePerson");
-		dataset.put("masterId", progressLogs.getContract().getId());
-		dataset.put("draftMode", progressLogs.getContract().getDraftMode());
+		dataset = super.unbind(progressLogs, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
+		dataset.put("masterId", progressLogs.getId());
+		dataset.put("draftMode", progressLogs.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

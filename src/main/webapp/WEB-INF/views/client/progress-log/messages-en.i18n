@@ -23,6 +23,8 @@ client.progress-log.form.button.progressLogs = Progress Log
 
 client.progress-log.form.button.update = Update
 client.progress-log.form.button.create = Create
+client.progress-log.form.button.publish = Publish
+client.progress-log.form.button.delete = Delete
 
 client.progress-log.list.label.recordId = Record Id:
 client.progress-log.list.label.completeness = Completeness:
@@ -32,4 +34,5 @@ client.progress-log.list.label.responsiblePerson = Responsible Person:
 
 client.progress-log.list.button.create = Create
 
+client.progress-log.form.error.completeness = The completeness must be positive or zero
 client.progress-log.form.error.code = The record id is already taken
