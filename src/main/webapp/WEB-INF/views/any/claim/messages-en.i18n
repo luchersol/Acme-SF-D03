@@ -17,8 +17,8 @@ any.claim.form.label.instantionMoment = Instantion Moment
 any.claim.form.label.heading = Heading
 any.claim.form.label.description = Description
 any.claim.form.label.departament = Departament
-any.claim.form.label.email = Email
-any.claim.form.label.link = Link	
+any.claim.form.label.email = Email (Optional)
+any.claim.form.label.link = Link (Optional)
 any.claim.form.label.draftMode = Draft Mode
 
 any.claim.list.label.code = Title

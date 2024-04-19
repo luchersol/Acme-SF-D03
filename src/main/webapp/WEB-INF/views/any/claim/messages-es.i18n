@@ -12,8 +12,8 @@ any.claim.form.title = Departamento
 any.claim.list.title = Listado de departamentos
 any.claim.form.label.code = Código
 any.claim.form.label.instantionMoment = Momento de instanciónany.claim.form.label.heading = Títuloany.claim.form.label.description = Descripciónany.claim.form.label.departament = Departamento
-any.claim.form.label.email = Email
-any.claim.form.label.link = Link	
+any.claim.form.label.email = Email (Opcional)
+any.claim.form.label.link = Link (Opcional)	
 any.claim.form.label.draftMode = Modo Borrador
 
 any.claim.list.label.code = Código
@@ -21,7 +21,7 @@ any.claim.list.label.heading = Título
 any.claim.list.label.link = Link
 
 any.claim.form.label.confirmation = Confirmación
-any.claim.form.buttom.publish = Publicar
+any.claim.form.button.publish = Publicar
 
 any.claim.list.button.publish = Publicar
 
