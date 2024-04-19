@@ -27,7 +27,6 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.risk-list" action="/authenticated/risk/list"/>
 		</acme:menu-option>
 
@@ -56,6 +55,7 @@
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.any.favourite">
 			<acme:menu-suboption code="master.menu.developer.favourite-publish" action="/any/training-module/list"/>
+		    <acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 		</acme:menu-option>
 
 
@@ -67,14 +67,6 @@
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
 		</acme:menu-option>
 		
-		
-		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
-		</acme:menu-option>
-	
-		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
-		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>

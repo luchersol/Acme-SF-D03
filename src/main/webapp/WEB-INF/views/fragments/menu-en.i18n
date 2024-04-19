@@ -35,7 +35,7 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.publishedCodeAudit = Code audits
+master.menu.anonymous.publishedCodeAudit = Published code audits
 master.menu.authenticated = Authenticated
 
 # master.menu.administrator ###################################################
