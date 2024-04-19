@@ -27,7 +27,7 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.invoice" action="/sponsor/invoice/list-mine"/>
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list-mine"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
