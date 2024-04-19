@@ -13,7 +13,7 @@ manager.user-account.form.title = Detalles de manager
 manager.user-account.form.label.degree = Título
 manager.user-account.form.label.overview = Descripción
 manager.user-account.form.label.certifications = Certificaciones
-manager.user-account.form.label.link = Link
+manager.user-account.form.label.link = Link (Opcional)
 
 manager.user-account.form.button.create = Crear
 manager.user-account.form.button.update = Actualizar
