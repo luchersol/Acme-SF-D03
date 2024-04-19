@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.sponsorship.Invoice;
+import acme.entities.sponsorship.Sponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -23,14 +24,17 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		Sponsor sponsor;
+		int invoiceId;
 		Invoice invoice;
+		Sponsorship sponsorship;
+		Sponsor sponsor;
 
-		masterId = super.getRequest().getData("id", int.class);
-		invoice = this.repository.findOneInvoiceById(masterId);
+		invoiceId = super.getRequest().getData("id", int.class);
+
+		sponsorship = this.repository.findOneSponsorshipByIncoiceId(invoiceId);
+		invoice = this.repository.findOneInvoiceById(invoiceId);
 		sponsor = invoice == null ? null : invoice.getSponsor();
-		status = invoice != null && super.getRequest().getPrincipal().hasRole(sponsor);
+		status = sponsorship != null && invoice != null && sponsorship.isDraftMode() && invoice.isDraftMode() && super.getRequest().getPrincipal().hasRole(sponsor);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,7 +54,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -62,7 +66,7 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	public void perform(final Invoice object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -71,7 +75,8 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		dataset = super.unbind(object, "code", "dueDate", "quantity", "tax", "link");
+
 		super.getResponse().addData(dataset);
 	}
 

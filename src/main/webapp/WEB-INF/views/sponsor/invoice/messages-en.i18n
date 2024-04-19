@@ -28,3 +28,7 @@ sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.delete = Delete
 sponsor.invoice.form.button.publish = Publish
 sponsor.invoice.form.button.create = Create
+
+sponsor.sponsorship.form.error.duplicated = This code is taken
+sponsor.sponsorship.form.error.too-close = The due date must be before today 
+sponsor.sponsorship.form.error.negative-salary = The quantity must be positive
