@@ -34,18 +34,6 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
-			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.provider" access="hasRole('Provider')">
-			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
-			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
-		</acme:menu-option>
 	</acme:menu-left>
 
 	<acme:menu-right>
@@ -54,10 +42,7 @@
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
-			<acme:menu-suboption code="master.menu.user-account.become-provider" action="/authenticated/provider/create" access="!hasRole('Provider')"/>
-			<acme:menu-suboption code="master.menu.user-account.provider" action="/authenticated/provider/update" access="hasRole('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
-			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
