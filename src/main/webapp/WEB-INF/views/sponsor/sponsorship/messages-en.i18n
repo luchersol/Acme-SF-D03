@@ -28,6 +28,7 @@ sponsor.sponsorship.form.label.type = Sponsorship type:
 sponsor.sponsorship.form.label.email = Email (Optional):
 sponsor.sponsorship.form.label.link = More information (Optional):
 		
+sponsor.sponsorship.form.button.invoices = Invoices
 sponsor.sponsorship.form.button.update = Update
 sponsor.sponsorship.form.button.delete = Delete
 sponsor.sponsorship.form.button.publish = Publish
