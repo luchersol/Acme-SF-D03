@@ -42,11 +42,12 @@ master.menu.anonymous.publishedCodeAudit = Code Audits
 # master.menu.any #######################################################
 
 master.menu.any = Any
+master.menu.any.claim = Claims
+master.menu.anonymous.publishedCodeAudit = Code audits
 master.menu.any.projects = Projects
 master.menu.any.training-module = Published trainings
 
 # master.menu.authenticated #######################################################
-
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
 master.menu.anonymous.publishedCodeAudit = Code audits
@@ -61,6 +62,13 @@ master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.risk-list = List of my risks
 
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.dashboard = Dashboard
+master.menu.manager.project = My Projects
+
+# master.menu.provider ########################################################
 # master.menu.any ##########################################################
 master.menu.any = Any
 master.menu.developer.training-module = Published trainings

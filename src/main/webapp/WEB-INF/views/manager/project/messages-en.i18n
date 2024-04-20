@@ -16,6 +16,7 @@ manager.project.form.label.title = Title
 manager.project.form.label.abstractProject = Abstract Project
 manager.project.form.label.indication = Fatal Error
 manager.project.form.label.cost = Cost
+manager.project.form.button.create.user-story = User Stories
 manager.project.form.label.link = Link (Optional)
 
 manager.project.list.label.code = Code
@@ -26,6 +27,9 @@ manager.project.form.button.create = Create
 manager.project.form.button.update = Update
 manager.project.form.button.delete = Delete
 manager.project.form.button.publish = Publish
+manager.project.form.button.list.user-story = See user stories
+manager.project.form.button.create.user-story = Create new user story
+
 
 manager.project.form.error.published-user-stories = All user stories of the project must be published
 manager.project.form.error.without-user-stories = The project must have any user story
