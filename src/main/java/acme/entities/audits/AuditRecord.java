@@ -27,6 +27,9 @@ public class AuditRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
+	private Boolean				draftMode;
+
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "AU-[0-9]{4}-[0-9]{3}")
