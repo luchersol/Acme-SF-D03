@@ -46,10 +46,11 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		Boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("*")) {
-			state = !this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
-			super.state(state, "*", "manager.relation.form.error.not-exist-relation");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("*"))
+			if (object.getProject() != null && object.getUserStory() != null) {
+				state = !this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
+				super.state(state, "*", "manager.relation.form.error.not-exist-relation");
+			}
 	}
 
 	@Override
