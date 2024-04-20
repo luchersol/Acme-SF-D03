@@ -51,24 +51,25 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 
 	@Override
 	public void load() {
-		UserStory userStory = new UserStory();
+		int id;
+		UserStory userStory;
+
+		id = super.getRequest().getData("id", int.class);
+		userStory = this.repository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(userStory);
 	}
 
 	@Override
 	public void bind(final UserStory object) {
-		Dataset dataset;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 
-		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
-
 	}
 
 	@Override

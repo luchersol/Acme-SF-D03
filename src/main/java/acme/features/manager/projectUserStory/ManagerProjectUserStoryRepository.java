@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.userStory;
+package acme.features.manager.projectUserStory;
 
 import java.util.Collection;
 
@@ -21,29 +21,17 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UserStory;
-import acme.roles.Manager;
 
 @Repository
-public interface ManagerUserStoryRepository extends AbstractRepository {
-
-	@Query("select m from Manager m where m.id = :id")
-	Manager findManagerById(int id);
-
-	@Query("select p from Project p where p.id = :id")
-	Project findOneProjectById(int id);
-
-	@Query("select pu.userStory from ProjectUserStory pu where pu.project.id = :projectId")
-	Collection<UserStory> findUserStoriesByProjectId(int projectId);
+public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 
 	@Query("select us from UserStory us where us.manager.id = :managerId")
 	Collection<UserStory> findUserStoriesByManagerId(int managerId);
 
-	@Query("select us from UserStory us where us.id = :id")
-	UserStory findOneUserStoryById(int id);
+	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode = true")
+	Collection<Project> findNotPublishedProjectsByManagerId(int managerId);
 
-	@Query("select p from Project p where p.manager.id = :managerId")
-	Collection<Project> findAllProjectsByManagerId(int managerId);
+	@Query("select pu from ProjectUserStory pu where pu.project.id = :projectId and pu.userStory.id = :userStoryId")
+	Collection<ProjectUserStory> findRelationByProjectIdAndUserStoryId(int projectId, int userStoryId);
 
-	@Query("select pu from ProjectUserStory pu where pu.userStory.id = :userStoryId")
-	Collection<ProjectUserStory> findRelationsUserStoriesWithProjectByUserStoryId(int userStoryId);
 }

@@ -12,18 +12,18 @@
 
 package acme.features.manager.userStory;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.project.PriorityUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryListMineService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -35,41 +35,25 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		UserStory userStory;
-		Manager manager;
-
-		id = super.getRequest().getData("id", int.class);
-
-		userStory = this.repository.findOneUserStoryById(id);
-		manager = userStory == null ? null : userStory.getManager();
-		status = userStory != null && this.getRequest().getPrincipal().hasRole(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		UserStory object;
-		int id;
+		Collection<UserStory> object;
+		int managerId;
 
-		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneUserStoryById(id);
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
+		object = this.repository.findUserStoriesByManagerId(managerId);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
 	public void unbind(final UserStory object) {
-		assert object != null;
 		Dataset dataset;
-		SelectChoices choices;
 
-		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
-
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
-		dataset.put("priorities", choices);
+		dataset = super.unbind(object, "title", "priority");
 
 		super.getResponse().addData(dataset);
 	}

@@ -20,9 +20,6 @@
 	<acme:list-column code="manager.user-story.list.label.priority" path="priority"/>
 </acme:list>	
 
-
-<jstl:if test="${showCreate}">
-	<acme:button code="manager.project.form.button.create.user-story" action="/manager/user-story/create?masterId=${masterId}"/>
+<jstl:if test="${_command == 'list-mine'}">
+	<acme:button code="manager.user-story.list-mine.button.create" action="/manager/user-story/create"/>
 </jstl:if>
-
-

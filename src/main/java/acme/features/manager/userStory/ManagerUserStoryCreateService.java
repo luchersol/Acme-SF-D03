@@ -19,8 +19,6 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.PriorityUserStory;
-import acme.entities.project.Project;
-import acme.entities.project.ProjectUserStory;
 import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
@@ -37,18 +35,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int projectId;
-		Project project;
-		Manager manager;
-
-		projectId = super.getRequest().getData("masterId", int.class);
-
-		project = this.repository.findOneProjectById(projectId);
-		manager = project == null ? null : project.getManager();
-		status = project != null && this.getRequest().getPrincipal().hasRole(manager);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -81,20 +68,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		ProjectUserStory relation;
-		Project project;
-		UserStory userStory;
-		int projectId;
-
-		projectId = this.getRequest().getData("masterId", int.class);
-		project = this.repository.findOneProjectById(projectId);
-		userStory = this.repository.save(object);
-
-		relation = new ProjectUserStory();
-		relation.setProject(project);
-		relation.setUserStory(userStory);
-		this.repository.save(relation);
-
+		this.repository.save(object);
 	}
 
 	@Override
@@ -102,13 +76,10 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		assert object != null;
 		Dataset dataset;
 		SelectChoices choices;
-		int masterId;
-		masterId = this.getRequest().getData("masterId", int.class);
 
 		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
 		dataset.put("priorities", choices);
-		dataset.put("masterId", masterId);
 
 		super.getResponse().addData(dataset);
 	}
