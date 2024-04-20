@@ -1,7 +1,6 @@
 
 package acme.features.administrator.risk;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.project.Project;
 import acme.entities.risk.Risk;
 
 @Service
@@ -70,14 +67,8 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 
 		Dataset dataset;
 
-		Collection<Project> projects;
-		SelectChoices choicesProject;
-
-		projects = this.repository.findAllProjectPublish();
-		choicesProject = SelectChoices.from(projects, "code", object.getProject());
 		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
-		dataset.put("project", choicesProject.getSelected().getKey());
-		dataset.put("projects", choicesProject);
+
 		super.getResponse().addData(dataset);
 	}
 

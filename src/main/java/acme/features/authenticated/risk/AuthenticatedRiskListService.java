@@ -47,8 +47,7 @@ public class AuthenticatedRiskListService extends AbstractService<Authenticated,
 			"%s; %s; %s; %s", //
 			object.getImpact(), //
 			object.getProbability(), //
-			object.getLink(), //
-			object.getProject().getCode());
+			object.getLink());
 		dataset.put("payload", payload);
 
 		super.getResponse().addData(dataset);

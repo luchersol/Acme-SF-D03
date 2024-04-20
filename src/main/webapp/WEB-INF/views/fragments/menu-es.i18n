@@ -15,6 +15,11 @@ master.menu.sign-up = Registrarse
 master.menu.sign-in = Entrar
 master.menu.sign-out = Salir
 
+# master.menu.any ##########################################################
+
+master.menu.any = Cualquiera
+master.menu.any.training-module = Entrenamientos publicados
+
 # master.menu.anonymous #######################################################
  
 master.menu.anonymous = Anónimo
@@ -25,7 +30,6 @@ master.menu.student4 = 53966183H: Miret Martín, José Manuel
 master.menu.student5 = 20231074K: Galván Cancio, Daniel
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.publishedCodeAudit = Auditorías de código 
-master.menu.authenticated = Autenticado
 
 # master.menu.administrator ###################################################
 
@@ -35,53 +39,21 @@ master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
+master.menu.administrator.risk-list = Lista de mis riesgos
 
-# master.menu.sponsor ###################################################
+# master.menu.authenticated ###################################################
 
-master.menu.sponsor = Patrocinador
-master.menu.sponsor.dashboard = Mi panel de patrocinador
-
-# master.menu.provider ########################################################
-
-master.menu.provider = Proveedor
-master.menu.provider.favourite-link = Enlace favorito
-
-# master.menu.sponsor ###################################################
-
-master.menu.sponsor = Patrocinador
-master.menu.sponsor.sponsorship = Mis Patrocinios
-
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumidor
-master.menu.consumer.favourite-link = Enlace favorito
-
-
-# master.menu.consumer ##########################################################
-
-master.menu.developer = Desarrollador
-master.menu.developer.favourite-link = Mis entrenamientos
-master.menu.developer.favourite-dashboard = Mi panel de control
-
-# master.menu.any ##########################################################
-
-master.menu.any.favourite = Cualquiera
-master.menu.developer.favourite-publish = Entrenamientos publicados
+master.menu.authenticated = Autenticado
+master.menu.authenticated.risk-list = Lista de Riesgos
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
-master.menu.user-account.provider = Datos de proveedor
-master.menu.user-account.become-provider = Hazte proveedor
-master.menu.user-account.consumer = Datos de consumidor
-master.menu.user-account.become-consumer = Hazte consumidor
-master.menu.user-account.consumer = Datos de desarrollador
-master.menu.user-account.become-consumer = Hazte desarrollador
-
-
-master.menu.user-account.become-auditor = Hazte auditor
+master.menu.user-account.developer = Datos de desarrollador
+master.menu.user-account.become-developer = Hazte desarrollador
 master.menu.user-account.auditor = Datos de auditor
+master.menu.user-account.become-auditor = Hazte auditor
 
 # master.menu.auditor ##########################################################
 
@@ -90,7 +62,23 @@ master.menu.auditor.code-audit.my-code-audits = Mis auditorías de código
 master.menu.auditor.dashboard = Panel de auditor
 
 # master.menu.client ####################################################
+
 master.menu.client = Cliente
 master.menu.client.contract = Mis contratos
-master.menu.authenticated.risk-list = Lista de Riesgos
-master.menu.administrator.risk-list = Lista de mis riesgos
+
+# master.menu.developer ##########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.training-module = Mis entrenamientos
+master.menu.developer.dashboard = Mi panel de control
+
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = Mis Proyectos
+
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.dashboard = Mi panel de patrocinador
+master.menu.sponsor.sponsorship = Mis Patrocinios
