@@ -50,7 +50,6 @@ master.menu.authenticated.risk-list = List of Risks
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-<<<<<<< HEAD
 master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.auditor = Auditor data
@@ -87,3 +86,4 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = My sponsorships
 master.menu.sponsor.dashboard = My sponsor dashboard
 master.menu.user-account.become-consumer = Become a manager
+master.menu.user-account.manager = Manager data

@@ -17,14 +17,13 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Authenticated;
 import acme.client.data.accounts.Principal;
-import acme.client.data.accounts.UserAccount;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.roles.Manager;
 
 @Service
-public class AuthenticatedManagerCreateService extends AbstractService<Authenticated, Manager> {
+public class AuthenticatedManagerUpdateService extends AbstractService<Authenticated, Manager> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -36,11 +35,7 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 
 	@Override
 	public void authorise() {
-		boolean status;
-
-		status = !this.getRequest().getPrincipal().hasRole(Manager.class);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -48,14 +43,10 @@ public class AuthenticatedManagerCreateService extends AbstractService<Authentic
 		Manager object;
 		Principal principal;
 		int userAccountId;
-		UserAccount userAccount;
 
 		principal = super.getRequest().getPrincipal();
 		userAccountId = principal.getAccountId();
-		userAccount = this.repository.findOneUserAccountById(userAccountId);
-
-		object = new Manager();
-		object.setUserAccount(userAccount);
+		object = this.repository.findOneManagerByUserAccountId(userAccountId);
 
 		super.getBuffer().addData(object);
 	}
