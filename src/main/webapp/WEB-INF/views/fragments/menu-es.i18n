@@ -31,6 +31,11 @@ master.menu.student5 = 20231074K: Galván Cancio, Daniel
 master.menu.anonymous.favourite-link = Enlace favorito
 master.menu.anonymous.publishedCodeAudit = Auditorías de código 
 
+# master.menu.any #######################################################
+
+master.menu.any = Cualquiera
+master.menu.any.projects = Proyectos
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador

@@ -31,6 +31,12 @@ master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
 master.menu.anonymous.publishedCodeAudit = Code audits
 
+# master.menu.any #######################################################
+
+master.menu.any = Any
+master.menu.any.projects = Projects
+>>>>>>> refs/heads/Task19-E1
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
