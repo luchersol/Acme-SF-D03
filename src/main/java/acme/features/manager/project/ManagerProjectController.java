@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.userStory;
+package acme.features.manager.project;
 
 import javax.annotation.PostConstruct;
 
@@ -18,52 +18,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.project.UserStory;
+import acme.entities.project.Project;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerUserStoryController extends AbstractController<Manager, UserStory> {
+public class ManagerProjectController extends AbstractController<Manager, Project> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryListMineService	listMineService;
+	private ManagerProjectListMineService	listMineService;
 
 	@Autowired
-	private ManagerUserStoryListService		listService;
+	private ManagerProjectShowService		showService;
 
 	@Autowired
-	private ManagerUserStoryShowService		showService;
+	private ManagerProjectCreateService		createService;
 
 	@Autowired
-	private ManagerUserStoryCreateService	createService;
+	private ManagerProjectUpdateService		updateService;
 
 	@Autowired
-	private ManagerUserStoryUpdateService	updateService;
+	private ManagerProjectDeleteService		deleteService;
 
 	@Autowired
-	private ManagerUserStoryDeleteService	deleteService;
-
-	@Autowired
-	private ManagerUserStoryPublishService	publishService;
-
-	@Autowired
-	private ManagerUserStoryRelationService	relationService;
+	private ManagerProjectPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
-		super.addCustomCommand("list-mine", "list", this.listMineService);
 		super.addCustomCommand("publish", "update", this.publishService);
-		super.addCustomCommand("relation", "perform", this.relationService);
+		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
 
 }
