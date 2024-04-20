@@ -25,7 +25,10 @@
 			<acme:menu-suboption code="master.menu.student4" action="https://www.youtube.com/watch?v=MqTKBYf4qoQ"/>
 			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
-		
+		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
+			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
+		</acme:menu-option>
+
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
 		</acme:menu-option>
@@ -33,7 +36,6 @@
     <acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list-mine"/>
 		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.risk-list" action="/authenticated/risk/list"/>
@@ -54,6 +56,7 @@
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 		</acme:menu-option>

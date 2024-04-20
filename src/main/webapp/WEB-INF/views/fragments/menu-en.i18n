@@ -37,6 +37,18 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
+master.menu.anonymous.publishedCodeAudit = Code Audits
+
+# master.menu.any #######################################################
+
+master.menu.any = Any
+master.menu.any.projects = Projects
+master.menu.any.training-module = Published trainings
+
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.risk-list = List of Risks
 master.menu.anonymous.publishedCodeAudit = Code audits
 
 # master.menu.administrator ###################################################
@@ -65,6 +77,8 @@ master.menu.authenticated.risk-list = List of Risks
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.manager = Manager data
 master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
@@ -90,6 +104,7 @@ master.menu.client.contract = My contracts
 
 master.menu.developer = Developer
 master.menu.developer.training-module = My trainings
+master.menu.developer.dashboard = My dashboard
 master.menu.developer.dashboard = My dashboard
 master.menu.developer.dashboard = My dashboard
 
