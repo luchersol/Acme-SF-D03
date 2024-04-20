@@ -63,7 +63,8 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		Dataset dataset;
 		Collection<Project> projects;
 		Collection<UserStory> userStories;
-		SelectChoices projectChoices, userStoryChoices;
+		SelectChoices projectChoices;
+		SelectChoices userStoryChoices;
 		int managerId;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
