@@ -53,11 +53,16 @@
 			<acme:menu-suboption code="master.menu.developer.training-module" action="/developer/training-module/list-mine"/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.any" access="hasRole('Any')>
+			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
+		</acme:menu-option>
+
+		</acme:menu-option>
     
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/dashboard/show"/>
@@ -73,6 +78,7 @@
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
+			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-developer" action="/authenticated/developer/create" access="!hasRole('Developer')"/>
 			<acme:menu-suboption code="master.menu.user-account.developer" action="/authenticated/developer/update" access="hasRole('Developer')"/>

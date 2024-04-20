@@ -27,14 +27,16 @@ public class AuthenticatedManagerController extends AbstractController<Authentic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedManagerCreateService createService;
+	private AuthenticatedManagerUpdateService updateService;
+
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+
 	}
 
 }
