@@ -25,10 +25,6 @@
 			<acme:menu-suboption code="master.menu.student4" action="https://www.youtube.com/watch?v=MqTKBYf4qoQ"/>
 			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
-			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
-		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
 		</acme:menu-option>
@@ -41,9 +37,10 @@
 			<acme:menu-suboption code="master.menu.authenticated.risk-list" action="/authenticated/risk/list"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
+			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
+			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 		</acme:menu-option>	
-		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-form/show"/>			
 			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
@@ -61,17 +58,6 @@
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.training-module" action="/developer/training-module/list-mine"/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-form/show"/>
-		</acme:menu-option>
-
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')>
-			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
-		</acme:menu-option>
-
-		</acme:menu-option>
-    
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
-			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 		</acme:menu-option>
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
