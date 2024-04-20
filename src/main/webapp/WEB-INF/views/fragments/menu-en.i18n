@@ -76,6 +76,8 @@ master.menu.developer.dashboard = My dashboard
 
 master.menu.manager = Manager
 master.menu.manager.project = My Projects
+master.menu.manager.user-story = My User Stories
+master.menu.manager.relation = Relation Project-User Story
 
 # master.menu.sponsor ###################################################
 

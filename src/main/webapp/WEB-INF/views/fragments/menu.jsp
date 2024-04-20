@@ -28,6 +28,8 @@
 		
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.user-story" action="/manager/user-story/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.relation" action="/manager/project-user-story/create-relation"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">

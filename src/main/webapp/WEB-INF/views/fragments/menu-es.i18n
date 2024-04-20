@@ -76,6 +76,8 @@ master.menu.developer.dashboard = Mi panel de control
 
 master.menu.manager = Manager
 master.menu.manager.project = Mis Proyectos
+master.menu.manager.user-story = Mis Historias de Usuario
+master.menu.manager.relation = Relacion Project-Historia de Usuario
 
 # master.menu.sponsor ###################################################
 

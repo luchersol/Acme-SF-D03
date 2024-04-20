@@ -10,24 +10,25 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.project;
+package acme.features.manager.userStory;
 
-import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
+import acme.client.views.SelectChoices;
+import acme.entities.project.PriorityUserStory;
+import acme.entities.project.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectCreateService extends AbstractService<Manager, Project> {
+public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectRepository repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -39,14 +40,14 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 	@Override
 	public void load() {
-		Project object;
+		UserStory object;
 		Manager manager;
 		int managerId;
 
 		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		manager = this.repository.findManagerById(managerId);
 
-		object = new Project();
+		object = new UserStory();
 		object.setDraftMode(true);
 		object.setManager(manager);
 
@@ -54,47 +55,32 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	}
 
 	@Override
-	public void bind(final Project object) {
-		assert object != null;
-
-		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+	public void bind(final UserStory object) {
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority");
 	}
 
 	@Override
-	public void validate(final Project object) {
-		assert object != null;
+	public void validate(final UserStory object) {
 
-		boolean state;
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			state = !this.repository.existsByCode(object.getCode());
-			super.state(state, "code", "manager.project.form.error.duplicated-code");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("cost")) {
-			state = object.getCost().getAmount() >= 0;
-			super.state(state, "cost", "manager.project.form.error.negative-cost");
-		}
-		if (!super.getBuffer().getErrors().hasErrors("cost")) {
-			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getCost().getCurrency());
-			super.state(state, "cost", "manager.project.form.error.invalid-currency");
-		}
 	}
 
 	@Override
-	public void perform(final Project object) {
+	public void perform(final UserStory object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Project object) {
+	public void unbind(final UserStory object) {
+		assert object != null;
 		Dataset dataset;
+		SelectChoices choices;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+		choices = SelectChoices.from(PriorityUserStory.class, object.getPriority());
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "link", "priority", "draftMode");
+		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
-
 	}
-
 }
