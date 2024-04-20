@@ -28,6 +28,7 @@
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list-mine"/>
+			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-form/show"/>	
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
@@ -52,6 +53,7 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list-mine"/>
+			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/administrator-form/show"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
