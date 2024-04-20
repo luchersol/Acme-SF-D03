@@ -57,6 +57,11 @@ master.menu.sponsor.dashboard = My sponsor dashboard
 master.menu.provider = Provider
 master.menu.provider.favourite-link = Favourite link
 
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship = My sponsorships
+
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumer
