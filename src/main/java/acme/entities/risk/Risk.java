@@ -63,6 +63,6 @@ public class Risk extends AbstractEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	private Administrator	administrator;
+	private Administrator administrator;
 
 }

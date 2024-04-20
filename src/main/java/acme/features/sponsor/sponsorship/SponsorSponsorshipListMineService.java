@@ -1,23 +1,23 @@
 
-package acme.features.authenticated.risk;
+package acme.features.sponsor.sponsorship;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.risk.Risk;
+import acme.entities.sponsorship.Sponsorship;
+import acme.roles.Sponsor;
 
 @Service
-public class AuthenticatedRiskListService extends AbstractService<Authenticated, Risk> {
+public class SponsorSponsorshipListMineService extends AbstractService<Sponsor, Sponsorship> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedRiskRepository repository;
+	private SponsorSponsorshipRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -29,27 +29,22 @@ public class AuthenticatedRiskListService extends AbstractService<Authenticated,
 
 	@Override
 	public void load() {
-		Collection<Risk> objects;
-		objects = this.repository.findAllRisks();
+		Collection<Sponsorship> objects;
+		int sponsorId;
+
+		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
+		objects = this.repository.findManySponsorshipsBySponsor(sponsorId);
 
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final Risk object) {
+	public void unbind(final Sponsorship object) {
 		assert object != null;
 
 		Dataset dataset;
-		String payload;
 
-		dataset = super.unbind(object, "reference", "identificationDate", "description");
-		payload = String.format(//
-			"%s; %s; %s; %s", //
-			object.getImpact(), //
-			object.getProbability(), //
-			object.getLink());
-		dataset.put("payload", payload);
-
+		dataset = super.unbind(object, "code", "startDate", "endDate", "amount");
 		super.getResponse().addData(dataset);
 	}
 

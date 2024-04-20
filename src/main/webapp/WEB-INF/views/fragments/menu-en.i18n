@@ -19,6 +19,14 @@ master.menu.sign-out = Sign out
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.risk-list = List of Risks
+# master.menu.any ##########################################################
+
+master.menu.any = Any
+master.menu.any.training-module = Published trainings
 
 # master.menu.anonymous #######################################################
 
@@ -42,9 +50,16 @@ master.menu.administrator.shut-down = Shut down
 master.menu.administrator.risk-list = List of my risks
 
 # master.menu.any ##########################################################
-
 master.menu.any = Any
 master.menu.developer.training-module = Published trainings
+
+
+master.menu.any = Any
+master.menu.any.training-module = Published trainings
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.risk-list = List of Risks
 
 # master.menu.user-account ####################################################
 
@@ -54,7 +69,11 @@ master.menu.user-account.manager = Manager data
 master.menu.user-account.developer = Developer data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.become-auditor = Become an auditor
+master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.developer = Developer data
+master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.auditor = Auditor data
+master.menu.user-account.become-auditor = Become an auditor
 
 # master.menu.auditor ##########################################################
 
@@ -72,3 +91,15 @@ master.menu.client.contract = My contracts
 master.menu.developer = Developer
 master.menu.developer.training-module = My trainings
 master.menu.developer.dashboard = My dashboard
+master.menu.developer.dashboard = My dashboard
+
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.project = My Projects
+
+# master.menu.sponsor ###################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.sponsorship = My sponsorships
+master.menu.sponsor.dashboard = My sponsor dashboard
