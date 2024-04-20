@@ -18,19 +18,19 @@ public class ManagerForm extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	Integer						totalNumberProjectMust;
-	Integer						totalNumberProjectShould;
-	Integer						totalNumberProjectCould;
-	Integer						totalNumberProjectWont;
+	private Integer				totalNumberProjectMust;
+	private Integer				totalNumberProjectShould;
+	private Integer				totalNumberProjectCould;
+	private Integer				totalNumberProjectWont;
 
-	Double						averageEstimatedCostUserStories;
-	Double						deviationEstimatedCostUserStories;
-	Double						minimumEstimatedCostUserStories;
-	Double						maximumEstimatedCostUserStories;
+	private Double				averageEstimatedCostUserStories;
+	private Double				deviationEstimatedCostUserStories;
+	private Double				minimumEstimatedCostUserStories;
+	private Double				maximumEstimatedCostUserStories;
 
-	List<Money>					averageEstimatedCostProjects;
-	List<Money>					deviationEstimatedCostProjects;
-	List<Money>					minimumEstimatedCostProjects;
-	List<Money>					maximumEstimatedCostProjects;
+	private List<Money>			averageEstimatedCostProjects;
+	private List<Money>			deviationEstimatedCostProjects;
+	private List<Money>			minimumEstimatedCostProjects;
+	private List<Money>			maximumEstimatedCostProjects;
 
 }

@@ -14,12 +14,10 @@ package acme.features.manager.managerForm;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.google.common.base.Function;
 
 import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
@@ -54,7 +52,7 @@ public class ManagerDashboardShowService extends AbstractService<Manager, Manage
 			money.setCurrency((String) obj[0]);
 			money.setAmount((Double) obj[1]);
 			return money;
-		}).collect(Collectors.toList());
+		}).toList();
 
 		Integer totalNumberProjectMust = this.repository.totalNumberProjectMust(managerId);
 		Integer totalNumberProjectShould = this.repository.totalNumberProjectShould(managerId);
