@@ -46,11 +46,10 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 	public void validate(final ProjectUserStory object) {
 		Boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("*"))
-			if (object.getProject() != null && object.getUserStory() != null) {
-				state = this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
-				super.state(state, "*", "manager.relation.form.error.exist-relation");
-			}
+		if (object.getProject() != null && object.getUserStory() != null && !super.getBuffer().getErrors().hasErrors("*")) {
+			state = this.repository.findRelationByProjectIdAndUserStoryId(object.getProject().getId(), object.getUserStory().getId()).isEmpty();
+			super.state(state, "*", "manager.relation.form.error.exist-relation");
+		}
 	}
 
 	@Override
