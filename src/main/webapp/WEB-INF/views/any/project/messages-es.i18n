@@ -8,10 +8,15 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.consumer.form.title = Detalles de consumidor
+any.project.form.title = Detalles de Proyecto
+any.project.list.title = Lista de Proyectos
 
-authenticated.consumer.form.label.company = Compañía
-authenticated.consumer.form.label.sector = Sector
+any.project.form.label.code = Código
+any.project.form.label.title = Título
+any.project.form.label.abstractProject = Resumen
+any.project.form.label.indication = Indicación
+any.project.form.label.cost = Coste	
+any.project.form.label.link = Link	
 
-authenticated.consumer.form.button.create = Registrar
-authenticated.consumer.form.button.update = Actualizar
+any.project.list.label.code = Código
+any.project.list.label.title = Título	

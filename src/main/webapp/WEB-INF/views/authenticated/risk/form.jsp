@@ -22,6 +22,5 @@
 	<acme:input-double code="risk.form.label.probability" path="probability"/>
 	<acme:input-textbox code="risk.form.label.description" path="description"/>
 	<acme:input-url code="risk.form.label.link" path="link"/>
-	<acme:input-select code="risk.form.label.project" path="project" choices="${projects}"/>
 </acme:form>
 
