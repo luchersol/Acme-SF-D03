@@ -10,7 +10,7 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
-import acme.entities.contract.ProgressLogs;
+import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
@@ -75,7 +75,7 @@ public class ClientContractDeleteService extends AbstractService<Client, Contrac
 	public void perform(final Contract contract) {
 		assert contract != null;
 
-		Collection<ProgressLogs> progressLogs;
+		Collection<ProgressLog> progressLogs;
 
 		progressLogs = this.repository.findManyProgressLogsId(contract.getId());
 		this.repository.deleteAll(progressLogs);

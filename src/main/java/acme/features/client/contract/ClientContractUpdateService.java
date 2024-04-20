@@ -73,7 +73,7 @@ public class ClientContractUpdateService extends AbstractService<Client, Contrac
 			Contract existing;
 
 			existing = this.repository.findOneContractByCode(contract.getCode());
-			super.state(existing == null || existing.getId() == contract.getId(), "code", "assistant.tutorial.form.error.code");
+			super.state(existing == null || existing.getId() == contract.getId(), "code", "client.contract.form.error.code");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("budget")) {
