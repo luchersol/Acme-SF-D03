@@ -51,6 +51,7 @@ master.menu.any.training-module = Published trainings
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
 master.menu.anonymous.publishedCodeAudit = Code audits
+master.menu.authenticated.notice = Notices
 
 # master.menu.administrator ###################################################
 
