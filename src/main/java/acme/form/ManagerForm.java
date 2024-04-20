@@ -1,6 +1,8 @@
 
 package acme.form;
 
+import java.util.List;
+
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
 import lombok.Getter;
@@ -26,9 +28,9 @@ public class ManagerForm extends AbstractForm {
 	Double						minimumEstimatedCostUserStories;
 	Double						maximumEstimatedCostUserStories;
 
-	Money						averageEstimatedCostProjects;
-	Money						deviationEstimatedCostProjects;
-	Money						minimumEstimatedCostProjects;
-	Money						maximumEstimatedCostProjects;
+	List<Money>					averageEstimatedCostProjects;
+	List<Money>					deviationEstimatedCostProjects;
+	List<Money>					minimumEstimatedCostProjects;
+	List<Money>					maximumEstimatedCostProjects;
 
 }
