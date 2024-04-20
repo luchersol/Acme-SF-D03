@@ -33,4 +33,5 @@ manager.project.form.error.published-user-stories = Todas las historias de usuar
 manager.project.form.error.without-user-stories = El proyecto debe tener alguna historia de usuario
 manager.project.form.error.fatal-error = No puedes publicar proyectos con errores fatales
 manager.project.form.error.negative-cost = El coste debe positivo o cero
+manager.project.form.error.invalid-currency = La divisa debe estar en la configuración del sistema
 manager.project.form.error.duplicated-code = El código ya existe
