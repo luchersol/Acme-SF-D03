@@ -1,6 +1,8 @@
 
 package acme.features.sponsor.dashboard;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -18,4 +20,9 @@ public class SponsorDashboardController extends AbstractController<Sponsor, Spon
 
 	// Constructors -----------------------------------------------------------
 
+
+	@PostConstruct
+	protected void initialise() {
+		super.addBasicCommand("show", this.showService);
+	}
 }
