@@ -1,6 +1,8 @@
 
 package acme.form;
 
+import java.util.List;
+
 import acme.client.data.AbstractForm;
 import acme.client.data.datatypes.Money;
 import lombok.Getter;
@@ -18,9 +20,13 @@ public class ClientForm extends AbstractForm {
 	Integer						completenessBetween50and75;
 	Integer						completenessAbove75;
 
-	Money						averageBudgetOfContracts;
-	Money						deviationBudgetOfContracts;
-	Money						minimumBudgetOfContracts;
-	Money						maximumBudgetOfContracts;
+	//	Double						averageBudgetOfContracts;
+	//	Double						deviationBudgetOfContracts;
+	//	Double						minimumBudgetOfContracts;
+	//	Double						maximumBudgetOfContracts;
+	List<Money>					averageBudgetOfContracts;
+	List<Money>					deviationBudgetOfContracts;
+	List<Money>					minimumBudgetOfContracts;
+	List<Money>					maximumBudgetOfContracts;
 
 }
