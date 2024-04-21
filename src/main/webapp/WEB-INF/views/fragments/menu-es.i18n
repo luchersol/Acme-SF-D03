@@ -22,6 +22,8 @@ master.menu.authenticated.risk-list = Lista de Riesgos
 
 master.menu.authenticated = Autenticado
 master.menu.authenticated.risk-list = Lista de Riesgos
+master.menu.authenticated.notice = Notificaciones
+
 # master.menu.any ##########################################################
 
 master.menu.any = Cualquiera
