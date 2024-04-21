@@ -60,6 +60,7 @@ master.menu.any.claim = Reclamos
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrador
+master.menu.administrator.banner = Banner = Anuncios
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
 master.menu.administrator.populate-initial = Poblar BD (inicial)

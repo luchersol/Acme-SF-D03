@@ -48,6 +48,9 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
+		
+			<acme:menu-suboption code="master.menu.administrator.banner" action="/administrator/banner/list"/>
+			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
@@ -56,6 +59,7 @@
 			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list-mine"/>
 			<acme:menu-separator/>			
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
+		
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
@@ -65,6 +69,8 @@
     
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
+
+			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-form/show"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/dashboard/show"/>
 		</acme:menu-option>
 		
