@@ -40,6 +40,7 @@
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
+			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
