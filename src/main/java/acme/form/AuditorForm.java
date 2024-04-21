@@ -16,8 +16,8 @@ public class AuditorForm extends AbstractForm {
 
 	Double						averageAuditRecordsInCodeAudits;
 	Double						deviationAuditRecordsInCodeAudits;
-	Double						minimumAuditRecordsInCodeAudits;
-	Double						maximumAuditRecordsInCodeAudits;
+	Integer						minimumAuditRecordsInCodeAudits;
+	Integer						maximumAuditRecordsInCodeAudits;
 
 	Double						averagePeriodOfAuditRecordsInCodeAudits;
 	Double						deviationPeriodOfAuditRecordsInCodeAudits;

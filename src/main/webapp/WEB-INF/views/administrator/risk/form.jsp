@@ -10,7 +10,6 @@
 	<acme:input-double code="administrator.risk.form.label.probability" path="probability"/>
 	<acme:input-textarea code="administrator.risk.form.label.description" path="description"/>
 	<acme:input-url code="administrator.risk.form.label.link" path="link"/>
-	<acme:input-select code="administrator.risk.form.label.project" path="project" choices="${projects}"/>
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show'}">
 			<acme:submit code="administrator.risk.form.button.update" action="/administrator/risk/update"/>
