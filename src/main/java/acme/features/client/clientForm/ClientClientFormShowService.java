@@ -58,15 +58,6 @@ public class ClientClientFormShowService extends AbstractService<Client, ClientF
 		clientForm.setMinimumBudgetOfContracts(minimumEstimatedCostProjects);
 		clientForm.setMaximumBudgetOfContracts(maximumEstimatedCostProjects);
 
-		//		clientForm.setAverageBudgetOfContracts(this.repository.averageBudgetOfContracts(clientId));
-		//		clientForm.setDeviationBudgetOfContracts(this.repository.deviationBudgetOfContracts(clientId));
-		//		clientForm.setMinimumBudgetOfContracts(this.repository.minimumBudgetOfContracts(clientId));
-		//		clientForm.setMaximumBudgetOfContracts(this.repository.maximumBudgetOfContracts(clientId));
-		//		clientForm.setCompletenessBelow25(this.repository.countCompletenessBelow25(clientId));
-		//		clientForm.setCompletenessBetween25and50(this.repository.countCompletenessBetween25And50(clientId));
-		//		clientForm.setCompletenessBetween50and75(this.repository.countCompletenessBetween50And75(clientId));
-		//		clientForm.setCompletenessAbove75(this.repository.countCompletenessAbove75(clientId));
-
 		super.getBuffer().addData(clientForm);
 
 	}

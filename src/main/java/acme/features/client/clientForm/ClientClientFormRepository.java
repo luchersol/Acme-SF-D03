@@ -23,18 +23,6 @@ public interface ClientClientFormRepository extends AbstractRepository {
 	@Query("SELECT c.budget.currency, MAX(c.budget.amount) FROM Contract c WHERE c.client.userAccount.id = :id GROUP BY c.budget.currency")
 	Collection<Object[]> maximumBudgetOfContracts(int id);
 
-	//	@Query("select avg(c.budget.amount) from Contract c where c.client.userAccount.id = :id")
-	//	Double averageBudgetOfContracts(int id);
-	//
-	//	@Query("select stddev(c.budget.amount) from Contract c where c.client.userAccount.id = :id")
-	//	Double deviationBudgetOfContracts(int id);
-	//
-	//	@Query("select min(c.budget.amount) from Contract c where c.client.userAccount.id = :id")
-	//	Double minimumBudgetOfContracts(int id);
-	//
-	//	@Query("select max(c.budget.amount) from Contract c where c.client.userAccount.id = :id")
-	//	Double maximumBudgetOfContracts(int id);
-
 	@Query("select count(p) from ProgressLog p join p.contract c where c.client.userAccount.id = :id and p.completeness < 25")
 	Integer countCompletenessBelow25(int id);
 
