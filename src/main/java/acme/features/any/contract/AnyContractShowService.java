@@ -51,18 +51,12 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 	@Override
 	public void unbind(final Contract contract) {
 		assert contract != null;
-
-		Collection<Project> projectAllPublish;
-		SelectChoices choicesProject;
+		assert contract.getProject() != null;
+		
 		Dataset dataset;
 
-		projectAllPublish = this.repository.findAllProjectsPublish();
-
-		choicesProject = SelectChoices.from(projectAllPublish, "title", contract.getProject());
-
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
-		dataset.put("project", choicesProject.getSelected().getKey());
-		dataset.put("projects", choicesProject);
+		dataset.put("project", contract.getProject().getTitle());
 
 		super.getResponse().addData(dataset);
 	}
