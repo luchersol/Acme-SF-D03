@@ -15,20 +15,6 @@ master.menu.sign-up = Sign up
 master.menu.sign-in = Sign in
 master.menu.sign-out = Sign out
 
-# master.menu.authenticated ##########################################################
-
-master.menu.authenticated = Authenticated
-master.menu.authenticated.risk-list = List of Risks
-# master.menu.authenticated #######################################################
-
-master.menu.authenticated = Authenticated
-master.menu.authenticated.risk-list = List of Risks
-# master.menu.any ##########################################################
-
-master.menu.any = Any
-master.menu.any.training-module = Published trainings
-master.menu.any.sponsorship = Published sponsorships
-
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
@@ -45,15 +31,14 @@ master.menu.anonymous.publishedCodeAudit = Code Audits
 
 master.menu.any = Any
 master.menu.any.claim = Claims
-master.menu.anonymous.publishedCodeAudit = Code audits
 master.menu.any.projects = Projects
 master.menu.any.training-module = Published trainings
+master.menu.any.sponsorship = Published sponsorships
 
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
-master.menu.anonymous.publishedCodeAudit = Code audits
 master.menu.authenticated.notice = Notices
 
 # master.menu.administrator ###################################################
@@ -69,42 +54,18 @@ master.menu.administrator.shut-down = Shut down
 master.menu.administrator.risk-list = List of my risks
 master.menu.administrator.dashboard = My administrator dashboard
 
-# master.menu.manager ###################################################
-
-master.menu.manager = Manager
-master.menu.manager.dashboard = Dashboard
-master.menu.manager.project = My Projects
-
-# master.menu.provider ########################################################
-# master.menu.any ##########################################################
-master.menu.any = Any
-master.menu.developer.training-module = Published trainings
-
-
-master.menu.any = Any
-master.menu.any.training-module = Published trainings
-# master.menu.authenticated ###################################################
-
-master.menu.authenticated = Authenticated
-master.menu.authenticated.risk-list = List of Risks
-
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
 master.menu.user-account.developer = Developer data
-master.menu.user-account.become-developer = Become a developer
+master.menu.user-account.auditor = Auditor data
 master.menu.user-account.manager = Manager data
-master.menu.user-account.developer = Developer data
+master.menu.user-account.sponsor = Sponsor data
 master.menu.user-account.become-developer = Become a developer
 master.menu.user-account.become-auditor = Become an auditor
 master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.become-sponsor = Become a sponsor
-master.menu.user-account.sponsor = Sponsor data
-master.menu.user-account.developer = Developer data
-master.menu.user-account.become-developer = Become a developer
-master.menu.user-account.auditor = Auditor data
-master.menu.user-account.become-auditor = Become an auditor
 
 # master.menu.auditor ##########################################################
 
@@ -116,6 +77,7 @@ master.menu.auditor.dashboard = Dashboard
 
 master.menu.client = Client
 master.menu.client.contract = My contracts
+master.menu.client.client-form = My dashboard
 
 # master.menu.developer ##########################################################
 
@@ -126,6 +88,7 @@ master.menu.developer.dashboard = My dashboard
 # master.menu.manager ###################################################
 
 master.menu.manager = Manager
+master.menu.manager.dashboard = Dashboard
 master.menu.manager.project = My Projects
 
 # master.menu.sponsor ###################################################
