@@ -21,24 +21,12 @@ public class AdministratorObjectiveController extends AbstractController<Adminis
 	@Autowired
 	private AdministratorObjectiveShowService		showService;
 
-	//	@Autowired
-	//	private AdministratorObjectiveCreateService		createService;
-	//
-	//	@Autowired
-	//	private AdministratorObjectiveUpdateService		updateService;
-	//
-	//	@Autowired
-	//	private AdministratorObjectiveDeleteService		deleteService;
-
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
-		//		super.addBasicCommand("create", this.createService);
-		//		super.addBasicCommand("update", this.updateService);
-		//		super.addBasicCommand("delete", this.deleteService);
 
 		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
