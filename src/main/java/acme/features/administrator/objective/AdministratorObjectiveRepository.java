@@ -15,4 +15,6 @@ public interface AdministratorObjectiveRepository extends AbstractRepository {
 	@Query("select o from Objective o where o.administrator.userAccount.id = :administratorId")
 	Collection<Objective> findObjectivesByAdministratorId(int administratorId);
 
+	@Query("select o from Objective o where o.id = :id")
+	Objective findOneObjectiveById(int id);
 }

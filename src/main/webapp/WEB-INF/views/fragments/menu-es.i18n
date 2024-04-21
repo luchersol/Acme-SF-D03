@@ -52,6 +52,7 @@ master.menu.administrator.system-configuration = Configuración del sistema
 master.menu.administrator.shut-down = Parar el sistema
 master.menu.administrator.dashboard = Mi panel de administrador
 master.menu.administrator.risk-list = Lista de mis riesgos
+master.menu.administrator.objective-list = Lista de mis objectivos
 
 # master.menu.user-account ####################################################
 
