@@ -41,6 +41,7 @@
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
 			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
+			<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
 	
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
@@ -86,12 +87,6 @@
 			<acme:menu-suboption code="master.menu.client.client-form" action="/client/client-form/show"/>
 		</acme:menu-option>
 		
-	
-
-		
-		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
-			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
-		</acme:menu-option>
 
 
 	</acme:menu-left>
