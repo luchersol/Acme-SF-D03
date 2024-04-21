@@ -32,7 +32,7 @@ public class AnyProgressLogShowService extends AbstractService<Any, ProgressLog>
 
 		masterId = super.getRequest().getData("id", int.class);
 		progressLog = this.repository.findProgressLogById(masterId);
-		status = progressLog != null && progressLog.isDraftMode() == false;
+		status = progressLog != null && !progressLog.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -50,19 +50,11 @@ public class AnyProgressLogShowService extends AbstractService<Any, ProgressLog>
 	@Override
 	public void unbind(final ProgressLog progressLogs) {
 		assert progressLogs != null;
-		Collection<Contract> contracts;
-		SelectChoices choices;
 
 		Dataset dataset;
-		contracts = this.repository.findContracts();
-		choices = SelectChoices.from(contracts, "code", progressLogs.getContract());
 
 		dataset = super.unbind(progressLogs, "recordId", "completeness", "comment", "registrationMoment", "responsiblePerson", "draftMode");
 		dataset.put("masterId", progressLogs.getId());
-		dataset.put("draftMode", progressLogs.isDraftMode());
-
-		dataset.put("contract", choices.getSelected().getKey());
-		dataset.put("contracts", choices);
 
 		super.getResponse().addData(dataset);
 	}
