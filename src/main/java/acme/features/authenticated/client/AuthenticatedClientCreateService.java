@@ -80,7 +80,6 @@ public class AuthenticatedClientCreateService extends AbstractService<Authentica
 		choicesType = SelectChoices.from(TypeClients.class, client.getType());
 
 		dataset = super.unbind(client, "identification", "companyName", "type", "email", "link");
-		dataset.put("type", choicesType.getSelected().getClass());
 		dataset.put("types", choicesType);
 		super.getResponse().addData(dataset);
 	}
