@@ -1,5 +1,5 @@
 
-package acme.features.administrator.risk;
+package acme.features.administrator.objective;
 
 import java.util.Collection;
 
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.risk.Risk;
+import acme.entities.objective.Objective;
 
 @Service
-public class AdministratorRiskListMineService extends AbstractService<Administrator, Risk> {
+public class AdministratorObjectiveListMineService extends AbstractService<Administrator, Objective> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorRiskRepository repository;
+	private AdministratorObjectiveRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -29,19 +29,19 @@ public class AdministratorRiskListMineService extends AbstractService<Administra
 
 	@Override
 	public void load() {
-		Collection<Risk> risks;
+		Collection<Objective> objectives;
 		int administratorId;
 		administratorId = this.getRequest().getPrincipal().getAccountId();
-		risks = this.repository.findRisksByAdministratorId(administratorId);
-		super.getBuffer().addData(risks);
+		objectives = this.repository.findObjectivesByAdministratorId(administratorId);
+		super.getBuffer().addData(objectives);
 	}
 
 	@Override
-	public void unbind(final Risk object) {
-		assert object != null;
+	public void unbind(final Objective objective) {
+		assert objective != null;
 
 		Dataset dataset;
-		dataset = super.unbind(object, "reference", "identificationDate", "impact", "probability", "description", "link");
+		dataset = super.unbind(objective, "instantiationMoment", "title", "description", "priority", "status", "startDate", "endDate", "link");
 		super.getResponse().addData(dataset);
 	}
 
