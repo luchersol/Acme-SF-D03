@@ -39,6 +39,8 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martín, José Manuel
 master.menu.student5 = 20231074K: Galván Cancio, Daniel
 master.menu.anonymous.favourite-link = Enlace favorito
+
+master.menu.anonymous.publishedCodeAudit = Auditorías de código publicadas 
 master.menu.anonymous.publishedCodeAudit = Auditorías de código 
 
 # master.menu.any ##########################################################
@@ -54,7 +56,7 @@ master.menu.authenticated.risk-list = Lista de Riesgos
 
 # master.menu.any #######################################################
 
-master.menu.any = Alguien
+master.menu.any = Cualquiera
 master.menu.any.claim = Reclamos
 
 
