@@ -48,8 +48,4 @@ public class Manager extends AbstractRole {
 	@URL
 	private String				link;
 
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
-
 }
