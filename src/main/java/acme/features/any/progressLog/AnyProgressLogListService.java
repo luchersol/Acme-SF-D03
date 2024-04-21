@@ -31,7 +31,7 @@ public class AnyProgressLogListService extends AbstractService<Any, ProgressLog>
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		contract = this.repository.findContractById(masterId);
-		status = contract != null && (!contract.getDraftMode() || super.getRequest().getPrincipal().hasRole(contract.getClient()));
+		status = contract != null && !contract.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
