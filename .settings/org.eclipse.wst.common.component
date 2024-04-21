@@ -3,7 +3,7 @@
     
     <wb-module deploy-name="Acme-SF-D03-24.1">
                         
-        
+
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
                         
         
