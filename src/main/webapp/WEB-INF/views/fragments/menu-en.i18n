@@ -27,6 +27,7 @@ master.menu.authenticated.risk-list = List of Risks
 
 master.menu.any = Any
 master.menu.any.training-module = Published trainings
+master.menu.any.sponsorship = Published sponsorships
 
 # master.menu.anonymous #######################################################
 
