@@ -17,7 +17,7 @@
 
 <acme:form>
 	<acme:input-textbox code="any.contract.form.label.code" path="code" readonly="true"/>
-	<acme:input-select code="any.contract.form.label.project" path="project" choices="${projects}" readonly="true"/>
+	<acme:input-textbox code="any.contract.form.label.project" path="project" readonly="true"/>
 	<acme:input-moment code="any.contract.form.label.instantiationMoment" path="instantiationMoment" readonly="true"/>
 	<acme:input-textbox code="any.contract.form.label.providerName" path="providerName" readonly="true"/>
 	<acme:input-textbox code="any.contract.form.label.customerName" path="customerName" readonly="true"/>
