@@ -39,7 +39,9 @@
 		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
+			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
+	
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
