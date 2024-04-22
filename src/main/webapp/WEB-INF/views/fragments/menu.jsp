@@ -36,7 +36,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.notice" action="/authenticated/notice/list"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
+		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
 			<acme:menu-suboption code="master.menu.any.publishedCodeAudit" action="/any/code-audit/list"/>
