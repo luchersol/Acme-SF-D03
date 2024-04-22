@@ -11,7 +11,7 @@ auditor.auditRecord.form.label.code = Código
 auditor.auditRecord.form.label.startDate = Fecha inicio 
 auditor.auditRecord.form.label.endDate = Fecha Fin
 auditor.auditRecord.form.label.mark = Nota
-auditor.auditRecord.form.label.link = More information link = Más información
+auditor.auditRecord.form.label.link = Más información
 
 auditor.auditRecord.list.button.create = Crear
 auditor.auditRecord.form.button.create = Crear
