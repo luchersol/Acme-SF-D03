@@ -24,7 +24,6 @@ import acme.entities.contract.Contract;
 import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
 import acme.entities.project.ProjectUserStory;
-import acme.entities.risk.Risk;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.training.TrainingModule;
@@ -54,9 +53,6 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("select ts from TrainingSession ts where ts.trainingModule.project.id = :projectId")
 	Collection<TrainingSession> findTraningSessionsByProjectId(int projectId);
-
-	@Query("select r from Risk r where r.project.id = :projectId")
-	Collection<Risk> findRisksByProjectId(int projectId);
 
 	@Query("select ca from CodeAudit ca where ca.project.id = :projectId")
 	Collection<CodeAudit> findCodeAuditsByProjectId(int projectId);
