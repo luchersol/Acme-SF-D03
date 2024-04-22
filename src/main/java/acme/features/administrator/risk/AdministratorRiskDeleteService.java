@@ -18,17 +18,7 @@ public class AdministratorRiskDeleteService extends AbstractService<Administrato
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int riskId;
-		Risk risk;
-		Administrator administrator;
-
-		riskId = super.getRequest().getData("id", int.class);
-		risk = this.repository.findOneRiskById(riskId);
-		administrator = risk == null ? null : risk.getAdministrator();
-		status = risk != null && super.getRequest().getPrincipal().hasRole(administrator);
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
