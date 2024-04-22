@@ -41,6 +41,7 @@ master.menu.any.contract = Published contracts
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
 master.menu.authenticated.notice = Notices
+master.menu.authenticated.objective = List of Objectives
 
 # master.menu.administrator ###################################################
 
@@ -69,6 +70,7 @@ master.menu.any.training-module = Published trainings
 
 master.menu.authenticated = Authenticated
 master.menu.administrator.dashboard = My administrator dashboard
+master.menu.administrator.objective-post = List of my objectives
 
 # master.menu.user-account ####################################################
 
