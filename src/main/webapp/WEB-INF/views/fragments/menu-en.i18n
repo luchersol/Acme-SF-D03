@@ -24,8 +24,8 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.publishedCodeAudit = Published code audits
-master.menu.anonymous.publishedCodeAudit = Code Audits
+master.menu.any.publishedCodeAudit = Published code audits
+
 
 # master.menu.any #######################################################
 
@@ -53,9 +53,25 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.shut-down = Shut down
-master.menu.administrator.risk-list = List of my risks
+master.menu.administrator.risk-list = List of risks
+# master.menu.manager ###################################################
+
+master.menu.manager = Manager
+master.menu.manager.dashboard = Dashboard
+master.menu.manager.project = My Projects
+
+# master.menu.provider ########################################################
+# master.menu.any ##########################################################
+master.menu.any = Any
+master.menu.developer.training-module = Published trainings
+master.menu.any = Any
+master.menu.any.training-module = Published trainings
+# master.menu.authenticated ###################################################
+
+master.menu.authenticated = Authenticated
 master.menu.administrator.dashboard = My administrator dashboard
 master.menu.administrator.objective-post = List of my objectives
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
