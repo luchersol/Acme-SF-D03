@@ -12,7 +12,7 @@ import acme.client.services.AbstractService;
 import acme.entities.risk.Risk;
 
 @Service
-public class AdministratorRiskListMineService extends AbstractService<Administrator, Risk> {
+public class AdministratorRiskListService extends AbstractService<Administrator, Risk> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -30,9 +30,7 @@ public class AdministratorRiskListMineService extends AbstractService<Administra
 	@Override
 	public void load() {
 		Collection<Risk> risks;
-		int administratorId;
-		administratorId = this.getRequest().getPrincipal().getAccountId();
-		risks = this.repository.findRisksByAdministratorId(administratorId);
+		risks = this.repository.findAllRisk();
 		super.getBuffer().addData(risks);
 	}
 

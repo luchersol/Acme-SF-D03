@@ -86,7 +86,8 @@ master.menu.consumer.favourite-link = Enlace favorito
 master.menu.developer = Desarrollador
 master.menu.developer.favourite-link = Mis entrenamientos
 master.menu.developer.favourite-dashboard = Mi panel de control
-master.menu.administrator.risk-list = Lista de mis riesgos
+master.menu.administrator.dashboard = Mi panel de administrador
+master.menu.administrator.risk-list = Lista de riesgos
 
 # master.menu.any ##########################################################
 
