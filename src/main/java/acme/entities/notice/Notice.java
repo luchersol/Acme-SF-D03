@@ -48,7 +48,4 @@ public class Notice extends AbstractEntity {
 	@Email
 	private String				email;
 
-	@NotNull
-	private Boolean				draftMode;
-
 }
