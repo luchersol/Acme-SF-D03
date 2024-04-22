@@ -1,8 +1,6 @@
 
 package acme.features.administrator.objective;
 
-import java.util.Collection;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +10,8 @@ import acme.entities.objective.Objective;
 @Repository
 public interface AdministratorObjectiveRepository extends AbstractRepository {
 
-	@Query("select o from Objective o where o.administrator.userAccount.id = :administratorId")
-	Collection<Objective> findObjectivesByAdministratorId(int administratorId);
+	@Query("select o from Objective o")
+	Objective findALlObjectives();
 
 	@Query("select o from Objective o where o.id = :id")
 	Objective findOneObjectiveById(int id);

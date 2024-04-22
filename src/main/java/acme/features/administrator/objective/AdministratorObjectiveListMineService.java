@@ -1,18 +1,16 @@
 
 package acme.features.administrator.objective;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Administrator;
+import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.objective.Objective;
 
 @Service
-public class AdministratorObjectiveListMineService extends AbstractService<Administrator, Objective> {
+public class AdministratorObjectiveListMineService extends AbstractService<Authenticated, Objective> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -29,10 +27,8 @@ public class AdministratorObjectiveListMineService extends AbstractService<Admin
 
 	@Override
 	public void load() {
-		Collection<Objective> objectives;
-		int administratorId;
-		administratorId = this.getRequest().getPrincipal().getAccountId();
-		objectives = this.repository.findObjectivesByAdministratorId(administratorId);
+		Objective objectives;
+		objectives = this.repository.findALlObjectives();
 		super.getBuffer().addData(objectives);
 	}
 
