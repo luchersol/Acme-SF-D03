@@ -12,6 +12,7 @@ import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.sponsorship.TypeOfSponsorship;
 
 @Service
 public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship> {
@@ -55,13 +56,17 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 		Collection<Project> projects;
 		SelectChoices choicesProject;
 		Dataset dataset;
+		SelectChoices choicesType;
 
 		projects = this.repository.findAllProject();
 		choicesProject = SelectChoices.from(projects, "code", object.getProject());
+		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
+		dataset.put("type", choicesType.getSelected().getKey());
+		dataset.put("types", choicesType);
 
 		super.getResponse().addData(dataset);
 	}
