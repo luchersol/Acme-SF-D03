@@ -41,6 +41,7 @@
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
 			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
+			<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
 	
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
