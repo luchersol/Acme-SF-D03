@@ -20,6 +20,7 @@ master.menu.sign-out = Salir
 master.menu.authenticated = Autenticado
 master.menu.authenticated.risk-list = Lista de Riesgos
 master.menu.authenticated.notice = Notificaciones
+master.menu.authenticated.objective = Lista de mis objectivos
 
 # master.menu.any ##########################################################
 
@@ -28,6 +29,7 @@ master.menu.any.projects = Proyectos
 master.menu.any.claim = Reclamos
 master.menu.any.training-module = Entrenamientos publicados
 master.menu.any.sponsorship = Patrocinios publicados
+master.menu.any.contract = Contratos publicados
 
 # master.menu.anonymous #######################################################
  
@@ -74,6 +76,9 @@ master.menu.developer = Desarrollador
 master.menu.developer.favourite-link = Mis entrenamientos
 master.menu.developer.favourite-dashboard = Mi panel de control
 master.menu.administrator.dashboard = Mi panel de administrador
+master.menu.administrator.risk-list = Lista de mis riesgos
+master.menu.administrator.objective-post = Lista de mis objectivos
+
 master.menu.administrator.risk-list = Lista de riesgos
 
 # master.menu.any ##########################################################
@@ -85,6 +90,7 @@ master.menu.any.training-module = Entrenamientos publicados
 
 master.menu.authenticated = Autenticado
 master.menu.authenticated.risk-list = Lista de Riesgos
+
 
 # master.menu.user-account ####################################################
 
