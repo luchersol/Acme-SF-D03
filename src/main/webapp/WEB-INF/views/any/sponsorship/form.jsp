@@ -20,7 +20,6 @@
 	<acme:input-moment code="any.sponsorship.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="any.sponsorship.form.label.endDate" path="endDate"/>
 	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-money code="any.sponsorship.form.label.amount" path="amount"/>
 	<acme:input-select code="any.sponsorship.form.label.type" path="type" choices="${types}"/>
 	<acme:input-email code="any.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="any.sponsorship.form.label.link" path="link"/>

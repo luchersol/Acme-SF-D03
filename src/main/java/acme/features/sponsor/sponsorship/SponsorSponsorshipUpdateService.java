@@ -63,7 +63,7 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "startDate", "endDate", "amount", "email", "link", "type");
+		super.bind(object, "code", "startDate", "endDate", "email", "link", "type");
 		object.setProject(project);
 	}
 
@@ -91,15 +91,12 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(MomentHelper.isAfter(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-salary");
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
-		object.setMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(object);
 	}
 
@@ -107,18 +104,16 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices choicesType;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "amount", "email", "link", "type");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "email", "link", "type");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("type", choicesType.getSelected().getKey());

@@ -4,16 +4,17 @@ package acme.features.sponsor.sponsorship;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
+import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.TypeOfSponsorship;
 import acme.roles.Sponsor;
@@ -64,7 +65,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "startDate", "endDate", "amount", "email", "link", "type");
+		super.bind(object, "code", "startDate", "endDate", "email", "link", "type");
 		object.setProject(project);
 	}
 
@@ -92,27 +93,28 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			super.state(MomentHelper.isAfter(object.getEndDate(), minimumDeadline), "endDate", "sponsor.sponsorship.form.error.too-close-start");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("amount"))
-			super.state(object.getAmount().getAmount() > 0, "amount", "sponsor.sponsorship.form.error.negative-salary");
-
-		{
-			List<Double> invoiceAmounts;
-			Double totalInvoiceAmount;
-			boolean isValid;
-
-			invoiceAmounts = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream().map(invoice -> invoice.totalAmount().getAmount()).toList();
-			totalInvoiceAmount = invoiceAmounts.stream().reduce(0.0, Double::sum);
-
-			isValid = invoiceAmounts != null && object.getAmount().getAmount().equals(totalInvoiceAmount);
-			super.state(isValid, "*", "sponsor.sponsorship.form.error.bad-money");
-		}
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
+		Collection<Invoice> invoices;
+		Double invoicesAmounts;
+		Money finalMoney;
+
+		invoicesAmounts = this.repository.findManyInvoicesBySponsorshipId(object.getId()).stream().mapToDouble(i -> i.totalAmount().getAmount()).sum();
+		finalMoney = new Money();
+		finalMoney.setAmount(invoicesAmounts);
+		finalMoney.setCurrency(this.repository.findSystemCurrency().stream().findFirst().orElse(""));
+
+		object.setAmount(finalMoney);
 		object.setDraftMode(false);
+
+		invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
+		invoices.stream().forEach(i -> i.setDraftMode(false));
+
+		this.repository.saveAll(invoices);
 		this.repository.save(object);
 	}
 
@@ -131,7 +133,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "amount", "email", "link", "type");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "email", "link", "type");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("type", choicesType.getSelected().getKey());

@@ -62,7 +62,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "email", "link", "type");
+		super.bind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
 		object.setProject(project);
 	}
 
@@ -97,7 +97,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "email", "link", "type");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("type", choicesType.getSelected().getKey());
