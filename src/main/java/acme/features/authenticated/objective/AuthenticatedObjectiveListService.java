@@ -1,5 +1,7 @@
 
-package acme.features.administrator.objective;
+package acme.features.authenticated.objective;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +12,12 @@ import acme.client.services.AbstractService;
 import acme.entities.objective.Objective;
 
 @Service
-public class AdministratorObjectiveShowService extends AbstractService<Authenticated, Objective> {
+public class AuthenticatedObjectiveListService extends AbstractService<Authenticated, Objective> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorObjectiveRepository repository;
+	private AuthenticatedObjectiveRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,13 +29,9 @@ public class AdministratorObjectiveShowService extends AbstractService<Authentic
 
 	@Override
 	public void load() {
-		Objective objective;
-		int id;
-
-		id = super.getRequest().getData("id", int.class);
-		objective = this.repository.findOneObjectiveById(id);
-
-		super.getBuffer().addData(objective);
+		Collection<Objective> objectives;
+		objectives = this.repository.findAllObjectives();
+		super.getBuffer().addData(objectives);
 	}
 
 	@Override
@@ -41,9 +39,8 @@ public class AdministratorObjectiveShowService extends AbstractService<Authentic
 		assert objective != null;
 
 		Dataset dataset;
-
-		dataset = super.unbind(objective, "instantiationMoment", "title", "description", "priority", "status", "startDate", "endDate", "link");
-
+		dataset = super.unbind(objective, "instantiationMoment", "title", "priority");
 		super.getResponse().addData(dataset);
 	}
+
 }

@@ -41,6 +41,7 @@ master.menu.any.contract = Published contract
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk-list = List of Risks
 master.menu.authenticated.notice = Notices
+master.menu.authenticated.objective = List of Objectives
 
 # master.menu.administrator ###################################################
 
@@ -54,7 +55,7 @@ master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.risk-list = List of my risks
 master.menu.administrator.dashboard = My administrator dashboard
-master.menu.administrator.objective-list = List of my objectives
+master.menu.administrator.objective-post = List of my objectives
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
