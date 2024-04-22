@@ -17,7 +17,7 @@ public class AdministratorRiskListMineService extends AbstractService<Administra
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorRiskRepository repository; // Asegúrate de reemplazar 'RiskRepository' con tu repositorio real
+	private AdministratorRiskRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 

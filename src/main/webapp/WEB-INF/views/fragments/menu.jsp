@@ -61,6 +61,7 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>	
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>		
 			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list-mine"/>
+			<acme:menu-suboption code="master.menu.administrator.objective-list" action="/administrator/objective/list-mine"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/administrator-form/show"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
@@ -86,7 +87,6 @@
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
 			<acme:menu-suboption code="master.menu.client.client-form" action="/client/client-form/show"/>
 		</acme:menu-option>
-		
 
 
 	</acme:menu-left>
