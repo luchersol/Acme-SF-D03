@@ -104,7 +104,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 
 		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
-		super.getBuffer().addData(dataset);
+		super.getResponse().addData(dataset);
 
 	}
 
