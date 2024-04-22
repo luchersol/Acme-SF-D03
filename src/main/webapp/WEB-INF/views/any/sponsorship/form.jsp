@@ -22,7 +22,7 @@
 	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}"/>
 	<acme:input-money code="any.sponsorship.form.label.amount" path="amount"/>
 	<acme:input-textbox code="any.sponsorship.form.label.type" path="type"/>
-	<acme:input-textbox code="any.sponsorship.form.label.email" path="email"/>
+	<acme:input-email code="any.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="any.sponsorship.form.label.link" path="link"/>
 </acme:form>
 

@@ -22,7 +22,7 @@ sponsor.invoice.form.label.registrationTime = Registration time:
 sponsor.invoice.form.label.dueDate = Due date:
 sponsor.invoice.form.label.quantity = Quantity:
 sponsor.invoice.form.label.tax = Tax:
-sponsor.invoice.form.label.link = More information:
+sponsor.invoice.form.label.link = More information (Optional):
 		
 sponsor.invoice.form.button.update = Update
 sponsor.invoice.form.button.delete = Delete
