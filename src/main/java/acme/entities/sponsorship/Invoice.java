@@ -71,13 +71,15 @@ public class Invoice extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Sponsor				sponsor;
 
+	private boolean				draftMode;
+
 	// Derived attributes -------------------------------------------------------------
 
 
 	public Money totalAmount() {
-		Double finalAmount = this.quantity.getAmount() + this.tax / 100 * this.quantity.getAmount();
+		double finalAmount = this.quantity.getAmount() + this.tax / 100 * this.quantity.getAmount();
 		Money finalMoney = new Money();
-		finalMoney.setAmount(finalAmount);
+		finalMoney.setAmount(Math.round(finalAmount * 100.0) / 100.0);
 		finalMoney.setCurrency(this.quantity.getCurrency());
 		return finalMoney;
 	}

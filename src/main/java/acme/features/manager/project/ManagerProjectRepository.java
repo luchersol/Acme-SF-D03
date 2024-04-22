@@ -84,10 +84,10 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select count(pu.project) > 0 from ProjectUserStory pu where pu.project.id = :projectId")
 	Boolean anyUserStoryByProjectId(int projectId);
 
-	@Query("select p from Project p where p.code = :code and p.id <> :id")
-	Project findDuplicatedByCodeAndId(String code, int id);
-
 	@Query("select count(p) > 0 from Project p where p.code = :code")
 	Boolean existsByCode(String code);
+
+	@Query("select count(p) > 0 from Project p where p.code = :code and p.id != :id")
+	Boolean existsOtherByCodeAndId(String code, int id);
 
 }

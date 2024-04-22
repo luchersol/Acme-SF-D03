@@ -62,8 +62,8 @@ public class SpamFormatter implements Formatter<String>
 		int count = 0;
 
 		for (int i = 0; i < phrases.size(); i++) {
-			StringBuilder regexBuilder = new StringBuilder("\\b(");
 			String phrase = phrases.get(i).replaceAll("\\s+", "\\\\s+");
+			StringBuilder regexBuilder = new StringBuilder("\\b(");
 			regexBuilder.append(phrase);
 			regexBuilder.append(")\\b");
 			regex = regexBuilder.toString();

@@ -33,21 +33,28 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Project object;
+		Manager manager;
+
+		id = super.getRequest().getData("id", int.class);
+
+		object = this.repository.findOneProjectById(id);
+		manager = object == null ? null : object.getManager();
+		status = object != null && object.getDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Manager manager;
 		Project project;
-		int managerId;
+		int id;
 
-		managerId = super.getRequest().getPrincipal().getActiveRoleId();
-		manager = this.repository.findManagerById(managerId);
+		id = this.getRequest().getData("id", int.class);
 
-		project = new Project();
-		project.setDraftMode(false);
-		project.setManager(manager);
+		project = this.repository.findOneProjectById(id);
 
 		super.getBuffer().addData(project);
 	}
@@ -56,7 +63,6 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 	}
 
 	@Override
@@ -65,23 +71,25 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		boolean state;
 
-		if (!super.getBuffer().getErrors().hasErrors("publishedUserStories")) {
+		if (!super.getBuffer().getErrors().hasErrors("*")) {
 			state = this.repository.allUserStoriesPublishedByProjecId(object.getId());
-			super.state(state, "published-user-stories", "manager.project.form.error.published-user-stories");
+			super.state(state, "*", "manager.project.form.error.published-user-stories");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("withoutUserStories")) {
+		if (!super.getBuffer().getErrors().hasErrors("*")) {
 			state = this.repository.anyUserStoryByProjectId(object.getId());
-			super.state(state, "without-user-stories", "manager.project.form.error.without-user-stories");
+			super.state(state, "*", "manager.project.form.error.without-user-stories");
 		}
-		if (!super.getBuffer().getErrors().hasErrors("fatalError")) {
+		if (!super.getBuffer().getErrors().hasErrors("indication")) {
 			state = !object.getIndication();
-			super.state(state, "fatal-error", "manager.project.form.error.fatal-error");
+			super.state(state, "indication", "manager.project.form.error.fatal-error");
 		}
 	}
 
 	@Override
 	public void perform(final Project object) {
 		assert object != null;
+
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -92,7 +100,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

@@ -19,13 +19,13 @@
 	<acme:input-textbox code="manager.user-story.form.label.title" path="title"/>
 	<acme:input-textbox code="manager.user-story.form.label.description" path="description"/>
 	<acme:input-integer code="manager.user-story.form.label.estimated-cost" path="estimatedCost"/>
-	<acme:input-checkbox code="manager.user-story.form.label.acceptance-criteria" path="acceptanceCriteria"/>
+	<acme:input-textbox code="manager.user-story.form.label.acceptance-criteria" path="acceptanceCriteria"/>
 	<acme:input-url code="manager.user-story.form.label.link" path="link"/>
 	<acme:input-select code="manager.user-story.form.label.priority" path="priority" choices="${priorities}"/>
 
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode}">
-			<acme:submit code="manager.user-story.form.button.update" action="/manager/user-story/update?id=${id}"/>
+			<acme:submit code="manager.user-story.form.button.update" action="/manager/user-story/update"/>
 			<acme:submit code="manager.user-story.form.button.delete" action="/manager/user-story/delete"/>
 			<acme:submit code="manager.user-story.form.button.publish" action="/manager/user-story/publish"/>
 		</jstl:when>
