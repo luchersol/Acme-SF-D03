@@ -42,4 +42,7 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 
 	@Query("select s from Sponsorship s where s.code = :code")
 	Sponsorship findOneSponsorshipByCode(String code);
+
+	@Query("select sc.systemCurrency from SystemConfiguration sc")
+	Collection<String> findSystemCurrency();
 }

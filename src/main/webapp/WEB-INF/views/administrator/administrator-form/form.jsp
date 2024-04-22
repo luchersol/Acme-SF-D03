@@ -128,4 +128,37 @@
 		</td>
 	</tr>	
 	
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.administrator-form.form.label.average-number-claims-last-10-weeks"/>
+		</th>
+		<td>
+			<acme:print value="${averageNumberClaimsLast10Weeks}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.administrator-form.form.label.deviation-number-claims-last-10-weeks"/>
+		</th>
+		<td>
+			<acme:print value="${deviationNumberClaimsLast10Weeks}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.administrator-form.form.label.minimum-number-claims-last-10-weeks"/>
+		</th>
+		<td>
+			<acme:print value="${minimumNumberClaimsLast10Weeks}"/>
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.administrator-form.form.label.maximum-number-claims-last-10-weeks"/>
+		</th>
+		<td>
+			<acme:print value="${maximumNumberClaimsLast10Weeks}"/>
+		</td>
+	</tr>	
+	
 </table>

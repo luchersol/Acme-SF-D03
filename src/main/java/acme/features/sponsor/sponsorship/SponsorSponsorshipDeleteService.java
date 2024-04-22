@@ -12,6 +12,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Invoice;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.sponsorship.TypeOfSponsorship;
 import acme.roles.Sponsor;
 
 @Service
@@ -61,7 +62,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		super.bind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
 		object.setProject(project);
 	}
 
@@ -88,15 +89,19 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
+		SelectChoices choicesType;
 		Dataset dataset;
 
 		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
+		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
-		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link");
+		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "email", "link", "type");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
+		dataset.put("type", choicesType.getSelected().getKey());
+		dataset.put("types", choicesType);
 
 		super.getResponse().addData(dataset);
 	}

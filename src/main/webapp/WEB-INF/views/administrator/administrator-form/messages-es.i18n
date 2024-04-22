@@ -25,3 +25,8 @@ administrator.administrator-form.form.label.average-value-risk = Average value o
 administrator.administrator-form.form.label.deviation-value-risk = Valor de desviación de los riesgos
 administrator.administrator-form.form.label.minimum-value-risk = Valor mínimo de riesgos
 administrator.administrator-form.form.label.maximum-value-risk = Valor máximo de riesgos
+
+administrator.administrator-form.form.label.average-number-claims-last-10-weeks = Número medio de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.deviation-number-claims-last-10-weeks = Número de desviación de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.minimum-number-claims-last-10-weeks = Número mínimo de reclamaciones en las últimas 10 semanas
+administrator.administrator-form.form.label.maximum-number-claims-last-10-weeks = Número máximo de reclamaciones en las últimas 10 semanas

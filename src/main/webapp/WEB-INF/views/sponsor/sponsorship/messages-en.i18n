@@ -11,8 +11,7 @@
 sponsor.sponsorship.form.title = Sponsorship form 
 sponsor.sponsorship.list.title = Listing of sponsorships
 
-sponsor.sponsorship.list.label.startDate = Start date
-sponsor.sponsorship.list.label.endDate = End date
+sponsor.sponsorship.list.label.moment = Moment
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.code = Code
 
@@ -23,7 +22,6 @@ sponsor.sponsorship.form.label.project = Project:
 sponsor.sponsorship.form.label.moment = Moment: 
 sponsor.sponsorship.form.label.startDate = Start date:
 sponsor.sponsorship.form.label.endDate = End date:
-sponsor.sponsorship.form.label.amount = Amount:
 sponsor.sponsorship.form.label.type = Sponsorship type:
 sponsor.sponsorship.form.label.email = Email (Optional):
 sponsor.sponsorship.form.label.link = More information (Optional):
@@ -38,4 +36,3 @@ sponsor.sponsorship.form.error.duplicated = This code is taken
 sponsor.sponsorship.form.error.too-close = Start Date must be before today 
 sponsor.sponsorship.form.error.too-close-start = The Start Date must be at least one month before the End Date
 sponsor.sponsorship.form.error.bad-money = The sum of the total amount of all the invoices must be equal to the amount of the sponsorship
-sponsor.sponsorship.form.error.negative-salary = The amount must be positive
