@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.training.TrainingModule;
 import acme.entities.training.TrainingSession;
@@ -88,7 +89,9 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		// Validate time period
 		if (!super.getBuffer().getErrors().hasErrors("timeStart") && !super.getBuffer().getErrors().hasErrors("timeEnd")) {
-			Date oneWeekAhead = new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
+
+			Long moment = MomentHelper.getCurrentMoment().getTime();
+			Date oneWeekAhead = new Date(moment + 7 * 24 * 60 * 60 * 1000); // One week ahead of current time
 			Date oneWeekPeriod = new Date(object.getTimeStart().getTime() + 7 * 24 * 60 * 60 * 1000); // One week period from the start time
 
 			boolean isOneWeekAhead = object.getTimeStart().after(oneWeekAhead);
