@@ -41,10 +41,10 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("select ar from AuditRecord ar where ar.codeAudit.id = :codeAuditId")
 	List<AuditRecord> findAuditRecordsOfCodeAudit(Integer codeAuditId);
 
-	@Query("select ar from AuditRecord ar where ar.codeAudit.id = :codeAuditId and ar.draftMode = true")
-	List<AuditRecord> findNonPublishedAuditRecordsOfCodeAudit(Integer codeAuditId);
-
 	@Query("select ar from AuditRecord ar where ar.id = :id")
 	AuditRecord findAuditRecordById(int id);
+
+	@Query("select count(ar) from AuditRecord ar where ar.codeAudit.id = :codeAuditId and ar.draftMode = true")
+	Integer countNotPublishedAuditRecordsOfCodeAudit(int codeAuditId);
 
 }

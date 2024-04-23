@@ -26,5 +26,6 @@ auditor.codeAudit.form.button.publish = Publish
 auditor.code-audit.form.button.create = Create
 auditor.codeAudit.form.button.auditRecords = Show audit records
 
+auditor.codeAudit.form.error.notAllAuditRecordArePublished = In order to publish a code audit all its audit records must have been published
 auditor.codeAudit.form.error.duplicated = This code is already in use!
 auditor.codeAudit.form.error.invalidMarkForPublish = In order to publish a code audit its mark must be at least C 
