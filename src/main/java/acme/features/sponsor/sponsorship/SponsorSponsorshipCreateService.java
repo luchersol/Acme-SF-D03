@@ -95,7 +95,6 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		}
 
 	}
-	//System.out.println(super.getBuffer().getErrors());
 
 	@Override
 	public void perform(final Sponsorship object) {
@@ -108,13 +107,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		SelectChoices choicesType;
 		Dataset dataset;
 
-		sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
 		projects = this.repository.findAllProjects();
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
