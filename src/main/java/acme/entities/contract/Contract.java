@@ -5,9 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -30,10 +28,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(indexes = {
-	@Index(columnList = "draftMode, instantiationMoment"), //
-	@Index(columnList = "client_id, id")
-})
 public class Contract extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

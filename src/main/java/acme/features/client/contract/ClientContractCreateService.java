@@ -61,7 +61,7 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(contract, "code", "instantiationMoment", "project", "providerName", "customerName", "goal", "budget");
+		super.bind(contract, "code", "project", "providerName", "customerName", "goal", "budget");
 		contract.setProject(project);
 	}
 
@@ -88,11 +88,11 @@ public class ClientContractCreateService extends AbstractService<Client, Contrac
 	@Override
 	public void perform(final Contract contract) {
 		assert contract != null;
-
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-		contract.setInstantiationMoment(moment);
+		//
+		//		Date moment;
+		//
+		//		moment = MomentHelper.getCurrentMoment();
+		//		contract.setInstantiationMoment(moment);
 
 		this.repository.save(contract);
 	}

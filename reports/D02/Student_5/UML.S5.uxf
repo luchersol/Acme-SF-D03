@@ -67,6 +67,7 @@ AuditRecord
 -endDate: Date {Temporal(TIMESTAMP), NotNull}
 -mark: Mark {Not Null}
 -link: String {URL}
+-draftMode: Boolean {NotNull}
 
 bg=green
 </panel_attributes>

@@ -6,9 +6,10 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.client.data.datatypes.Money;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.contract.Contract;
-import acme.entities.contract.ProgressLogs;
+import acme.entities.contract.ProgressLog;
 import acme.entities.project.Project;
 import acme.roles.Client;
 
@@ -33,9 +34,21 @@ public interface ClientContractRepository extends AbstractRepository {
 	@Query("select p from Project p where p.id = :projectId")
 	Project findOneProjectById(int projectId);
 
-	@Query("select pl from ProgressLogs pl where pl.contract.id = :clientId")
-	Collection<ProgressLogs> findManyProgressLogsId(int clientId);
+	@Query("select pl from ProgressLog pl where pl.contract.id = :clientId")
+	Collection<ProgressLog> findManyProgressLogsId(int clientId);
 
 	@Query("select c from Contract c where c.code = :code")
 	Contract findOneContractByCode(String code);
+
+	@Query("select pl from ProgressLog pl where pl.contract.id = :masterId")
+	Collection<ProgressLog> findManyProgressLogByMasterId(int masterId);
+
+	@Query("select c from Contract c where c.project.id = :projectId")
+	Collection<Contract> findManyContractById(int projectId);
+
+	@Query("SELECT CASE WHEN COUNT(pl) > 0 THEN false ELSE true END FROM ProgressLog pl WHERE pl.contract.id = :id AND pl.draftMode = true")
+	boolean areAllProgressLogPublished(int id);
+
+	@Query("select c.budget from Contract c where c.project.id = :id AND c.draftMode = false")
+	Collection<Money> areAllBudgetContractExcedCostProject(int id);
 }
