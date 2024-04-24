@@ -24,3 +24,4 @@ auditor.auditRecord.form.error.duplicated = ¡El código ya está en uso!
 auditor.auditRecord.form.error.notEnoughDuration = El registro de uditoría debe durar al menos 1 hora
 auditor.auditRecord.form.error.badTimeConcordance = La fecha de inicio debe ser anterior a la de final
 auditor.auditRecord.form.error.codeAudit = Esta entidad no te pertenece
+auditor.auditRecord.form.error.badStartDate = ¡La fecha de inicio debe ser posterior a la fecha de ejecución de su auditoría!
