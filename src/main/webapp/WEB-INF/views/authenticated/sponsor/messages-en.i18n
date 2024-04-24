@@ -1,5 +1,5 @@
 
-authenticated.consumer.form.title = Sponsor form
+authenticated.sponsor.form.title = Sponsor form
 
 authenticated.sponsor.form.button.create = Register
 authenticated.sponsor.form.button.update = Update

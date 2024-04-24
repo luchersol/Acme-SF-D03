@@ -1,5 +1,5 @@
 
-authenticated.consumer.form.title = Formulario de client
+authenticated.client.form.title = Formulario de client
 
 authenticated.client.form.button.create = Registrarse
 authenticated.client.form.button.update = Actualizar
