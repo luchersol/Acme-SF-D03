@@ -24,7 +24,6 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.any.publishedCodeAudit = Published code audits
 
 
 # master.menu.any #######################################################
@@ -35,13 +34,8 @@ master.menu.any.projects = Projects
 master.menu.any.training-module = Published trainings
 master.menu.any.sponsorship = Published sponsorships
 master.menu.any.contract = Published contracts
-
-# master.menu.authenticated #######################################################
-
-master.menu.authenticated = Authenticated
-master.menu.authenticated.risk-list = List of Risks
-master.menu.authenticated.notice = Notices
-master.menu.authenticated.objective = List of Objectives
+master.menu.any.training-module = Published trainings
+master.menu.any.publishedCodeAudit = Published code audits
 
 # master.menu.administrator ###################################################
 
@@ -54,23 +48,20 @@ master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.shut-down = Shut down
 master.menu.administrator.risk-list = List of risks
+master.menu.administrator.objective-post = List of my objectives
+
 # master.menu.manager ###################################################
 
 master.menu.manager = Manager
 master.menu.manager.dashboard = Dashboard
 master.menu.manager.project = My Projects
 
-# master.menu.provider ########################################################
-# master.menu.any ##########################################################
-master.menu.any = Any
-master.menu.developer.training-module = Published trainings
-master.menu.any = Any
-master.menu.any.training-module = Published trainings
 # master.menu.authenticated ###################################################
 
 master.menu.authenticated = Authenticated
-master.menu.administrator.dashboard = My administrator dashboard
-master.menu.administrator.objective-post = List of my objectives
+master.menu.authenticated.risk-list = List of Risks
+master.menu.authenticated.notice = Notices
+master.menu.authenticated.objective = List of Objectives
 
 # master.menu.user-account ####################################################
 

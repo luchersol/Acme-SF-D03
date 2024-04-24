@@ -1,5 +1,5 @@
 
-authenticated.consumer.form.title = Client form
+authenticated.client.form.title = Client form
 
 authenticated.client.form.button.create = Register
 authenticated.client.form.button.update = Update
