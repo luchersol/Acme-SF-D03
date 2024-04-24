@@ -14,5 +14,6 @@ any.codeAudit.form.label.mark = Mark
 any.codeAudit.form.label.correctiveActions = Corrective actions
 any.codeAudit.form.label.link = More information (Optional)
 any.codeAudit.form.label.project = Project code
+any.codeAudit.form.label.auditorName = Auditor name
 
 any.codeAudit.form.button.auditRecords = Show audit records
