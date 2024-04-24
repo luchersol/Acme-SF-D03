@@ -36,7 +36,7 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 	public void load() {
 		AdministratorForm dashboard = new AdministratorForm();
 
-		List<Integer> numbersOfClaims = new ArrayList<Integer>();
+		List<Integer> numbersOfClaims = new ArrayList<>();
 		PriorityObjective highPriority = PriorityObjective.HIGH;
 
 		Integer totalNumberAdministrator = this.repository.totalNumberAdministrator();
@@ -51,8 +51,8 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		Integer totalNumberObjectives = this.repository.totalNumberObjectives();
 		Integer totalNumberCriticalObjetives = this.repository.totalNumberCriticalObjetives(highPriority);
 
-		double ratioNoticesWithEmailAndLink = totalNumberNoticesWithEmailAndLink / totalNumberNotices;
-		double ratioCriticalObjetives = totalNumberCriticalObjetives / totalNumberObjectives;
+		double ratioNoticesWithEmailAndLink = Math.divideExact(totalNumberNoticesWithEmailAndLink, totalNumberNotices);
+		double ratioCriticalObjetives = Math.divideExact(totalNumberCriticalObjetives, totalNumberObjectives);
 		double ratioNotCriticalObjetives = 1.0 - ratioCriticalObjetives;
 
 		Double averageValueRisk = this.repository.averageValueRisk();
@@ -61,7 +61,7 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		Double maximumValueRisk = this.repository.maximumValueRisk();
 
 		for (int week = 0; week < 10; week++) {
-			Date highDate = MomentHelper.deltaFromCurrentMoment(-week - 1, ChronoUnit.WEEKS);
+			Date highDate = MomentHelper.deltaFromCurrentMoment(-(week + 1), ChronoUnit.WEEKS);
 			Date lowDate = MomentHelper.deltaFromCurrentMoment(-week, ChronoUnit.WEEKS);
 			numbersOfClaims.add(this.repository.numberClaimsFromOneDateToOther(lowDate, highDate));
 		}

@@ -27,8 +27,7 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 	@Override
 	public void load() {
 		Risk object;
-		Administrator administrator;
-		administrator = this.repository.findOneAdministratorById(super.getRequest().getPrincipal().getActiveRoleId());
+
 		object = new Risk();
 		super.getBuffer().addData(object);
 	}
