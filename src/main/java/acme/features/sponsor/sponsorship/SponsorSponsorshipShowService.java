@@ -55,18 +55,13 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
-		int sponsorId;
 		Collection<Project> projects;
 		SelectChoices choices;
 		Dataset dataset;
 		SelectChoices choicesType;
 
-		if (!object.isDraftMode())
-			projects = this.repository.findAllProjects();
-		else {
-			sponsorId = super.getRequest().getPrincipal().getActiveRoleId();
-			projects = this.repository.findAllProjects();
-		}
+		projects = this.repository.findAllProjects();
+
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
