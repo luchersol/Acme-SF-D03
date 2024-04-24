@@ -5,7 +5,7 @@ auditor.auditRecord.list.label.code = Code
 auditor.auditRecord.list.label.startDate = Start date 
 auditor.auditRecord.list.label.endDate = End date
 auditor.auditRecord.list.label.mark = Mark
-auditor.auditRecord.list.label.draftMode = DraftMode
+auditor.auditRecord.list.label.published = Published
 
 auditor.auditRecord.form.label.code = Code
 auditor.auditRecord.form.label.startDate = Start date 

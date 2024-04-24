@@ -5,7 +5,8 @@
 
 <acme:list>
 	<acme:list-column code="auditor.codeAudit.list.label.code" path="code" width="20%"/>	
-	<acme:list-column code="auditor.codeAudit.list.label.draftMode" path="draftMode" width="20%" />	
+	<acme:input-textbox code="auditor.codeAudit.form.label.mark" path="mark" readonly="true"/>	
+	<acme:list-column code="auditor.codeAudit.list.label.published" path="published" width="20%" />	
 	<acme:list-column code="auditor.codeAudit.list.label.execution" path="execution" width="20%"/>
 	<acme:list-column code="auditor.codeAudit.list.label.type" path="type" width="20%"/>
 	<acme:list-column code="auditor.codeAudit.list.label.mark" path="mark" width="20%"/>
