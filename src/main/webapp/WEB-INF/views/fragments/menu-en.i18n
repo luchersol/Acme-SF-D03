@@ -98,13 +98,11 @@ master.menu.developer.dashboard = My dashboard
 
 master.menu.manager = Manager
 master.menu.manager.dashboard = Dashboard
-<<<<<<< HEAD
 
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-=======
 master.menu.manager.project = My Projects
 
 # master.menu.sponsor ###################################################
@@ -112,4 +110,3 @@ master.menu.manager.project = My Projects
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = My sponsorships
 master.menu.sponsor.dashboard = My sponsor dashboard
->>>>>>> refs/heads/develop
