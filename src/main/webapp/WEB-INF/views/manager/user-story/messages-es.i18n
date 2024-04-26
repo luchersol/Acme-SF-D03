@@ -21,7 +21,7 @@ manager.user-story.form.label.acceptance-criteria = Criterio de aceptación
 manager.user-story.form.label.link = Link
 manager.user-story.form.label.priority = Prioridad
 
-manager.user-story.list.button.create = Crear
+manager.user-story.list-mine.button.create = Crear
 manager.user-story.form.button.create = Crear
 manager.user-story.form.button.update = Actualizar
 manager.user-story.form.button.delete = Borrar

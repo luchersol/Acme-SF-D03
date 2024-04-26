@@ -26,9 +26,10 @@
 			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list-mine"/>
-			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-form/show"/>	
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.user-story" action="/manager/user-story/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.relation" action="/manager/project-user-story/create-relation"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -43,7 +44,6 @@
 			<acme:menu-suboption code="master.menu.any.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
-	
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
@@ -53,7 +53,6 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
-		
 			<acme:menu-suboption code="master.menu.administrator.banner" action="/administrator/banner/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
@@ -66,7 +65,6 @@
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/administrator-form/show"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
-		
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
@@ -78,12 +76,11 @@
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-form/show"/>
 		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
 			<acme:menu-suboption code="master.menu.client.client-form" action="/client/client-form/show"/>
 		</acme:menu-option>
-
-
 	</acme:menu-left>
 
 

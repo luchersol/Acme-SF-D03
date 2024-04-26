@@ -1,5 +1,5 @@
 <%--
-- list.jsp
+- form.jsp
 -
 - Copyright (C) 2012-2024 Rafael Corchuelo.
 -
@@ -15,11 +15,12 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:list>
-	<acme:list-column code="manager.user-story.list.label.title" path="title"/>
-	<acme:list-column code="manager.user-story.list.label.priority" path="priority"/>
-</acme:list>	
+<acme:form>
 
-<jstl:if test="${_command == 'list-mine'}">
-	<acme:button code="manager.user-story.list-mine.button.create" action="/manager/user-story/create"/>
-</jstl:if>
+	<acme:input-select code="manager.relation.form.label.project" path="project" choices="${projects}"/>	
+	<acme:input-select code="manager.relation.form.label.user-story" path="userStory" choices="${userStories}"/>
+
+	<acme:submit code="manager.relation.form.button.create" action="/manager/project-user-story/create-relation"/>
+	<acme:submit code="manager.relation.form.button.delete" action="/manager/project-user-story/delete-relation"/>
+
+</acme:form>
