@@ -11,11 +11,11 @@ sponsorship-09,YZA-009,2021/01/14 09:20,2019/02/14 13:55,2019/03/16 13:55,"USD 1
 sponsorship-10,BCD-010,2021/10/28 10:05,2020/11/28 06:30,2020/12/29 06:30,"BGP 3,240.08",INKIND,email10@acme.com,http://example.com/10,true,project-02,sponsor-02
 sponsorship-11,CDE-011,2021/08/04 18:15,2019/08/08 12:25,2019/10/13 08:00,"BGP 2,120",FINANCIAL,email11@acme.com,http://example.com/11,false,project-01,sponsor-01
 sponsorship-12,DEF-012,2021/01/23 03:40,2020/01/23 07:15,2020/02/26 07:15,"EUR 1,072.27",INKIND,email12@acme.com,http://example.com/12,false,project-01,sponsor-02
-sponsorship-13,EFG-013,2021/06/02 13:20,2019/10/02 17:30,2019/12/08 12:00,"EUR 2,200,000",FINANCIAL,email13@acme.com,http://example.com/13,false,project-02,sponsor-01
-sponsorship-14,FGH-014,2021/01/10 08:25,2020/04/10 12:00,2020/05/13 12:00,"BGP 4,245.84",INKIND,email14@acme.com,http://example.com/14,false,project-02,sponsor-02
+sponsorship-13,EFG-013,2021/06/02 13:20,2019/10/02 17:30,2019/12/08 12:00,"EUR 2,200,000",FINANCIAL,email13@acme.com,http://example.com/13,true,project-02,sponsor-01
+sponsorship-14,FGH-014,2021/01/10 08:25,2020/04/10 12:00,2020/05/13 12:00,"BGP 4,245.84",INKIND,email14@acme.com,http://example.com/14,true,project-02,sponsor-02
 sponsorship-15,GHI-015,2021/01/15 17:10,2019/03/15 09:50,2018/12/16 10:35,"EUR 1,100.27",FINANCIAL,email15@acme.com,http://example.com/15,false,project-04,sponsor-02
 sponsorship-16,HIJ-016,2021/08/07 16:35,2020/12/07 11:20,2021/01/09 11:20,"USD 2,140.23",INKIND,email16@acme.com,http://example.com/16,false,project-02,sponsor-01
 sponsorship-17,IJK-017,2021/07/20 07:45,2019/07/23 03:55,2019/11/27 12:40,"BGP 1,090",FINANCIAL,email17@acme.com,http://example.com/17,false,project-02,sponsor-01
 sponsorship-18,JKL-018,2021/01/05 12:30,2020/02/05 08:10,2020/03/06 08:10,"USD 5,476.3",INKIND,email18@acme.com,http://example.com/18,false,project-02,sponsor-02
 sponsorship-19,KLM-019,2021/09/29 05:55,2019/11/29 13:45,2020/01/02 13:45,"EUR 1,050.24",FINANCIAL,email19@acme.com,http://example.com/19,false,project-04,sponsor-02
-sponsorship-20,LMN-020,2021/02/23 19:20,2020/06/23 15:05,2019/09/23 17:20,"BGP 1,060.13",INKIND,email20@acme.com,http://example.com/20,false,project-04,sponsor-01
+sponsorship-20,LMN-020,2021/02/23 19:20,2020/06/23 15:05,2019/09/23 17:20,"BGP 1,060.13",INKIND,email20@acme.com,http://example.com/20,true,project-04,sponsor-01

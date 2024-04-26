@@ -5,7 +5,7 @@ auditor.codeAudit.list.label.code = Código
 auditor.codeAudit.list.label.execution = Fecha de ejecución
 auditor.codeAudit.list.label.type = Tipo
 auditor.codeAudit.list.label.mark = Nota
-auditor.codeAudit.list.label.draftMode = Modo borrador
+auditor.codeAudit.list.label.published = Publicado
 
 auditor.codeAudit.form.label.code = Código	 	
 auditor.codeAudit.form.label.execution = Fecha de ejecución
@@ -25,5 +25,6 @@ auditor.codeAudit.form.button.publish = Publicar
 auditor.code-audit.form.button.create = Crear
 auditor.codeAudit.form.button.auditRecords = Mostrar registros de auditoría
 
+auditor.codeAudit.form.error.notAllAuditRecordArePublished = Para publicar una auditoría todos sus registros de auditoría deben haber sido publicados
 auditor.codeAudit.form.error.duplicated = ¡Este código ya está en uso!
 auditor.codeAudit.form.error.invalidMarkForPublish = Para publicar una auditoría su nota debe ser al menos C

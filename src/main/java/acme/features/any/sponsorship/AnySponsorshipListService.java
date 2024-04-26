@@ -41,7 +41,7 @@ public class AnySponsorshipListService extends AbstractService<Any, Sponsorship>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "amount");
+		dataset = super.unbind(object, "code", "moment", "amount");
 		super.getResponse().addData(dataset);
 	}
 

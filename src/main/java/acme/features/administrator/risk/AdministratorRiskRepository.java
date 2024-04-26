@@ -29,6 +29,9 @@ public interface AdministratorRiskRepository extends AbstractRepository {
 	@Query("select p from Project p where p.draftMode = false")
 	Collection<Project> findAllProjectPublish();
 
+	@Query("select r from Risk r")
+	Collection<Risk> findAllRisk();
+
 	@Query("SELECT r FROM Risk r WHERE r.administrator.userAccount.id = :administratorId")
 	Collection<Risk> findRisksByAdministratorId(int administratorId);
 

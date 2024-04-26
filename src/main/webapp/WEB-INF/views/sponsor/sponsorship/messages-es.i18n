@@ -11,8 +11,7 @@
 sponsor.sponsorship.form.title = Detalles de patrocinio
 sponsor.sponsorship.list.title = Lista de patrocinios
 
-sponsor.sponsorship.list.label.startDate = Fecha inicio
-sponsor.sponsorship.list.label.endDate = Fecha final
+sponsor.sponsorship.list.label.moment = Momento
 sponsor.sponsorship.list.label.amount = Cantidad
 sponsor.sponsorship.list.label.code = Código
 
@@ -23,7 +22,6 @@ sponsor.sponsorship.form.label.project = Projecto:
 sponsor.sponsorship.form.label.moment = Momento: 
 sponsor.sponsorship.form.label.startDate = Fecha inicio:
 sponsor.sponsorship.form.label.endDate = Fecha final:
-sponsor.sponsorship.form.label.amount = Cantidad:
 sponsor.sponsorship.form.label.type = Tipo de patrocinio:
 sponsor.sponsorship.form.label.email = Correo (Opcional):
 sponsor.sponsorship.form.label.link = Más información (Opcional):
@@ -39,4 +37,3 @@ sponsor.sponsorship.form.error.duplicated = Este código ya estña cogido
 sponsor.sponsorship.form.error.too-close = La fecha de inicio debe ser anterior a la de hoy 
 sponsor.sponsorship.form.error.too-close-start = La fecha de inicio debe ser al menos un mes antes de la fecha de fin
 sponsor.sponsorship.form.error.bad-money = La suma de la cantidad total de todas las facturas debe ser igual a la cantidad del patrocinio
-sponsor.sponsorship.form.error.negative-salary = La cantidad debe ser positiva

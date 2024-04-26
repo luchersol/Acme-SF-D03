@@ -1,14 +1,12 @@
 
 package acme.features.administrator.dashboard;
 
-import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.claim.Claim;
 import acme.entities.objective.PriorityObjective;
 
 @Repository
@@ -63,7 +61,9 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	// --------------------
 
-	@Query("SELECT c FROM Claim c WHERE c.instantiationMoment > :date")
-	Collection<Claim> averageNumberClaimsLast10Weeks(Date date);
+	@Query("SELECT COUNT(c) FROM Claim c WHERE c.instantiationMoment > :highDate AND c.instantiationMoment <= :lowDate")
+	Integer numberClaimsFromOneDateToOther(Date lowDate, Date highDate);
 
+	@Query("SELECT COUNT(c) FROM Claim c WHERE c.instantiationMoment <= :date")
+	Integer numberClaimsForMoreThan10Weeks(Date date);
 }

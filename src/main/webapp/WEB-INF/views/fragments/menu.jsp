@@ -35,12 +35,13 @@
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.risk-list" action="/authenticated/risk/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.notice" action="/authenticated/notice/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
-			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.any.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
@@ -57,21 +58,16 @@
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
-			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>	
+			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>		
-			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list-mine"/>
+			<acme:menu-suboption code="master.menu.administrator.objective-post" action="/administrator/objective/post"/>
+			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/administrator-form/show"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
-			<acme:menu-suboption code="master.menu.developer.favourite-link" action="/developer/training-module/list-mine"/>
-			<acme:menu-suboption code="master.menu.developer.favourite-dashboard" action="/developer/developer-form/show"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.any.favourite">
-			<acme:menu-suboption code="master.menu.developer.favourite-publish" action="/any/training-module/list"/>
-		    <acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.developer.training-module" action="/developer/training-module/list-mine"/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>

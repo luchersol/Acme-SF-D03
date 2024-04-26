@@ -16,19 +16,19 @@ public class AdministratorRiskController extends AbstractController<Administrato
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AdministratorRiskListMineService	listMineService;
+	private AdministratorRiskListService	listService;
 
 	@Autowired
-	private AdministratorRiskShowService		showService;
+	private AdministratorRiskShowService	showService;
 
 	@Autowired
-	private AdministratorRiskCreateService		createService;
+	private AdministratorRiskCreateService	createService;
 
 	@Autowired
-	private AdministratorRiskUpdateService		updateService;
+	private AdministratorRiskUpdateService	updateService;
 
 	@Autowired
-	private AdministratorRiskDeleteService		deleteService;
+	private AdministratorRiskDeleteService	deleteService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -39,8 +39,7 @@ public class AdministratorRiskController extends AbstractController<Administrato
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
-
-		super.addCustomCommand("list-mine", "list", this.listMineService);
+		super.addBasicCommand("list", this.listService);
 	}
 
 }

@@ -2,8 +2,9 @@
 package acme.features.administrator.dashboard;
 
 import java.time.temporal.ChronoUnit;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
-import acme.entities.claim.Claim;
 import acme.entities.objective.PriorityObjective;
 import acme.form.AdministratorForm;
 
@@ -36,7 +36,7 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 	public void load() {
 		AdministratorForm dashboard = new AdministratorForm();
 
-		Date date = MomentHelper.deltaFromCurrentMoment(-10, ChronoUnit.DAYS);
+		List<Integer> numbersOfClaims = new ArrayList<Integer>();
 		PriorityObjective highPriority = PriorityObjective.HIGH;
 
 		Integer totalNumberAdministrator = this.repository.totalNumberAdministrator();
@@ -60,7 +60,19 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		Double minimumValueRisk = this.repository.minimumValueRisk();
 		Double maximumValueRisk = this.repository.maximumValueRisk();
 
-		Collection<Claim> claims = this.repository.averageNumberClaimsLast10Weeks(date); // TODO
+		for (int week = 0; week < 10; week++) {
+			Date highDate = MomentHelper.deltaFromCurrentMoment(-week - 1, ChronoUnit.WEEKS);
+			Date lowDate = MomentHelper.deltaFromCurrentMoment(-week, ChronoUnit.WEEKS);
+			numbersOfClaims.add(this.repository.numberClaimsFromOneDateToOther(lowDate, highDate));
+		}
+		numbersOfClaims.add(this.repository.numberClaimsForMoreThan10Weeks(MomentHelper.deltaFromCurrentMoment(-10, ChronoUnit.WEEKS)));
+
+		Double averageNumberClaimsLast10Weeks = numbersOfClaims.stream().mapToDouble(Integer::doubleValue).average().orElse(0.0);
+		Double maximumNumberClaimsLast10Weeks = numbersOfClaims.stream().mapToDouble(Integer::doubleValue).max().orElse(0.0);
+		Double minimumNumberClaimsLast10Weeks = numbersOfClaims.stream().mapToDouble(Integer::doubleValue).min().orElse(0.0);
+
+		Double sumaDiferenciasCuadrado = numbersOfClaims.stream().mapToDouble(num -> Math.pow(num - averageNumberClaimsLast10Weeks, 2)).sum();
+		Double deviationNumberClaimsLast10Weeks = Math.sqrt(sumaDiferenciasCuadrado / numbersOfClaims.size());
 
 		dashboard.setTotalNumberAdministrator(totalNumberAdministrator);
 		dashboard.setTotalNumberAuditor(totalNumberAuditor);
@@ -76,6 +88,11 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		dashboard.setMinimumValueRisk(minimumValueRisk);
 		dashboard.setMaximumValueRisk(maximumValueRisk);
 
+		dashboard.setAverageNumberClaimsLast10Weeks(averageNumberClaimsLast10Weeks);
+		dashboard.setMaximumNumberClaimsLast10Weeks(maximumNumberClaimsLast10Weeks);
+		dashboard.setMinimumNumberClaimsLast10Weeks(minimumNumberClaimsLast10Weeks);
+		dashboard.setDeviationNumberClaimsLast10Weeks(deviationNumberClaimsLast10Weeks);
+
 		super.getBuffer().addData(dashboard);
 	}
 
@@ -84,7 +101,8 @@ public class AdministratorDashboardShowService extends AbstractService<Administr
 		Dataset dataset;
 
 		dataset = super.unbind(object, "totalNumberAdministrator", "totalNumberClient", "totalNumberDeveloper", "totalNumberManager", "totalNumberSponsor", "totalNumberAuditor", "ratioNoticesWithEmailAndLink", "ratioCriticalObjetives",
-			"ratioNotCriticalObjetives", "averageValueRisk", "deviationValueRisk", "minimumValueRisk", "maximumValueRisk");
+			"ratioNotCriticalObjetives", "averageValueRisk", "deviationValueRisk", "minimumValueRisk", "maximumValueRisk", "averageNumberClaimsLast10Weeks", "deviationNumberClaimsLast10Weeks", "minimumNumberClaimsLast10Weeks",
+			"maximumNumberClaimsLast10Weeks");
 
 		super.getResponse().addData(dataset);
 	}

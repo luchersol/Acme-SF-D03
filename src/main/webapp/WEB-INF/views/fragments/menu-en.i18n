@@ -24,8 +24,7 @@ master.menu.student3 = 53964862P: Robles Russo, Eduardo
 master.menu.student4 = 53966183H: Miret Martin, Jose Manuel
 master.menu.student5 = 20231074K: Galvan Cancio, Daniel
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.publishedCodeAudit = Published code audits
-master.menu.anonymous.publishedCodeAudit = Code Audits
+
 
 # master.menu.any #######################################################
 
@@ -34,13 +33,9 @@ master.menu.any.claim = Claims
 master.menu.any.projects = Projects
 master.menu.any.training-module = Published trainings
 master.menu.any.sponsorship = Published sponsorships
-master.menu.any.contract = Published contract
-
-# master.menu.authenticated #######################################################
-
-master.menu.authenticated = Authenticated
-master.menu.authenticated.risk-list = List of Risks
-master.menu.authenticated.notice = Notices
+master.menu.any.contract = Published contracts
+master.menu.any.training-module = Published trainings
+master.menu.any.publishedCodeAudit = Published code audits
 
 # master.menu.administrator ###################################################
 
@@ -52,28 +47,23 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.system-configuration = System Configuration
 master.menu.administrator.shut-down = Shut down
-<<<<<<< HEAD
+master.menu.administrator.risk-list = List of risks
+master.menu.administrator.objective-post = List of my objectives
+
 
 # master.menu.manager ###################################################
 
-master.menu.manager = Manager
 master.menu.manager.project = My Projects
 master.menu.manager.user-story = My User Stories
 master.menu.manager.relation = Relation Project-User Story
+master.menu.manager.dashboard = Dashboard
 
-# master.menu.provider ########################################################
+# master.menu.authenticated ###################################################
 
-master.menu.provider = Provider
-master.menu.provider.favourite-link = Favourite link
-
-# master.menu.consumer ##########################################################
-
-master.menu.consumer = Consumer
-master.menu.consumer.favourite-link = Favourite link
-=======
-master.menu.administrator.risk-list = List of my risks
-master.menu.administrator.dashboard = My administrator dashboard
->>>>>>> refs/remotes/origin/develop
+master.menu.authenticated = Authenticated
+master.menu.authenticated.risk-list = List of Risks
+master.menu.authenticated.notice = Notices
+master.menu.authenticated.objective = List of Objectives
 
 # master.menu.user-account ####################################################
 
