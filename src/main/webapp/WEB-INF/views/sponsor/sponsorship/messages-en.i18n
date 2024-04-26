@@ -14,6 +14,7 @@ sponsor.sponsorship.list.title = Listing of sponsorships
 sponsor.sponsorship.list.label.moment = Moment
 sponsor.sponsorship.list.label.amount = Amount
 sponsor.sponsorship.list.label.code = Code
+sponsor.sponsorship.list.label.published = Published
 
 sponsor.sponsorship.list.button.create = Create
 

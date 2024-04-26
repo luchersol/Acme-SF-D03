@@ -14,6 +14,7 @@ sponsor.invoice.list.title = Listing of invoices
 sponsor.invoice.list.label.registrationTime = Registration time
 sponsor.invoice.list.label.dueDate = Due date
 sponsor.invoice.list.label.code = Code
+sponsor.invoice.list.label.published = Published
 
 sponsor.invoice.list.button.create = Create
 
