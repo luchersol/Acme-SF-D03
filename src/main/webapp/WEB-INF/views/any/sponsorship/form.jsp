@@ -16,12 +16,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="any.sponsorship.form.label.code" path="code"/>
-	<acme:input-moment code="any.sponsorship.form.label.startDate" path="startDate"/>
-	<acme:input-moment code="any.sponsorship.form.label.endDate" path="endDate"/>
-	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-select code="any.sponsorship.form.label.type" path="type" choices="${types}"/>
-	<acme:input-email code="any.sponsorship.form.label.email" path="email"/>
-	<acme:input-url code="any.sponsorship.form.label.link" path="link"/>
+	<acme:input-textbox code="any.sponsorship.form.label.code" path="code" readonly="true"/>
+	<acme:input-moment code="any.sponsorship.form.label.startDate" path="startDate" readonly="true"/>
+	<acme:input-moment code="any.sponsorship.form.label.endDate" path="endDate" readonly="true"/>
+	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}" readonly="true"/>
+	<acme:input-textbox code="any.sponsorship.form.label.sponsorName" path="sponsorName" readonly="true" />
+	<acme:input-select code="any.sponsorship.form.label.type" path="type" choices="${types}" readonly="true"/>
+	<acme:input-email code="any.sponsorship.form.label.email" path="email" readonly="true"/>
+	<acme:input-url code="any.sponsorship.form.label.link" path="link" readonly="true"/>
 </acme:form>
 

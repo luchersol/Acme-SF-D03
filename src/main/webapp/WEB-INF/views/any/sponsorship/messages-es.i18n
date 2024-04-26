@@ -23,4 +23,4 @@ any.sponsorship.form.label.endDate = Fecha final:
 any.sponsorship.form.label.type = Tipo de patrocinio:
 any.sponsorship.form.label.email = Correo (Opcional):
 any.sponsorship.form.label.link = Más información (Opcional):
-		
+any.sponsorship.form.label.sponsorName = Nombre del patrocinador
