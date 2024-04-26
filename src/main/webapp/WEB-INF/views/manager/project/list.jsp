@@ -15,9 +15,10 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
+
 <acme:list>
-	<acme:list-column code="any.sponsorship.list.label.code" path="code"/>
-	<acme:list-column code="any.sponsorship.list.label.amount" path="amount"/>
-	<acme:list-column code="any.sponsorship.list.label.moment" path="moment"/>
-	<acme:list-payload path="payload"/>
+	<acme:list-column code="manager.project.list.label.code" path="code"/>
+	<acme:list-column code="manager.project.list.label.title" path="title"/>
 </acme:list>
+
+<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>

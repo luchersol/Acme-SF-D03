@@ -123,31 +123,13 @@ master.menu.developer.dashboard = Mi panel de control
 
 # master.menu.manager ###################################################
 
-<<<<<<< HEAD
-master.menu.manager = Manager
-master.menu.manager.dashboard = Dashboard
-<<<<<<< HEAD
-master.menu.manager.project = Mis Projectos
-=======
 master.menu.manager = Gerente
 master.menu.manager.dashboard = Panel de control
-master.menu.manager.project = Mis proyectos
->>>>>>> branch 'develop' of https://github.com/luchersol/Acme-SF-D03.git
+master.menu.manager.project = Mis Projectos
 
 # master.menu.sponsor ###################################################
 
 master.menu.sponsor = Patrocinador
-<<<<<<< HEAD
 master.menu.sponsor.dashboard = Mi panel de patrocinador
 master.menu.sponsor.sponsorship = Mis Patrocinios
-=======
 
-# master.menu.user-account ####################################################
-
-master.menu.user-account = Cuenta
-master.menu.user-account.general-data = Datos generales
->>>>>>> refs/remotes/origin/Task8-E1
-=======
-master.menu.sponsor.sponsorship = Mis patrocinios
-master.menu.sponsor.dashboard = Mi panel de control de patrocinador
->>>>>>> branch 'develop' of https://github.com/luchersol/Acme-SF-D03.git

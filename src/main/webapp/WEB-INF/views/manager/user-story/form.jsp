@@ -28,7 +28,6 @@
 		<acme:submit code="manager.user-story.form.button.delete" action="/manager/user-story/delete"/>
 		<acme:submit code="manager.user-story.form.button.publish" action="/manager/user-story/publish"/>
 	</jstl:if>		
-	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="manager.user-story.form.button.create" action="/manager/user-story/create"/>
-	</jstl:if>
+	
+	<acme:submit test="${_command == 'create'}" code="manager.user-story.form.button.create" action="/manager/user-story/create"/>
 </acme:form>

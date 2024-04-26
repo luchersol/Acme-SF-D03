@@ -78,7 +78,7 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("select p from Project p where p.manager.id = :managerId and p.draftMode = false")
 	Collection<Project> findPublishedProjectsByManagerId(int managerId);
 
-	@Query("select count(pu.project) = 0 from ProjectUserStory pu where pu.userStory.draftMode = false and pu.project.id = :projectId")
+	@Query("select count(pu.project) = 0 from ProjectUserStory pu where pu.userStory.draftMode = true and pu.project.id = :projectId")
 	Boolean allUserStoriesPublishedByProjecId(int projectId);
 
 	@Query("select count(pu.project) > 0 from ProjectUserStory pu where pu.project.id = :projectId")

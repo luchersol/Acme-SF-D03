@@ -1,17 +1,13 @@
 
 package acme.features.any.contract;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
-import acme.entities.project.Project;
 
 @Service
 public class AnyContractShowService extends AbstractService<Any, Contract> {
@@ -52,7 +48,7 @@ public class AnyContractShowService extends AbstractService<Any, Contract> {
 	public void unbind(final Contract contract) {
 		assert contract != null;
 		assert contract.getProject() != null;
-		
+
 		Dataset dataset;
 
 		dataset = super.unbind(contract, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");

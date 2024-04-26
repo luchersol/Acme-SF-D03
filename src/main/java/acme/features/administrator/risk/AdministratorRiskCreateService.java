@@ -29,7 +29,10 @@ public class AdministratorRiskCreateService extends AbstractService<Administrato
 		Risk object;
 		Administrator administrator;
 		administrator = this.repository.findOneAdministratorById(super.getRequest().getPrincipal().getActiveRoleId());
+
 		object = new Risk();
+		object.setAdministrator(administrator);
+
 		super.getBuffer().addData(object);
 	}
 
