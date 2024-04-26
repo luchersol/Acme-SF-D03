@@ -1,16 +1,15 @@
 
 package acme.components;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.antiSpamSystem.Spam;
 
 public interface AntiSpamSystemRepository extends AbstractRepository {
 
-	@Query("select s from Spam s")
-	Collection<Spam> findAllSpam();
+	@Query("select s.word from Spam s")
+	List<String> findAllSpam();
 
 }

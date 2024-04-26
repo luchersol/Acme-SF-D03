@@ -17,12 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.services.AbstractService;
+import acme.components.AbstractAntiSpamService;
 import acme.entities.project.Project;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectUpdateService extends AbstractService<Manager, Project> {
+public class ManagerProjectUpdateService extends AbstractAntiSpamService<Manager, Project> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -75,7 +75,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 	public void validate(final Project object) {
 		assert object != null;
 
-		boolean state;//PRO-0009 213
+		boolean state;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			state = !this.repository.existsOtherByCodeAndId(object.getCode(), object.getId());
@@ -89,6 +89,7 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 			state = Arrays.asList(this.repository.findAcceptedCurrencies().split(",")).contains(object.getCost().getCurrency());
 			super.state(state, "cost", "manager.project.form.error.invalid-currency");
 		}
+		super.validateSpam(object);
 	}
 
 	@Override
