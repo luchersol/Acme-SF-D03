@@ -54,7 +54,7 @@ master.menu.administrator.shut-down = Parar el sistema
 master.menu.manager = Manager
 master.menu.manager.project = Mis Projectos
 master.menu.manager.user-story = Mis Historias de Usuario
-master.menu.manager.relation = Relacion Project-Historia de Usuario
+master.menu.manager.relation = Relacion Proyecto-Historia de Usuario
 
 # master.menu.provider ########################################################
 

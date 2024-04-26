@@ -10,11 +10,11 @@
 
 manager.project-user-story.form.title = Relacion entre Proyecto e Historia de Usuario
 
-manager.relation.form.label.project = Project
-manager.relation.form.label.user-story = User Story
+manager.relation.form.label.project = Proyecto
+manager.relation.form.label.user-story = Historia de Usuario
 
-manager.relation.form.button.create = Create
-manager.relation.form.button.delete = Delete
+manager.relation.form.button.create = Crear
+manager.relation.form.button.delete = Borrar
 
 manager.relation.form.error.not-exist-relation = La relación entre proyecto e historia de usuario no existe
 manager.relation.form.error.exist-relation = La relación entre proyecto e historia de usuario ya existe

@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.user-account.form.title = Detalles de manager
+authenticated.manager.form.title = Detalles de manager
 
 manager.user-account.form.label.degree = Título
 manager.user-account.form.label.overview = Descripción

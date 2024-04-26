@@ -8,10 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-manager.manager-form.form.title = Manager dashboard
+manager.manager-form.form.title = Panel de gerente
 
 manager.manager-form.form.title.general-indicators = Indicadores generales
-manager.manager-form.form.title.application-statuses = Application statuses  
 
 manager.manager-form.form.label.total-number-project-must = Número total de proyectos con prioridad "Must"
 manager.manager-form.form.label.total-number-project-should = Número total de proyectos con prioridad "Should"
