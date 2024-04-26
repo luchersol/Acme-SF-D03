@@ -61,6 +61,7 @@ public class AnyCodeAuditShowService extends AbstractService<Any, CodeAudit> {
 		choices = SelectChoices.from(projects, "code", object.getProject());
 		dataset = super.unbind(object, "code", "execution", "correctiveActions", "link", "mark");
 
+		dataset.put("auditorName", object.getAuditor().getIdentity().getFullName());
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("types", types);

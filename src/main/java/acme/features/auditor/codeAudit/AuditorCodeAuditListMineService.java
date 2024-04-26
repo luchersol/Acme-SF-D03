@@ -42,6 +42,8 @@ public class AuditorCodeAuditListMineService extends AbstractService<Auditor, Co
 		assert object != null;
 		Dataset dataset;
 		dataset = super.unbind(object, "code", "execution", "type", "mark", "draftMode");
+		String published = !object.getDraftMode() ? "✓" : "x";
+		dataset.put("published", published);
 		super.getResponse().addData(dataset);
 	}
 

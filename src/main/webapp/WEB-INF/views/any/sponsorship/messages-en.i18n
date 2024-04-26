@@ -11,8 +11,7 @@
 any.sponsorship.form.title = sponsorship form
 any.sponsorship.list.title = Listing of sponsorships
 
-any.sponsorship.list.label.startDate = Start date
-any.sponsorship.list.label.endDate = End date
+any.sponsorship.list.label.moment = Moment
 any.sponsorship.list.label.amount = Amount
 any.sponsorship.list.label.code = Code
 
@@ -21,7 +20,6 @@ any.sponsorship.form.label.project = Project:
 any.sponsorship.form.label.moment = Moment: 
 any.sponsorship.form.label.startDate = Start date:
 any.sponsorship.form.label.endDate = End date:
-any.sponsorship.form.label.amount = Amount:
 any.sponsorship.form.label.type = sponsorship type:
 any.sponsorship.form.label.email = Email (Optional):
 any.sponsorship.form.label.link = More information (Optional):

@@ -26,23 +26,24 @@
 			<acme:menu-suboption code="master.menu.student5" action="https://streamlabs.com/megamagolas/merch"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
-			<acme:menu-suboption code="master.menu.sponsor.sponsorship" action="/sponsor/sponsorship/list-mine"/>
-			<acme:menu-suboption code="master.menu.sponsor.dashboard" action="/sponsor/sponsor-form/show"/>	
+		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
+			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.user-story" action="/manager/user-story/list-mine"/>
+			<acme:menu-suboption code="master.menu.manager.relation" action="/manager/project-user-story/create-relation"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.risk-list" action="/authenticated/risk/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.notice" action="/authenticated/notice/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.objective" action="/authenticated/objective/list"/>
 		</acme:menu-option>
 
-		<acme:menu-option code="master.menu.any" access="hasRole('Any')">
+		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.projects" action="/any/project/list-all-published"/>
 			<acme:menu-suboption code="master.menu.any.claim" action="/any/claim/list-all"/>
-			<acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
+			<acme:menu-suboption code="master.menu.any.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.any.training-module" action="/any/training-module/list"/>
 			<acme:menu-suboption code="master.menu.any.contract" action="/any/contract/list"/>
-	
 			<acme:menu-suboption code="master.menu.any.sponsorship" action="/any/sponsorship/list"/>
 		</acme:menu-option>
 
@@ -51,29 +52,22 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
-		
 			<acme:menu-suboption code="master.menu.administrator.banner" action="/administrator/banner/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/system/populate-initial"/>
-			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>	
+			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>		
-			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list-mine"/>
+			<acme:menu-suboption code="master.menu.administrator.objective-post" action="/administrator/objective/post"/>
+			<acme:menu-suboption code="master.menu.administrator.risk-list" action="/administrator/risk/list"/>
 			<acme:menu-suboption code="master.menu.administrator.dashboard" action="/administrator/administrator-form/show"/>	
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
-		
 		</acme:menu-option>
 <<<<<<< HEAD
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
-			<acme:menu-suboption code="master.menu.developer.favourite-link" action="/developer/training-module/list-mine"/>
-			<acme:menu-suboption code="master.menu.developer.favourite-dashboard" action="/developer/developer-form/show"/>
-		</acme:menu-option>
-		<acme:menu-option code="master.menu.any.favourite">
-			<acme:menu-suboption code="master.menu.developer.favourite-publish" action="/any/training-module/list"/>
-		    <acme:menu-suboption code="master.menu.anonymous.publishedCodeAudit" action="/any/code-audit/list"/>
 			<acme:menu-suboption code="master.menu.developer.training-module" action="/developer/training-module/list-mine"/>
 			<acme:menu-suboption code="master.menu.developer.dashboard" action="/developer/developer-form/show"/>
 		</acme:menu-option>
@@ -82,15 +76,19 @@
 			<acme:menu-suboption code="master.menu.auditor.code-audit.my-code-audits" action="/auditor/code-audit/list-mine"/>
 			<acme:menu-suboption code="master.menu.auditor.dashboard" action="/auditor/auditor-form/show"/>
 		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract" action="/client/contract/list-mine"/>
 			<acme:menu-suboption code="master.menu.client.client-form" action="/client/client-form/show"/>
 		</acme:menu-option>
+<<<<<<< HEAD
 		
 
 
 =======
 >>>>>>> refs/remotes/origin/Task8-E1
+=======
+>>>>>>> branch 'develop' of https://github.com/luchersol/Acme-SF-D03.git
 	</acme:menu-left>
 
 
