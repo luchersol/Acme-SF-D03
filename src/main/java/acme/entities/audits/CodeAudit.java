@@ -55,7 +55,6 @@ public class CodeAudit extends AbstractEntity {
 	@Length(max = 100)
 	private String				correctiveActions;
 
-	@NotNull
 	private Mark				mark;
 
 	@URL

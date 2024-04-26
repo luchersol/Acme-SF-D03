@@ -35,6 +35,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
+		System.out.println("1: " + super.getBuffer().getErrors());
 	}
 
 	@Override
@@ -47,6 +48,12 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 		manager = this.repository.findManagerById(managerId);
 
 		object = new Project();
+		object.setCode("");
+		object.setTitle("");
+		object.setAbstractProject("");
+		object.setIndication(false);
+		object.setCost(null);
+		object.setLink("");
 		object.setDraftMode(true);
 		object.setManager(manager);
 
@@ -91,7 +98,7 @@ public class ManagerProjectCreateService extends AbstractService<Manager, Projec
 	public void unbind(final Project object) {
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link", "draftMode");
+		dataset = super.unbind(object, "code", "title", "abstractProject", "indication", "cost", "link");
 
 		super.getResponse().addData(dataset);
 

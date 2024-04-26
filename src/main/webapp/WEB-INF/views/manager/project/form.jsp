@@ -16,7 +16,6 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>	
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
 	<acme:input-textarea code="manager.project.form.label.abstractProject" path="abstractProject"/>
