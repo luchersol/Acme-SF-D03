@@ -14,6 +14,7 @@ sponsor.invoice.list.title = Lista de patrocinios
 sponsor.invoice.list.label.registrationTime = Fecha de registro
 sponsor.invoice.list.label.dueDate = Fecha de vencimiento
 sponsor.invoice.list.label.code = Código
+sponsor.invoice.list.label.published = Publicado
 
 sponsor.invoice.list.button.create = Create
 

@@ -63,6 +63,7 @@ public class AnySponsorshipShowService extends AbstractService<Any, Sponsorship>
 		choicesType = SelectChoices.from(TypeOfSponsorship.class, object.getType());
 
 		dataset = super.unbind(object, "code", "moment", "startDate", "endDate", "amount", "type", "email", "link", "draftMode");
+		dataset.put("sponsorName", object.getSponsor().getIdentity().getFullName());
 		dataset.put("project", choicesProject.getSelected().getKey());
 		dataset.put("projects", choicesProject);
 		dataset.put("type", choicesType.getSelected().getKey());
