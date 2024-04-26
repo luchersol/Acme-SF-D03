@@ -5,7 +5,7 @@
 
 <acme:list>
 	<acme:list-column code="auditor.auditRecord.list.label.code" path="code" width="20%"/>
-	<acme:list-column code="auditor.auditRecord.list.label.draftMode" path="draftMode" width="20%"/>	
+	<acme:list-column code="auditor.auditRecord.list.label.published" path="published" width="20%"/>	
 	<acme:list-column code="auditor.auditRecord.list.label.startDate" path="startDate" width="20%"/>
 	<acme:list-column code="auditor.auditRecord.list.label.endDate" path="endDate" width="20%"/>
 	<acme:list-column code="auditor.auditRecord.list.label.mark" path="mark" width="20%"/>

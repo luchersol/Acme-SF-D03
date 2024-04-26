@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.audits.AuditRecord;
 import acme.entities.audits.AuditType;
 import acme.entities.audits.CodeAudit;
 import acme.entities.audits.Mark;
@@ -77,16 +76,18 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			object.setMark(mark);
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("mark")) {
+			Integer notPublishedAuditRecord = this.repository.countNotPublishedAuditRecordsOfCodeAudit(object.getId());
+			super.state(notPublishedAuditRecord == 0, "mark", "auditor.codeAudit.form.error.notAllAuditRecordArePublished");
+		}
 	}
 
 	@Override
 	public void perform(final CodeAudit object) {
 		assert object != null;
 		object.setDraftMode(false);
-		Collection<AuditRecord> ars = this.repository.findNonPublishedAuditRecordsOfCodeAudit(object.getId());
 		Mark mark = this.repository.findCodeAuditMark(object.getId()).get(0);
 		object.setMark(mark);
-		this.repository.deleteAll(ars);
 		this.repository.save(object);
 	}
 
