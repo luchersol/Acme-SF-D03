@@ -90,6 +90,7 @@ master.menu.developer.dashboard = Mi panel de control
 
 master.menu.manager = Manager
 master.menu.manager.dashboard = Dashboard
+<<<<<<< HEAD
 master.menu.manager.project = Mis Projectos
 
 # master.menu.sponsor ###################################################
@@ -97,3 +98,10 @@ master.menu.manager.project = Mis Projectos
 master.menu.sponsor = Patrocinador
 master.menu.sponsor.dashboard = Mi panel de patrocinador
 master.menu.sponsor.sponsorship = Mis Patrocinios
+=======
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-data = Datos generales
+>>>>>>> refs/remotes/origin/Task8-E1

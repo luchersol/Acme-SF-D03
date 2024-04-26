@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.manager.project;
+package acme.features.manager.managerForm;
 
 import javax.annotation.PostConstruct;
 
@@ -18,31 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.project.Project;
+import acme.form.ManagerForm;
 import acme.roles.Manager;
 
 @Controller
-public class ManagerProjectController extends AbstractController<Manager, Project> {
+public class ManagerDashboardController extends AbstractController<Manager, ManagerForm> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerProjectListMineService	listMineService;
-
-	@Autowired
-	private ManagerProjectShowService		showService;
-
-	@Autowired
-	private ManagerProjectCreateService		createService;
-
-	@Autowired
-	private ManagerProjectUpdateService		updateService;
-
-	@Autowired
-	private ManagerProjectDeleteService		deleteService;
-
-	@Autowired
-	private ManagerProjectPublishService	publishService;
+	private ManagerDashboardShowService showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -50,12 +35,6 @@ public class ManagerProjectController extends AbstractController<Manager, Projec
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("show", this.showService);
-		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("update", this.updateService);
-		super.addBasicCommand("delete", this.deleteService);
-
-		super.addCustomCommand("publish", "update", this.publishService);
-		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
 
 }

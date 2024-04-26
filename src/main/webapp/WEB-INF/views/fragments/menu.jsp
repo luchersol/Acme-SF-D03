@@ -48,7 +48,6 @@
 
 		<acme:menu-option code="master.menu.manager" access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-form/show"/>			
-			<acme:menu-suboption code="master.menu.manager.project" action="/manager/project/list-mine"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -66,6 +65,7 @@
 			<acme:menu-suboption code="master.menu.administrator.shut-down" action="/administrator/system/shut-down"/>
 		
 		</acme:menu-option>
+<<<<<<< HEAD
 		
 		<acme:menu-option code="master.menu.developer" access="hasRole('Developer')">
 			<acme:menu-suboption code="master.menu.developer.favourite-link" action="/developer/training-module/list-mine"/>
@@ -89,6 +89,8 @@
 		
 
 
+=======
+>>>>>>> refs/remotes/origin/Task8-E1
 	</acme:menu-left>
 
 
@@ -99,6 +101,7 @@
 
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.user-account.general-data" action="/authenticated/user-account/update"/>
+<<<<<<< HEAD
 			<acme:menu-suboption code="master.menu.user-account.manager" action="/authenticated/manager/update" access="hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRole('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-sponsor" action="/authenticated/sponsor/create" access="!hasRole('Sponsor')"/>
@@ -109,6 +112,8 @@
 			<acme:menu-suboption code="master.menu.user-account.auditor" action="/authenticated/auditor/update" access="hasRole('Auditor')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-client" action="/authenticated/client/create" access="!hasRole('Client')"/>
 			<acme:menu-suboption code="master.menu.user-account.client" action="/authenticated/client/update" access="hasRole('Client')"/>
+=======
+>>>>>>> refs/remotes/origin/Task8-E1
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out" action="/authenticated/system/sign-out" access="isAuthenticated()"/>
