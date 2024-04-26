@@ -4,8 +4,6 @@ authenticated.client.list.title = Client list
 
 authenticated.client.form.button.create = Register
 authenticated.client.form.button.update = Update
-
-
 authenticated.client.form.label.identification = Identification
 authenticated.client.form.label.companyName = Company Name 
 authenticated.client.form.label.type = Type of client

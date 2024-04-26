@@ -13,6 +13,10 @@
 	<acme:input-textarea code="any.codeAudit.form.label.correctiveActions" path="correctiveActions"/>
 	<acme:input-url code="any.codeAudit.form.label.link" path="link" readonly="true"/>
 	<acme:input-select code="any.codeAudit.form.label.project" path="project" choices="${projects}" readonly="true" />
+	<acme:input-textbox code="any.codeAudit.form.label.auditorName" path="auditorName" readonly="true" />
+
+	
 	<acme:button code="any.codeAudit.form.button.auditRecords" action="/any/audit-record/list?masterId=${id}"/>			
+	
 			
 </acme:form>

@@ -1,5 +1,5 @@
 
-authenticated.consumer.form.title = Formulario de auditor
+authenticated.auditor.form.title = Formulario de auditor
 
 authenticated.auditor.form.button.create = Registrarse
 authenticated.auditor.form.button.update = Actualizar

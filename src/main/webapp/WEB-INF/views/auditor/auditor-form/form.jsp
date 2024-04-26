@@ -69,7 +69,7 @@
 			<acme:message code="auditor.dashboard.form.label.averagePeriodOfAuditRecordsInCodeAudits"/>
 		</th>
 		<td>
-			<acme:print value="${averagePeriodOfAuditRecordsInCodeAudits}"/>
+			<acme:print value="${averagePeriodOfAuditRecordsInCodeAudits == Double.NaN ? '' : averagePeriodOfAuditRecordsInCodeAudits}"/>
 		</td>
 	</tr>
 	
@@ -78,7 +78,7 @@
 			<acme:message code="auditor.dashboard.form.label.deviationPeriodOfAuditRecordsInCodeAudits"/>
 		</th>
 		<td>
-			<acme:print value="${deviationPeriodOfAuditRecordsInCodeAudits}"/>
+			<acme:print value="${deviationPeriodOfAuditRecordsInCodeAudits == Double.NaN ? '' : deviationPeriodOfAuditRecordsInCodeAudits }"/>
 		</td>
 	</tr>
 
@@ -87,7 +87,7 @@
 			<acme:message code="auditor.dashboard.form.label.minimumPeriodOfAuditRecordsInCodeAudits"/>
 		</th>
 		<td>
-			<acme:print value="${minimumPeriodOfAuditRecordsInCodeAudits}"/>
+			<acme:print value="${minimumPeriodOfAuditRecordsInCodeAudits == Double.NaN ? '' : minimumPeriodOfAuditRecordsInCodeAudits }"/>
 		</td>
 	</tr>
 	
@@ -96,7 +96,7 @@
 			<acme:message code="auditor.dashboard.form.label.maximumPeriodOfAuditRecordsInCodeAudits"/>
 		</th>
 		<td>
-			<acme:print value="${maximumPeriodOfAuditRecordsInCodeAudits}"/>
+			<acme:print value="${maximumPeriodOfAuditRecordsInCodeAudits == Double.NaN ? '' : maximumPeriodOfAuditRecordsInCodeAudits}"/>
 		</td>
 	</tr>
 

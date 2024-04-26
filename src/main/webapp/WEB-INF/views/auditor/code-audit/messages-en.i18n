@@ -5,7 +5,7 @@ auditor.codeAudit.list.label.code = Code
 auditor.codeAudit.list.label.execution = Execution
 auditor.codeAudit.list.label.type = Type
 auditor.codeAudit.list.label.mark = Mark
-auditor.codeAudit.list.label.draftMode = Is draftMode	
+auditor.codeAudit.list.label.published = Published
 
 auditor.code-audit.list.button.create = Create code audit
 
